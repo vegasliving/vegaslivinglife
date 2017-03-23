@@ -1,0 +1,73 @@
+{% extends "base.html" %} {% load wagtailcore_tags wagtailimages_tags static %} {% block body_class %}template-blogindexpage{% endblock %} {% block content %}
+<div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--8-col">
+        <h1>{{ page.title }}</h1>
+        <div class="intro">{{ page.intro|richtext }}</div>
+        {% for post in blogpages %} {% with post=post.specific %}
+        <div class="blog-card-wide mdl-card mdl-shadow--16dp">
+            <div class="mdl-card__title">
+                <h2>
+                            <a href="{% pageurl post %}">{{ post.title }}</a>
+                        </h2>
+            </div>
+            <div class="mdl-card__media">
+            </div>
+            <div class="mdl-card__supporting-text">
+                {{ post.body|richtext }}
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a href="{% pageurl post %}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                        Get Started
+                        </a>
+            </div>
+            <div class="mdl-card__menu">
+                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                    <i class="material-icons">share</i>
+                </button>
+            </div>
+        </div>
+        {% endwith %} {% endfor %}
+    </div>
+    <div class="mdl-cell mdl-cell--4-col">
+        <div class="mdl-grid">
+        <form action="#">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+                <label class="mdl-button mdl-js-button mdl-button--icon" for="search-engine">
+                    <i class="material-icons">search</i>
+                </label>
+                <div class="mdl-textfield__expandable-holder">
+                    <input class="mdl-textfield__input" type="text" id="search-engine">
+                    <label class="mdl-textfield__label" for="search-engine-expandable">Expandable Input</label>
+                </div>
+            </div>
+        </form>
+        </div>
+        <div class="mdl-grid">
+        {% for post in blogpages %} {% with post=post.specific %}
+        <div class="blog-card-wide mdl-card mdl-shadow--16dp">
+            <div class="mdl-card__title">
+                <h2>
+                            <a href="{% pageurl post %}">{{ post.title }}</a>
+                        </h2>
+            </div>
+            <div class="mdl-card__media">
+            </div>
+            <div class="mdl-card__supporting-text">
+                {{ post.body|richtext }}
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a href="{% pageurl post %}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                        Get Started
+                        </a>
+            </div>
+            <div class="mdl-card__menu">
+                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                    <i class="material-icons">share</i>
+                </button>
+            </div>
+            </div>
+        </div>
+        {% endwith %} {% endfor %}
+    </div>
+</div>
+{% endblock %}
