@@ -111,10 +111,12 @@ html, body {
   margin-bottom: 48px;
 }
 .mdl-demo section.section--center {
-  max-width: 860px;
+  max-width: 700px;
+  
 }
 .mdl-demo #features section.section--center {
-  max-width: 620px;
+  max-width: 800px;
+  margin-left: 10px;
 }
 .mdl-demo section > header{
   display: -webkit-flex;
