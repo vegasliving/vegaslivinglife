@@ -112,7 +112,7 @@ html, body {
 }
 .mdl-demo section.section--center {
   max-width: 700px;
-  
+
 }
 .mdl-demo #features section.section--center {
   max-width: 800px;
@@ -237,4 +237,27 @@ html, body {
 }
 .mdl-demo .mdl-menu__container {
   z-index: 99;
+}
+
+.demo-card-square.mdl-card {
+  width: 360px;
+  height: 360px;
+  margin-bottom: 10px;
+}
+.demo-card-square > .mdl-card__title {
+  height: 250px;
+  color: #fff;
+  background:
+    url('https://photos.zillowstatic.com/p_f/ISuspnrockmbtf1000000000.jpg') bottom right 15% no-repeat #46B6AC;
+  background-size: 100%
+}
+
+.house-price {
+  float: right;
+}
+
+.vegas-banner > .mdl-layout__header-row {
+  background:
+    url('https://photos.zillowstatic.com/p_f/ISuspnrockmbtf1000000000.jpg') bottom right 15% no-repeat #46B6AC;
+
 }
