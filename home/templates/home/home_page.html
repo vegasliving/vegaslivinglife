@@ -1,4 +1,7 @@
-{% load wagtailcore_tags wagtailuserbar static%} {% block body_class %}{% endblock %} {% block content %} {# beginning for page content #} {% wagtailuserbar 'top-right'%} {# {{ page.body|richtext }} #}
+{% load wagtailcore_tags wagtailuserbar static%}
+{% block body_class %}template-blogindexpage{% endblock %}
+{% block content %} {# beginning for page content #}
+{% wagtailuserbar 'top-right'%} {# {{ page.body|richtext }} #}
 <!--
   Material Design Lite
   Copyright 2015 Google Inc. All rights reserved.
@@ -83,8 +86,32 @@
             <div class="mdl-layout__tab-panel is-active" id="overview">
                 <div class="mdl-grid">
                     <div class="mdl-cell mdl-cell--8-col" id="blog-panel">
+                        {% for post in blogpages %} {% with post=post.specific %}
+                        <div class="blog-card-wide mdl-card mdl-shadow--16dp">
+                            <div class="mdl-card__title">
+                                <h2>
+                                                    <a href="{% pageurl post %}">{{ post.title }}</a>
+                                                </h2>
+                            </div>
+                            <div class="mdl-card__media">
+                            </div>
+                            <div class="mdl-card__supporting-text">
+                                {{ post.body|richtext }}
+                            </div>
+                            <div class="mdl-card__actions mdl-card--border">
+                                <a href="{% pageurl post %}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                                Get Started
+                                                </a>
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                    <i class="material-icons">share</i>
+                                </button>
+                            </div>
+                        </div>
+                        {% endwith %} {% endfor %}
                         <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
-                            <div class="mdl-card mdl-cell mdl-cell--12-col">
+                            <div class="mdl-card mdl-cell mdl-cell--12-col">    
                                 <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
                                     <h4 class="mdl-cell mdl-cell--12-col">10 Reason to Startup in Vegas</h4>
                                     <div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">

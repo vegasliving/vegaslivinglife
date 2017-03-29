@@ -261,3 +261,29 @@ html, body {
     url('https://photos.zillowstatic.com/p_f/ISuspnrockmbtf1000000000.jpg') bottom right 15% no-repeat #46B6AC;
 
 }
+
+.search-result-content.mdl-grid {
+  margin-top: 1000px;
+}
+
+.blog-card-wide.mdl-card {
+  width: 100%;
+  margin-bottom: 42px
+}
+
+.blog-card-wide > .mdl-card__title {
+  color: #fff;
+  height: 176px;
+  background: url("https://getmdl.io/assets/demos/welcome_card.jpg") center / cover;
+}
+.blog-card-wide > .mdl-card__menu {
+  color: #fff;
+}
+.demo-layout-waterfall > .mdl-layout__header{
+  background: url("http://svcdn.simpleviewinc.com/v3/cache/lasvegas/14679F47EC9B965E4A510BFB528895CE.jpg") center / cover;
+  height: 200px ;
+}
+.demo-layout-waterfall .mdl-layout__header-row .mdl-navigation__link:last-of-type  {
+  padding-right: 0;
+  
+} 
