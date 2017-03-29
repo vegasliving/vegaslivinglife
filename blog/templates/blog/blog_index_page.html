@@ -8,7 +8,7 @@
         <!-- Top row, always visible -->
         <div class="mdl-layout__header-row">
             <!-- Title -->
-            <span class="mdl-layout-title">Title</span>
+            <span class="mdl-layout-title">Vegas Living</span>
             <div class="mdl-layout-spacer"></div>
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
                   mdl-textfield--floating-label mdl-textfield--align-right">
@@ -48,25 +48,36 @@
                     {% for post in blogpages %} {% with post=post.specific %}
                     <div class="mdl-grid">
                     <div class="blog-card-wide mdl-card mdl-shadow--16dp mdl-cell mdl-cell--12-col">
-                        <div class="mdl-card__title">
-                            <h2>
-                            <a href="{% pageurl post %}">{{ post.title }}</a>
-                        </h2>
-                        </div>
-                        <div class="mdl-card__media">
-                        </div>
-                        <div class="mdl-card__supporting-text">
-                            {{ post.body|richtext }}
-                        </div>
-                        <div class="mdl-card__actions mdl-card--border">
-                            <a href="{% pageurl post %}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-                        Get Started
-                        </a>
-                        </div>
-                        <div class="mdl-card__menu">
-                            <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                                <i class="material-icons">share</i>
-                            </button>
+                        <div class"mdl-grid">
+                           
+
+                            <div class="mdl-card__title mdl-cell mdl-cell--12-col">
+                                <h2>
+                                <a href="{% pageurl post %}">{{ post.title }}</a>
+                            </h2>
+                            </div>
+                            
+                            <div class="mdl-card__supporting-text mdl-cell mdl-cell--12-col">
+                                {{ post.body|richtext }}
+                            </div>
+                                
+                            {% with post.main_image as main_image %}
+                                {% if main_image %}
+                                     <div class="mdl-card__media mdl-cell mdl-cell--12-col">
+                                    {% image main_image width-1000 class="full-width" %}
+                                    </div>
+                                {% endif %}
+                            {% endwith %}
+                            <div class="mdl-card__actions mdl-card--border mdl-cell mdl-cell--12-col">  
+                                <a href="{% pageurl post %}" class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                            Read More
+                            </a>
+                            </div>
+                            <div class="mdl-card__menu">
+                                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                                    <i class="material-icons">share</i>
+                                </button>
+                            </div>
                         </div>
                     </div>
                     </div>
