@@ -87,8 +87,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
-
-
+ 
 # [START dbconfig]
 DATABASES = {
     'default': {
