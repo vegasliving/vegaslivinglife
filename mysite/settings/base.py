@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
-
+SECRET_KEY = 'vegasd87zxq082md@lygcic=k@i9xu1o!1h&sr09v50fn7y$2p(ckkn'
 
 # Application definition
 
