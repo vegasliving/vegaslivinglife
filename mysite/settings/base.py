@@ -104,7 +104,7 @@ DATABASES['default']['HOST'] = '/cloudsql/vegas-living:us-central1:vegasliving'
 if os.getenv('GAE_INSTANCE'):
     pass
 else:
-    DATABASES['default']['HOST'] = '127.0.0.1'
+    DATABASES['default']['HOST'] = ['127.0.0.1', '10.128.0.3']
 # [END dbconfig]
 
 
