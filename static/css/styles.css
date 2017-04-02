@@ -108,19 +108,19 @@ p {
 }
 
 /* DATE of release */
-h5.month{
+h5.month > * {
   position: absolute;
   left: 30px;
   bottom: 40px;
-  font-size: 77px;
+  font-size: 77px !important;
   color: #C3C3C3;
 }
 
-h6.date {
+h6.date > * {
   position: absolute;
   left: 30px;
   bottom: 10px;
-  font-size: ;
+  font-size: 21px !important;
   color: #C3C3C3;
 }
 
