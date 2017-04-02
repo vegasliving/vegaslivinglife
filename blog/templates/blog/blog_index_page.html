@@ -6,31 +6,16 @@
 <div class="demo-layout-waterfall mdl-layout mdl-js-layout">
     <header class="mdl-layout__header mdl-layout__header--waterfall">
         <!-- Top row, always visible -->
-        <div class="mdl-layout__header-row">
+        <div class="mdl-layout__header-row" style="background-color: #2D3739">
             <!-- Title -->
+            <div class="mdl-layout-spacer"></div>
             <span class="mdl-layout-title">Vegas Living</span>
             <div class="mdl-layout-spacer"></div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable
-                  mdl-textfield--floating-label mdl-textfield--align-right">
-                <label class="mdl-button mdl-js-button mdl-button--icon" for="waterfall-exp">
-                    <i class="material-icons">search</i>
-                </label>
-                <div class="mdl-textfield__expandable-holder">
-                    <input class="mdl-textfield__input" type="text" name="sample" id="waterfall-exp">
-                </div>
-            </div>
+            <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--icon mdl-button--colored" style="background-color: white; width: 42px; height: 42px">
+                <span class="material-icons" style="color: black">search</span>
+            </button>
         </div>
         <!-- Bottom row, not visible on scroll -->
-        <div class="mdl-layout__header-row">
-            <div class="mdl-layout-spacer"></div>
-            <!-- Navigation -->
-            <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" href="">Link</a>
-                <a class="mdl-navigation__link" href="">Link</a>
-                <a class="mdl-navigation__link" href="">Link</a>
-                <a class="mdl-navigation__link" href="">Link</a>
-            </nav>
-        </div>
     </header>
     <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">Title</span>
@@ -44,13 +29,35 @@
     <main class="mdl-layout__content">
         <div class="page-content">
             <div class="mdl-grid" "search-result-content">
-                <div class="mdl-cell mdl-cell--8-col">     
+                <div class="mdl-cell mdl-cell--8-col">  
+                    
+                    <div class="mdl-grid">
+                      
+<div class="card">
+  <div class="thumbnail"><img class="left" src="http://cdn2.hubspot.net/hubfs/322787/Mychefcom/images/BLOG/Header-Blog/photo-culinaire-pexels.jpg"/></div>
+  <div class="right">
+    <h1>Why you Need More Magnesium in Your Daily Diet</h1>
+    <div class="author"><img src="https://randomuser.me/api/portraits/men/95.jpg"/>
+      <h2>Igor MARTY</h2>
+    </div>
+    <div class="separator"></div>
+    <p>Magnesium is one of the six essential macro-minerals that is required by the body for energy production and synthesis of protein and enzymes. It contributes to the development of bones and most importantly it is responsible for synthesis of your DNA and RNA. A new report that has appeared in theBritish Journal of Cancer, gives you another reason to add more magnesium to your diet...</p>
+  </div>
+  <h5>12</h5>
+  <h6>JANUARY</h6>
+  <ul>
+    <li><i class="fa fa-eye fa-2x"></i></li>
+    <li><i class="fa fa-heart-o fa-2x"></i></li>
+    <li><i class="fa fa-envelope-o fa-2x"></i></li>
+    <li><i class="fa fa-share-alt fa-2x"></i></li>
+  </ul>
+  <div class="fab"><i class="fa fa-arrow-down fa-3x"> </i></div>
+</div>
+                    </div>
                     {% for post in blogpages %} {% with post=post.specific %}
                     <div class="mdl-grid">
                     <div class="blog-card-wide mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
                         <div class"mdl-grid">
-                           
-
                             <div class="mdl-card__title mdl-cell mdl-cell--12-col">
                                 <h2>
                                 <a href="{% pageurl post %}">{{ post.title }}</a>
@@ -171,6 +178,59 @@
                 </div>
             </div>
         </div>
+    <footer class="mdl-mega-footer">
+                <div class="mdl-mega-footer--middle-section">
+                    <div class="mdl-mega-footer--drop-down-section">
+                        <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer--heading">Features</h1>
+                        <ul class="mdl-mega-footer--link-list">
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Terms</a></li>
+                            <li><a href="#">Partners</a></li>
+                            <li><a href="#">Updates</a></li>
+                        </ul>
+                    </div>
+                    <div class="mdl-mega-footer--drop-down-section">
+                        <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer--heading">Details</h1>
+                        <ul class="mdl-mega-footer--link-list">
+                            <li><a href="#">Spec</a></li>
+                            <li><a href="#">Tools</a></li>
+                            <li><a href="#">Resources</a></li>
+                        </ul>
+                    </div>
+                    <div class="mdl-mega-footer--drop-down-section">
+                        <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer--heading">Technology</h1>
+                        <ul class="mdl-mega-footer--link-list">
+                            <li><a href="#">How it works</a></li>
+                            <li><a href="#">Patterns</a></li>
+                            <li><a href="#">Usage</a></li>
+                            <li><a href="#">Products</a></li>
+                            <li><a href="#">Contracts</a></li>
+                        </ul>
+                    </div>
+                    <div class="mdl-mega-footer--drop-down-section">
+                        <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                        <h1 class="mdl-mega-footer--heading">FAQ</h1>
+                        <ul class="mdl-mega-footer--link-list">
+                            <li><a href="#">Questions</a></li>
+                            <li><a href="#">Answers</a></li>
+                            <li><a href="#">Contact us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mdl-mega-footer--bottom-section">
+                    <div class="mdl-logo">
+                        More Information
+                    </div>
+                    <ul class="mdl-mega-footer--link-list">
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Privacy and Terms</a></li>
+                    </ul>
+                </div>
+            </footer>
     </main>
+
 </div>
 {% endblock %}
