@@ -108,18 +108,20 @@ p {
 }
 
 /* DATE of release */
-h5.month > * {
+h1.month {
   position: absolute;
   left: 30px;
-  bottom: 40px;
+  bottom: 10px;
+  font-family: 'roboto';
   font-size: 77px !important;
   color: #C3C3C3;
 }
 
-h6.date > * {
+h5.date {
   position: absolute;
   left: 30px;
-  bottom: 10px;
+  bottom: 40px;
+  font-family: 'roboto';
   font-size: 21px !important;
   color: #C3C3C3;
 }
