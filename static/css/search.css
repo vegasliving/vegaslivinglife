@@ -26,15 +26,15 @@ label::before {
   margin-right: 3px;
   background: radial-gradient(ellipse at center, #CCC 50%, transparent 50%);
 }
+
 #expand {
   height: 0px;
   overflow: hidden;
   transition: height 0.5s;
-  background: url(http://placekitten.com/g/600/300);
-  color: #FFF;
+  background-color: #2D3739;
 }
 #toggle:checked ~ #expand {
-  height: 250px;
+  height: 500px;
 }
 #toggle:checked ~ label::before {
   content: "-";
