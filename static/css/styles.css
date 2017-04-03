@@ -110,14 +110,12 @@ p {
 /* DATE of release */
 h5.date {
   position: absolute;
-  left: 30px !important;
-  bottom: -55px !important;
+  left: 30px ;
+  top: 400px ;
   font-family: 'roboto';
-  font-size: 77px !important;
-  color: #C3C3C3 !important;
+  font-size: 77px ;
+  color: #C3C3C3 ;
   font-size: 77px; 
-  margin-top:-95px; 
-  margin-left: 35px;
 }
 
 h6.month {
@@ -125,15 +123,14 @@ h6.month {
   left: 30px;
   bottom: 10px;
   font-family: 'roboto';
-  font-size: 21px !important;
   color: #C3C3C3;
-  font-size: 21px; margin-top: -20px; margin-left: 35px;
+  font-size: 21px; 
 }
 
 /* Those futur buttons */
 ul.vegas-social {
   margin-left: 300px;
-  margin-top: -50px;
+  margin-top: 50px;
 }
 
 li {
