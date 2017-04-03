@@ -129,8 +129,7 @@ h6.month {
 
 /* Those futur buttons */
 ul.vegas-social {
-  margin-left: 300px;
-  margin-top: 50px;
+  margin-left: 250px;
 }
 
 li {
@@ -157,10 +156,6 @@ li {
   -moz-box-shadow: 10px 10px 50px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 10px 10px 50px 0px rgba(0, 0, 0, 0.75);
 }
-
-
-
-
 
 .mdl-demo .mdl-layout__header-row {
   padding-left: 40px;
