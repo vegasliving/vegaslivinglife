@@ -1,8 +1,8 @@
 {% extends "base.html" %} 
-{% load wagtailcore_tags wagtailimages_tags static %} 
+{% load wagtailcore_tags wagtailimages_tags wagtailuserbar static %} 
 {% block body_class %}{% endblock %} 
-
 {% block content %}
+{% wagtailuserbar 'bottom-left'%}
 <div class=" mdl-layout mdl-js-layout">
     <header class="mdl-layout__header mdl-layout__header--waterfall">
         <!-- Top row, always visible -->
@@ -11,12 +11,21 @@
             <div class="mdl-layout-spacer"></div>
             <span class="mdl-layout-title">Vegas Living</span>
             <div class="mdl-layout-spacer"></div>
-            <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--icon mdl-button--colored" style="background-color: white; width: 42px; height: 42px">
+            
+            <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--icon mdl-button--colored " style="background-color: white; width: 42px; height: 42px" id ="search-menu">
                 <span class="material-icons" style="color: black">search</span>
             </button>
+            <input id="toggle" type="checkbox" checked>
+  <label for="toggle">Hidden Kitten</label>
+  <div id="expand">
+    <section>
+      <p>mew</p>
+    </section>
+  </div>
         </div>
         <!-- Bottom row, not visible on scroll -->
     </header>
+    
     <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">Title</span>
         <nav class="mdl-navigation">

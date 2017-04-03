@@ -19,7 +19,9 @@ html, body {
   margin: 0;
   padding: 0;
 }
-/* The card */
+
+
+/* The BLOG card */
 .card {
   position: relative;
   height: 450px;
@@ -427,4 +429,5 @@ li {
   padding-right: 0;
   
 } 
+/*
 
