@@ -40,23 +40,28 @@
                                      </div>
                                 {% endif %}
                             {% endwith %}
-                          <div class="right">
-                            <h1 class="title">
-                              <a href="{% pageurl post %}">{{ post.title }}</a>
-                            </h1>
-                            <div class="author"><img src="https://randomuser.me/api/portraits/men/95.jpg"/>
-                              <h2 class="author">Igor MARTY</h2>
-                            </div>
-                            <div class="separator"></div>
-                            <p> {{ post.body|richtext }}</p>
-                          </div>
+
                           <h5 class="date" style="top: 300px">07</h5>
                           <h6 class="month">January</h6>
-                          <ul class="vegas-social">
+                          <ul class="vegas-social left" style="margin-top: -120px;margin-bottom: 100px; margin-left: 300px; ">
                             <li><i class="fa fa-eye fa-2x"></i></li>
                             <li><i class="fa fa-heart-o fa-2x"></i></li>
                             <li><i class="fa fa-share-alt fa-2x"></i></li>
                           </ul>
+                          <div class="right">
+                            <h1 class="title">
+                              <a style="text-decoration: inherit; color: inherit
+                              "     href="{% pageurl post %}">
+                                {{ post.title }}
+                              </a>
+                            </h1>
+                            <span class="mdl-chip mdl-chip--contact">
+                                <img class="mdl-chip__contact" src="https://randomuser.me/api/portraits/men/95.jpg" ></img>
+                                <span class="mdl-chip__text">Agent DO</span>
+                            </span>
+                            <div class="separator"></div>
+                            <p> {{ post.body|richtext }}</p>
+                          </div>
                           <div class="fab"><i class="fa fa-arrow-down fa-3x"></i></div>
                         </div>
                     </div>

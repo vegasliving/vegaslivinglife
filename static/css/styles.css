@@ -129,7 +129,9 @@ h6.month {
 
 /* Those futur buttons */
 ul.vegas-social {
-  margin-left: 250px;
+  margin-top: -120px;
+  margin-bottom: 100px;
+  margin-left: 300px;
 }
 
 li {
