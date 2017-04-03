@@ -1,230 +1,256 @@
-{% extends "base.html" %} 
-{% load wagtailcore_tags wagtailimages_tags wagtailuserbar static %} 
-{% block body_class %}{% endblock %} 
-{% block content %}
-{% wagtailuserbar 'bottom-left'%}
+{% extends "base.html" %} {% load wagtailcore_tags wagtailimages_tags static %} {% block body_class %} {% endblock %} {% block content %}
 <div class=" mdl-layout mdl-js-layout">
-    <header class="mdl-layout__header mdl-layout__header--waterfall">
+    <div class="mdl-layout__header mdl-layout__header--waterfall">
         <!-- Top row, always visible -->
         <div class="mdl-layout__header-row" style="background-color: #2D3739">
             <!-- Title -->
             <div class="mdl-layout-spacer"></div>
             <span class="mdl-layout-title">Vegas Living</span>
             <div class="mdl-layout-spacer"></div>
-            
-            <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--icon mdl-button--colored " style="background-color: white; width: 42px; height: 42px" id ="search-menu">
+            <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--icon mdl-button--colored " style="background-color: white; width: 42px; height: 42px" id="search-menu">
                 <span class="material-icons" style="color: black">search</span>
             </button>
-
         </div>
         <input id="toggle" type="checkbox" checked>
-         <label for="toggle">Hidden Kitten</label>
-          <div id="expand">
-            <section>
-              <div class="mdl-grid">
-                  <div class="mdl-cell--8-col">
-                      
-                  </div>
-                  <div class="mdl-cell--4-col">
-                      
-                  </div>
-              </div>
-            </section>
-          </div>
+        <label for="toggle" id="toggle">Start My Home Search</label>
+        <div id="expand" class="mdl-layout__content">
+            <div class="mdl-grid">
+                <div class="mdl-cell--4-col">
+                    <div class="mdl-grid">
+                        <div class="mdl-cell--12-col home-search">
+                            <form action="#">
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" pattern="[0-9]*" id="home-search">
+                                    <label class="mdl-textfield__label" for="home-search" style="color:#ccc">City, Address, School, Zipcode, Agent</label>
+                                    <span class="mdl-textfield__error">Please check Your input</span>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-1">
+                                            <input type="checkbox" id="checkbox-1" class="mdl-checkbox__input" checked>
+                                            <span class="mdl-checkbox__label">1 Bedroom</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-2">
+                                            <input type="checkbox" id="checkbox-2" class="mdl-checkbox__input">
+                                            <span class="mdl-checkbox__label">2 Bedrooms</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-3">
+                                            <span class="mdl-checkbox__label">3 Bedrooms</span>
+                                            <input type="checkbox" id="checkbox-3" class="mdl-checkbox__input">
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label class="mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for="checkbox-4">
+                                            <span class="mdl-checkbox__label">4+ Bedrooms</span>
+                                            <input type="checkbox" id="checkbox-4" class="mdl-checkbox__input">
+                                        </label>
+                                    </li>
+                                </ul>
+                                <input class="mdl-slider mdl-js-slider" type="range" min="0" max="100" value="25" tabindex="0">
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdl-cell--8-col">
+                    <div class="mdl-card mdl-cell--12-col">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d51568.24213607387!2d-115.20146250569545!3d36.11748905407056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c8c4383428d4eb%3A0x43e2195d0c26834c!2sLas+Vegas+Strip%2C+NV!5e0!3m2!1sen!2sus!4v1490653631259" height="480" frameborder="0" style="border:0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Bottom row, not visible on scroll -->
-    </header>
-    
+    </div>
     <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">Title</span>
+        <span class="mdl-layout-title">Vegas Living</span>
         <nav class="mdl-navigation">
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
-            <a class="mdl-navigation__link" href="">Link</a>
+            <a class="mdl-navigation__link" href="">Home</a>
+            <a class="mdl-navigation__link" href="">About</a>
+            <a class="mdl-navigation__link" href="">Terms</a>
+            <a class="mdl-navigation__link" href="">Contact</a>
         </nav>
     </div>
     <main class="mdl-layout__content">
         <div class="page-content">
             <div class="mdl-grid" "search-result-content">
-                <div class="mdl-cell mdl-cell--8-col">  
-                  {% for post in blogpages %} {% with post=post.specific %}
+                <div class="mdl-cell mdl-cell--8-col">
+                    {% for post in blogpages %} {% with post=post.specific %}
                     <div class="mdl-grid">
                         <div class="card">
-                            {% with post.main_image as main_image %}
-                                {% if main_image %}
-                                     <div class="thumbnail">
-                                        {% image main_image width-1000 class="full-width" %}
-                                     </div>
-                                {% endif %}
-                            {% endwith %}
-
-                          <h5 class="date" style="top: 300px">07</h5>
-                          <h6 class="month">January</h6>
-                          <ul class="vegas-social left" style="margin-top: -120px;margin-bottom: 100px; margin-left: 300px; ">
-                            <li><i class="fa fa-eye fa-2x"></i></li>
-                            <li><i class="fa fa-heart-o fa-2x"></i></li>
-                            <li><i class="fa fa-share-alt fa-2x"></i></li>
-                          </ul>
-                          <div class="right">
-                            <h1 class="title">
+                            {% with post.main_image as main_image %} {% if main_image %}
+                            <div class="thumbnail">
+                                {% image main_image width-1000 class="full-width" %}
+                            </div>
+                            {% endif %} {% endwith %}
+                            <h5 class="date" style="top: 300px">07</h5>
+                            <h6 class="month">January</h6>
+                            <ul class="vegas-social left" style="margin-top: -120px;margin-bottom: 100px; margin-left: 300px; ">
+                                <li><i class="fa fa-eye fa-2x"></i></li>
+                                <li><i class="fa fa-heart-o fa-2x"></i></li>
+                                <li><i class="fa fa-share-alt fa-2x"></i></li>
+                            </ul>
+                            <div class="right">
+                                <h1 class="title">
                               <a style="text-decoration: inherit; color: inherit
                               "     href="{% pageurl post %}">
                                 {{ post.title }}
                               </a>
                             </h1>
-                            <span class="mdl-chip mdl-chip--contact">
+                                <span class="mdl-chip mdl-chip--contact">
                                 <img class="mdl-chip__contact" src="https://randomuser.me/api/portraits/men/95.jpg" ></img>
                                 <span class="mdl-chip__text">Agent DO</span>
-                            </span>
-                            <div class="separator"></div>
-                            <p> {{ post.body|richtext }}</p>
-                          </div>
-                          <div class="fab"><i class="fa fa-arrow-down fa-3x"></i></div>
+                                </span>
+                                <div class="separator"></div>
+                                <p> {{ post.body|richtext }}</p>
+                            </div>
+                            <div class="fab"><i class="fa fa-arrow-down fa-3x"></i></div>
                         </div>
                     </div>
-                  {% endwith %} {% endfor %}
+                    {% endwith %} {% endfor %}
                 </div>
                 <div class="mdl-cell mdl-cell--4-col">
-                     <div class="demo-card-square mdl-card mdl-shadow--2dp">
-                            <div class="mdl-card__title mdl-card--expand">
-                                <h2 class="mdl-card__title-text"></h2>
+                    <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title mdl-card--expand">
+                            <h2 class="mdl-card__title-text"></h2>
+                        </div>
+                        <div class="mdl-grid">
+                            <div class="mdl-cell--9-col ">
+                                <div class="house-address">123 Las Vegas Blvd, Las Vegas, NV</div>
                             </div>
-                            <div class="mdl-grid">
-                                <div class="mdl-cell--9-col ">
-                                    <div class="house-address">123 Las Vegas Blvd, Las Vegas, NV</div>
-                                </div>
-                                <div class="mdl-cell--3-col">
-                                    <div class="house-price">$888,666</div>
-                                </div>
-                            </div>
-                            <div class="mdl-grid">
-                                <div class="mdl-button mdl-button--colored">
-                                    <i class="fa fa-bed" aria-hidden="true"></i>
-                                    <span>3</span> Beds
-                                </div>
-                                <div class="mdl-button mdl-button--colored">
-                                    <i class="fa fa-bath" aria-hidden="true"></i> 3 Baths
-                                </div>
-                                <div class="mdl-button mdl-button--colored">
-                                    3000 sqft
-                                </div>
-                            </div>
-                            <div class="mdl-card__actions mdl-card--border">
-                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">View Updates</a>
+                            <div class="mdl-cell--3-col">
+                                <div class="house-price">$888,666</div>
                             </div>
                         </div>
-                        <div class="demo-card-square mdl-card mdl-shadow--2dp">
-                            <div class="mdl-card__title mdl-card--expand">
-                                <h2 class="mdl-card__title-text"></h2>
+                        <div class="mdl-grid">
+                            <div class="mdl-button mdl-button--colored">
+                                <i class="fa fa-bed" aria-hidden="true"></i>
+                                <span>3</span> Beds
                             </div>
-                            <div class="mdl-grid">
-                                <div class="mdl-cell--9-col ">
-                                    <div class="house-address">123 Las Vegas Blvd, Las Vegas, NV</div>
-                                </div>
-                                <div class="mdl-cell--3-col">
-                                    <div class="house-price">$888,666</div>
-                                </div>
+                            <div class="mdl-button mdl-button--colored">
+                                <i class="fa fa-bath" aria-hidden="true"></i> 3 Baths
                             </div>
-                            <div class="mdl-grid">
-                                <div class="mdl-button mdl-button--colored">
-                                    <i class="fa fa-bed" aria-hidden="true"></i>
-                                    <span>3</span> Beds
-                                </div>
-                                <div class="mdl-button mdl-button--colored">
-                                    <i class="fa fa-bath" aria-hidden="true"></i> 3 Baths
-                                </div>
-                                <div class="mdl-button mdl-button--colored">
-                                    3000 sqft
-                                </div>
-                            </div>
-                            <div class="mdl-card__actions mdl-card--border">
-                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">View Updates </a>
+                            <div class="mdl-button mdl-button--colored">
+                                3000 sqft
                             </div>
                         </div>
-                        <div class="demo-card-square mdl-card mdl-shadow--2dp">
-                            <div class="mdl-card__title mdl-card--expand">
-                                <h2 class="mdl-card__title-text"></h2>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">View Updates</a>
+                        </div>
+                    </div>
+                    <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title mdl-card--expand">
+                            <h2 class="mdl-card__title-text"></h2>
+                        </div>
+                        <div class="mdl-grid">
+                            <div class="mdl-cell--9-col ">
+                                <div class="house-address">123 Las Vegas Blvd, Las Vegas, NV</div>
                             </div>
-                            <div class="mdl-grid">
-                                <div class="mdl-cell--9-col ">
-                                    <div class="house-address">123 Las Vegas Blvd, Las Vegas, NV</div>
-                                </div>
-                                <div class="mdl-cell--3-col">
-                                    <div class="house-price">$888,666</div>
-                                </div>
-                            </div>
-                            <div class="mdl-grid">
-                                <div class="mdl-button mdl-button--colored">
-                                    <i class="fa fa-bed" aria-hidden="true"></i>
-                                    <span>3</span> Beds
-                                </div>
-                                <div class="mdl-button mdl-button--colored">
-                                    <i class="fa fa-bath" aria-hidden="true"></i> 3 Baths
-                                </div>
-                                <div class="mdl-button mdl-button--colored">
-                                    3000 sqft
-                                </div>
-                            </div>
-                            <div class="mdl-card__actions mdl-card--border">
-                                <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">View Updates</a>
+                            <div class="mdl-cell--3-col">
+                                <div class="house-price">$888,666</div>
                             </div>
                         </div>
+                        <div class="mdl-grid">
+                            <div class="mdl-button mdl-button--colored">
+                                <i class="fa fa-bed" aria-hidden="true"></i>
+                                <span>3</span> Beds
+                            </div>
+                            <div class="mdl-button mdl-button--colored">
+                                <i class="fa fa-bath" aria-hidden="true"></i> 3 Baths
+                            </div>
+                            <div class="mdl-button mdl-button--colored">
+                                3000 sqft
+                            </div>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">View Updates </a>
+                        </div>
+                    </div>
+                    <div class="demo-card-square mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title mdl-card--expand">
+                            <h2 class="mdl-card__title-text"></h2>
+                        </div>
+                        <div class="mdl-grid">
+                            <div class="mdl-cell--9-col ">
+                                <div class="house-address">123 Las Vegas Blvd, Las Vegas, NV</div>
+                            </div>
+                            <div class="mdl-cell--3-col">
+                                <div class="house-price">$888,666</div>
+                            </div>
+                        </div>
+                        <div class="mdl-grid">
+                            <div class="mdl-button mdl-button--colored">
+                                <i class="fa fa-bed" aria-hidden="true"></i>
+                                <span>3</span> Beds
+                            </div>
+                            <div class="mdl-button mdl-button--colored">
+                                <i class="fa fa-bath" aria-hidden="true"></i> 3 Baths
+                            </div>
+                            <div class="mdl-button mdl-button--colored">
+                                3000 sqft
+                            </div>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">View Updates</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    <footer class="mdl-mega-footer">
-                <div class="mdl-mega-footer--middle-section">
-                    <div class="mdl-mega-footer--drop-down-section">
-                        <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
-                        <h1 class="mdl-mega-footer--heading">Features</h1>
-                        <ul class="mdl-mega-footer--link-list">
-                            <li><a href="#">About</a></li>
-                            <li><a href="#">Terms</a></li>
-                            <li><a href="#">Partners</a></li>
-                            <li><a href="#">Updates</a></li>
-                        </ul>
-                    </div>
-                    <div class="mdl-mega-footer--drop-down-section">
-                        <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
-                        <h1 class="mdl-mega-footer--heading">Details</h1>
-                        <ul class="mdl-mega-footer--link-list">
-                            <li><a href="#">Spec</a></li>
-                            <li><a href="#">Tools</a></li>
-                            <li><a href="#">Resources</a></li>
-                        </ul>
-                    </div>
-                    <div class="mdl-mega-footer--drop-down-section">
-                        <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
-                        <h1 class="mdl-mega-footer--heading">Technology</h1>
-                        <ul class="mdl-mega-footer--link-list">
-                            <li><a href="#">How it works</a></li>
-                            <li><a href="#">Patterns</a></li>
-                            <li><a href="#">Usage</a></li>
-                            <li><a href="#">Products</a></li>
-                            <li><a href="#">Contracts</a></li>
-                        </ul>
-                    </div>
-                    <div class="mdl-mega-footer--drop-down-section">
-                        <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
-                        <h1 class="mdl-mega-footer--heading">FAQ</h1>
-                        <ul class="mdl-mega-footer--link-list">
-                            <li><a href="#">Questions</a></li>
-                            <li><a href="#">Answers</a></li>
-                            <li><a href="#">Contact us</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="mdl-mega-footer--bottom-section">
-                    <div class="mdl-logo">
-                        More Information
-                    </div>
+        <footer class="mdl-mega-footer">
+            <div class="mdl-mega-footer--middle-section">
+                <div class="mdl-mega-footer--drop-down-section">
+                    <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                    <h1 class="mdl-mega-footer--heading">Features</h1>
                     <ul class="mdl-mega-footer--link-list">
-                        <li><a href="#">Help</a></li>
-                        <li><a href="#">Privacy and Terms</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Partners</a></li>
+                        <li><a href="#">Updates</a></li>
                     </ul>
                 </div>
-            </footer>
+                <div class="mdl-mega-footer--drop-down-section">
+                    <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                    <h1 class="mdl-mega-footer--heading">Details</h1>
+                    <ul class="mdl-mega-footer--link-list">
+                        <li><a href="#">Spec</a></li>
+                        <li><a href="#">Tools</a></li>
+                        <li><a href="#">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="mdl-mega-footer--drop-down-section">
+                    <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                    <h1 class="mdl-mega-footer--heading">Technology</h1>
+                    <ul class="mdl-mega-footer--link-list">
+                        <li><a href="#">How it works</a></li>
+                        <li><a href="#">Patterns</a></li>
+                        <li><a href="#">Usage</a></li>
+                        <li><a href="#">Products</a></li>
+                        <li><a href="#">Contracts</a></li>
+                    </ul>
+                </div>
+                <div class="mdl-mega-footer--drop-down-section">
+                    <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                    <h1 class="mdl-mega-footer--heading">FAQ</h1>
+                    <ul class="mdl-mega-footer--link-list">
+                        <li><a href="#">Questions</a></li>
+                        <li><a href="#">Answers</a></li>
+                        <li><a href="#">Contact us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mdl-mega-footer--bottom-section">
+                <div class="mdl-logo">
+                    More Information
+                </div>
+                <ul class="mdl-mega-footer--link-list">
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Privacy and Terms</a></li>
+                </ul>
+            </div>
+        </footer>
     </main>
-
 </div>
 {% endblock %}

@@ -1,20 +1,26 @@
 /*SEARCH SECTION*/
-input {
-  display: none;
-  visibility: hidden;
+.home-search {
+ color: #fff;
 }
 
-label {
+input[id=toggle] {
+  background-color: #2D3739;
+  visibility: none;
+}
+
+label[id=toggle] {
   display: block;
   padding: 0.5em;
   text-align: center;
   border-bottom: 1px solid #CCC;
-  color: #666;
+  color: #fff;
+  background-color: #2D3739;
 }
-label:hover {
+
+#toggle label[id=toggle]:hover {
   color: #000;
 }
-label::before {
+#toggle label[id=toggle]::before {
   font-family: Consolas, monaco, monospace;
   font-weight: bold;
   font-size: 15px;
@@ -36,6 +42,6 @@ label::before {
 #toggle:checked ~ #expand {
   height: 500px;
 }
-#toggle:checked ~ label::before {
+#toggle:checked ~ label[id=toggle]::before {
   content: "-";
 } 
