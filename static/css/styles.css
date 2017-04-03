@@ -111,14 +111,14 @@ p {
 h5.date {
   position: absolute;
   left: 30px ;
-  top: 400px ;
+  top: 300px ;
   font-family: 'roboto';
   font-size: 77px ;
   color: #C3C3C3 ;
   font-size: 77px; 
 }
 
-h6.month {
+h6.month {  
   position: absolute;
   left: 30px;
   bottom: 10px;
