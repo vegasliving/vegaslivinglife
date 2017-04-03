@@ -108,16 +108,16 @@ p {
 }
 
 /* DATE of release */
-h1.date {
+h5 {
   position: absolute;
-  left: 30px;
-  bottom: 40px;
+  left: 30px !important;
+  bottom: -55px !important;
   font-family: 'roboto';
   font-size: 77px !important;
-  color: #C3C3C3;
+  color: #C3C3C3 !important;
 }
 
-h5.month {
+h6 {
   position: absolute;
   left: 30px;
   bottom: 10px;
@@ -129,6 +129,7 @@ h5.month {
 /* Those futur buttons */
 ul {
   margin-left: 250px;
+  margin-top: -50px;
 }
 
 li {
