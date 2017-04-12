@@ -1,48 +1,74 @@
 {% extends "base.html" %}
-
 {% load wagtailcore_tags wagtailimages_tags %}
-
-{% block body_class %}template-blogpage{% endblock %}
+{% block body_class %}{% endblock %}
 
 {% block content %}
-    <h1>{{ page.title }}</h1>
-    <p class="meta">{{ page.date }}</p>
-    
-    {% with categories=page.categories.all %}
-    {% if categories %}
-        <h3>Posted in:</h3>
-        <ul>
-            {% for category in categories %}
-                <li style="display: inline">
-                    {% image category.icon fill-32x32 style="vertical-align: middle" %}
-                    {{ category.name }}
-                </li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-	{% endwith %}
-
-    <div class="intro">{{ page.intro }}</div>
-    {% for item in page.gallery_images.all %}
-        <div style="float: left; margin: 10px">
-            {% image item.image fill-420x240 %}
-            <p>{{ item.caption }}</p>
-        </div>
-    {% endfor %}
-    </br>
-
-    {{ page.body|richtext }}
-    {% if page.tags.all.count %}
-    <div class="tags">
-        <h3>Tags</h3>
-        {% for tag in page.tags.all %}
-            <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button type="button">{{ tag }}</button></a>
-        {% endfor %}
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header mdl-layout--fixed-tabs">
+  <header class="mdl-layout__header">
+    <div class="mdl-layout__header-row" style="height: 210px; background-color: #2D3739">
+        <!-- Brand Logo -->
+        <img src="https://storage.googleapis.com/vegasliving/Vegas%20Living_wht.png" style="display: block; margin-left: 42%;margin-right: 50%; margin-top: 2%; width: 16%">
     </div>
-	{% endif %}
-    
+    <!-- Tabs -->
+    <div class="mdl-layout__tab-bar mdl-js-ripple-effect" style="background-color: #2D3739">
+      <a href="http://127.0.0.1:8000/vegas-lifestyle/" class="mdl-layout__tab">Home</a>
+      <a href="#fixed-tab-2" class="mdl-layout__tab is-active">Blog</a>
+      <a href="#fixed-tab-3" class="mdl-layout__tab">About</a>
+    </div>
+  </header>
+  <main class="mdl-layout__content">
+    <section class="mdl-layout__tab-panel is-active" id="fixed-tab-1">
+      <div class="page-content mdl-grid">
+        <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--1-offset-desktop mdl-cell--10-col-desktop">
+            <div class="mdl-grid">
+            <div class="mdl-cell mdl-cell--1-offset-desktop mdl-cell--10-col-desktop">
+            <h1>{{ page.title }}</h1>
+            <h4 class="meta">{{ page.date }}</h4>
+            <!-- Categories -->
+            {% with categories=page.categories.all %}
+            {% if categories %}
+                <h3>Posted in:</h3>
+                <ul>
+                    {% for category in categories %}
+                        <li >
+                            {% image category.icon fill-32x32 style="vertical-align: middle" %}
+                            {{ category.name }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            {% endwith %}
 
-    <p><a href="{{ page.get_parent.url }}">Return to blog</a></p>
+            <!-- Blog Image -->
+            <div class="intro">{{ page.intro }}</div>
+            {% for item in page.gallery_images.all %}
+                <div>
+                    {% image item.image fill-420x240 %}
+                    <p>{{ item.caption }}</p>
+                </div>
+            {% endfor %}
 
+
+            <!-- Blog Text Content -->
+            {{ page.body|richtext }}
+
+            <!-- Blog Page Tag -->
+            {% if page.tags.all.count %}
+            <div class="tags">
+                <h3>Tags</h3>
+                {% for tag in page.tags.all %}
+                    <a href="{% slugurl 'tags' %}?tag={{ tag }}"><button type="button">{{ tag }}</button></a>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+        <p><a href="{{ page.get_parent.url }}">Return to blog</a></p  
+                </div>
+            </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</div>
 {% endblock %}
 
