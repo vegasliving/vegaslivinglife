@@ -90,9 +90,11 @@
                 </form>
             </div>
         </div>
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-cell--2-offset-desktop" style="width: 56%;background-color: #2D3739">
-          Sign Up For Free
-        </button>
+        <a href="{% url "social:begin" "google-oauth2" %}">
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-cell--2-offset-desktop" style="width: 56%;background-color: #2D3739">
+            Sign Up For Free
+          </button>
+        </a>
         <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--2-offset-desktop mdl-cell--3-col-desktop">
                 <hr>
