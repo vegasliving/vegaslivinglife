@@ -21,7 +21,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
-SECRET_KEY = 'vegasd87zxq082md@lygcic=k@i9xu1o!1h&sr09v50fn7y$2p(ckkn'  
+SECRET_KEY = 'vegasd87zxq082md@lygcic=k@i9xu1o!1h&sr09v50fn7y$2p(ckkn'
 
 # Application definition
 
@@ -43,7 +43,7 @@ INSTALLED_APPS = [
     'livereload',
     'modelcluster',
     'taggit',
-
+    'social_django',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -53,6 +53,13 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'social_core.backends.open_id.OpenIdAuth',
+    'social_core.backends.google.GoogleOpenId',
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.google.GoogleOAuth',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.yahoo.YahooOpenId',
+    'django.contrib.auth.backends.ModelBackend',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -87,7 +94,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
- 
+
 # [START dbconfig]
 DATABASES = {
     'default': {
@@ -135,7 +142,7 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-#local development
+# local development
 # STATIC_URL = "/static/"
 
 # #production
@@ -147,7 +154,7 @@ MEDIA_URL = '/media/'
 
 # Wagtail settings
 
-WAGTAIL_SITE_NAME = "mysite"
+WAGTAIL_SITE_NAME = "Vegas Living"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
