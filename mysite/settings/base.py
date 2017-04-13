@@ -21,7 +21,8 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
-SECRET_KEY = 'vegasd87zxq082md@lygcic=k@i9xu1o!1h&sr09v50fn7y$2p(ckkn'
+# with open('/secret_key.txt') as f:
+#     SECRET_KEY = f.read().strip()
 
 # Application definition
 
@@ -43,7 +44,7 @@ INSTALLED_APPS = [
     'livereload',
     'modelcluster',
     'taggit',
-    'social_django',
+    'social.apps.django_app.default',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -89,12 +90,20 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'social_django.context_processors.backends',
-                'social_django.context_processors.login_redirect',
+                'django.contrib.messages.context_processors.messages',
+                'social.apps.django_app.context_processors.backends',
+                'social.apps.django_app.context_processors.login_redirect',
             ],
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+   'social.backends.facebook.FacebookOAuth2',
+   'social.backends.google.GoogleOAuth2',
+   'social.backends.twitter.TwitterOAuth',
+   'django.contrib.auth.backends.ModelBackend',
+)
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
