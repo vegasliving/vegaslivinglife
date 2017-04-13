@@ -1,4 +1,4 @@
-#!/root/vegasliving/vegaslivinglife/env/bin/python3
+#!/Users/troydo42/Development/Web/vegaslivinglife/env/bin/python
 from __future__ import print_function
 import base64
 import os

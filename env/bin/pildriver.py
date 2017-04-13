@@ -1,4 +1,4 @@
-#!/root/vegasliving/vegaslivinglife/env/bin/python3
+#!/Users/troydo42/Development/Web/vegaslivinglife/env/bin/python
 """PILdriver, an image-processing calculator using PIL.
 
 An instance of class PILDriver is essentially a software stack machine
