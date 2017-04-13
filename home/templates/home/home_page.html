@@ -62,57 +62,76 @@
 <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
 <div class="mdl-grid" >
    <div class="mdl-cell mdl-cell--6-col-desktop">
-   <div class="content" style="margin-top: 100px">
+   <div class="content" style="margin-top: 7%">
         <div id="logo" class="mdl-grid">
-            <div class="mdl-cell mdl-cell--3-offset-desktop mdl-cell--6-col-desktop">
-                <img src="https://storage.googleapis.com/vegasliving/Vegas%20Living_White.png" style="width: 83%">
+            <div class="mdl-layout-spacer"></div>
+            <div class="mdl-cell mdl-cell--5-col-desktop">
+                <img src="https://storage.googleapis.com/vegasliving/Vegas%20Living_White.png" style="width: 100%">
             </div>
+            <div class="mdl-layout-spacer"></div>
         </div>
         <div class="mdl-grid">
-            <h3 class="mdl-cell mdl-cell--2-offset-desktop mdl-cell--8-col" style="color: red; padding-left: 30px">Start Your Home Search Today</h3>
+            <div class="mdl-layout-spacer"></div>
+            <h3 class="mdl-cell mdl-cell--9-col" style="color: red; text-align: center">Start Your Home Search Today</h3>
+            <div class="mdl-layout-spacer"></div>
         </div>
         <div class="mdl-grid">
-            <div id="sign-up-form" class="mdl-cell mdl-cell--2-offset-desktop mdl-cell--7-col">
+            <div class="mdl-layout-spacer"></div>
+            <div id="sign-up-form" class="mdl-cell mdl-cell--12-col">
                 <form action="#">
-                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:100%;">
+                  <div class="mdl-grid mdl-grid--no-spacing ">
+                  <div class="mdl-layout-spacer"></div>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                     <input class="mdl-textfield__input" type="text" id="sample3">
                     <label class="mdl-textfield__label" for="sample3" style="color: #2D3739">Your Full Name</label>
                   </div>
+                  <div class="mdl-layout-spacer"></div>
+                  </div>
                   <br>
-                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:48%">
+                  <div class="mdl-grid mdl-grid--no-spacing">
+                  <div class="mdl-layout-spacer"></div>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col-desktop" style="margin: 0px 5px 0px 0px">
                     <input class="mdl-textfield__input" type="text" id="sample3">
                     <label class="mdl-textfield__label" for="sample3" style="color: #2D3739">Your Email</label>
                   </div>
-                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width:48%; margin-left: 15px">
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--3-col-desktop" style="margin: 0px 0px 0px 5px">
                     <input class="mdl-textfield__input" type="text" id="sample3">
                     <label class="mdl-textfield__label" for="sample3" style="color: #2D3739">Password</label>
                   </div>
+                  <div class="mdl-layout-spacer"></div>
+                  </div>
                 </form>
             </div>
+            <div class="mdl-layout-spacer"></div>
         </div>
-        <a href="">
-          <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-cell--2-offset-desktop" style="width: 56%;background-color: #2D3739">
-            Sign Up For Free
+        <div class="mdl-grid mdl-grid--no-spacing">
+        <div class='mdl-layout-spacer'></div>
+          <div class="mdl-cell mdl-cell--7-col">
+             <a href="">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-cell--2-offset-desktop" style="width: 56%;background-color: #2D3739">
+              Sign Up For Free
+            </button>
+          </a>
+          <div class="mdl-grid">
+              <div class="mdl-cell mdl-cell--2-offset-desktop mdl-cell--3-col-desktop">
+                  <hr>
+              </div> 
+              <div class="mdl-cell mdl-cell--1-col-desktop" style="text-align: center">
+                  or
+              </div> 
+              <div class="mdl-cell mdl-cell--3-col-desktop">
+                  <hr>
+              </div>  
+          </div>
+          <a href="http://127.0.0.1:8000/vegas-lifestyle/">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-cell--2-offset-desktop" style="width: 56%; background-color: #2D3739" href="http://127.0.0.1:8000/vegas-lifestyle/">
+            Login With Facebook
           </button>
-        </a>
-        <div class="mdl-grid">
-            <div class="mdl-cell mdl-cell--2-offset-desktop mdl-cell--3-col-desktop">
-                <hr>
-            </div> 
-            <div class="mdl-cell mdl-cell--1-col-desktop" style="text-align: center">
-                or
-            </div> 
-            <div class="mdl-cell mdl-cell--3-col-desktop">
-                <hr>
-            </div>  
+          </a>
+          </div>
+        <div class='mdl-layout-spacer'></div>
         </div>
-        <a href="http://127.0.0.1:8000/vegas-lifestyle/">
-          <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-cell--2-offset-desktop" style="width: 56%; background-color: #2D3739" href="http://127.0.0.1:8000/vegas-lifestyle/">
-          Login With Facebook
-        </button>
-        </a>
-        </div>
-    </div>
+      </div>
     <div class="mdl-cell mdl-cell--6-col-desktop">
         <video poster="https://s3-us-west-2.amazonaws.com/s.cdpn.io/4273/polina.jpg" id="bgvid" playsinline autoplay muted loop style="  position: fixed; top: 50%; left: 0; min-width: 50%; min-height: 100%; width: 100%; height: auto; z-index: -100; transform: translateX(50%) translateY(-50%); background: url('//demosthenes.info/assets/images/polina.jpg') no-repeat; /* background-size: cover;*/ transition: 1s opacity;">
             <!-- WCAG general accessibility recommendation is that media such as background v
