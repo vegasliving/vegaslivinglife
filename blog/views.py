@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from properties.models import Article
-from blog.models import BlogIndexPage
+from blog.models import BlogPage
 
 def properties_list(request):
 	articles = Article.objects.all()
-	blogpage = BlogIndexPage.objects.all()
+	blogpages = BlogPage.objects.all()
 	for article in articles:
 		print(article.thumbnail)
-	return render(request, 'properties.html', {"articles": articles})
+	for blogpage in blogpages:
+		print(blogpage.main_image)
+	return render(request, 'blog/main.html', {"articles": articles}, {"blogpages": blogpages})
 

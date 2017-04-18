@@ -1,0 +1,432 @@
+{% extends "base.html" %} 
+{% load wagtailcore_tags wagtailimages_tags %} 
+{% block body_class %} {% endblock %} 
+{% block content %}
+<div class=" mdl-layout mdl-js-layout">
+    <div class="mdl-layout__header mdl-layout__header--waterfall">
+        <!-- Top row, always visible -->
+        <div class="mdl-layout__header-row" style="background-color: #2D3739">
+            <!-- Title -->
+            <div class="mdl-layout-spacer"></div>
+            <span class="mdl-layout-title">Vegas Living</span>
+            <div class="mdl-layout-spacer"></div>
+            <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--icon mdl-button--colored " style="background-color: white; width: 42px; height: 42px" id="search-menu">
+                <span class="material-icons" style="color: black">search</span>
+            </button>
+        </div>
+        <input id="toggle" type="checkbox" style="visibility: none"checked>
+        <label for="toggle" id="toggle">Start My Home Search</label>
+        <div id="expand" class="mdl-layout__content">
+            <div class="mdl-grid">
+                <div class="mdl-cell--4-col">
+                    <div class="mdl-grid">
+                        <div class="mdl-cell--12-col home-search">
+                            <form action="#">
+                                <!-- Inputting Address -->
+                                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                    <input class="mdl-textfield__input" type="text" pattern="[0-9]*" id="home-search">
+                                    <label class="mdl-textfield__label" for="home-search" style="color:#ccc">City, Address, School, Zipcode, Agent</label>
+                                    <!-- <span class="mdl-textfield__error">Please check Your input</span> -->
+                                </div>
+
+                                <!-- Inputing Price -->
+                                <div class="mdl-grid price-filter">
+                                <!-- Min Price -->
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height" style="margin: 0px 0px 0px 10px">
+                                        <input class="mdl-textfield__input" id="min-price" name="min-price" value="No Min" type="text" readonly tabIndex="-1" data-val="BLR" />
+                                        <label class="mdl-textfield__label" for="min-price">Min Price</label>
+                                        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="min-price">
+                                            <li class="mdl-menu__item" data-val="1">$50k</li>
+                                            <li class="mdl-menu__item" data-val="1">$75k</li>
+                                            <li class="mdl-menu__item" data-val="1">$100k</li>
+                                            <li class="mdl-menu__item" data-val="1">$125k</li>
+                                            <li class="mdl-menu__item" data-val="1">$150k</li>
+                                            <li class="mdl-menu__item" data-val="1">$175k</li>
+                                            <li class="mdl-menu__item" data-val="1">$200k</li>
+                                            <li class="mdl-menu__item" data-val="1">$225k</li>
+                                            <li class="mdl-menu__item" data-val="1">$250k</li>
+                                            <li class="mdl-menu__item" data-val="1">$275k</li>
+                                            <li class="mdl-menu__item" data-val="1">$300k</li>
+                                            <li class="mdl-menu__item" data-val="1">$325k</li>
+                                            <li class="mdl-menu__item" data-val="1">$350k</li>
+                                            <li class="mdl-menu__item" data-val="1">$375k</li>
+                                            <li class="mdl-menu__item" data-val="1">$400k</li>
+                                            <li class="mdl-menu__item" data-val="1">$425k</li>
+                                            <li class="mdl-menu__item" data-val="1">$450k</li>
+                                            <li class="mdl-menu__item" data-val="1">$475k</li>
+                                            <li class="mdl-menu__item" data-val="1">$500k</li>
+                                            <li class="mdl-menu__item" data-val="1">$550k</li>
+                                            <li class="mdl-menu__item" data-val="1">$600k</li>
+                                            <li class="mdl-menu__item" data-val="1">$650k</li>
+                                            <li class="mdl-menu__item" data-val="1">$700k</li>
+                                            <li class="mdl-menu__item" data-val="1">$750k</li>
+                                            <li class="mdl-menu__item" data-val="1">$800k</li>
+                                            <li class="mdl-menu__item" data-val="1">$850k</li>
+                                            <li class="mdl-menu__item" data-val="1">$900k</li>
+                                            <li class="mdl-menu__item" data-val="1">$950k</li>
+                                            <li class="mdl-menu__item" data-val="1">$1M</li>
+                                            <li class="mdl-menu__item" data-val="1">$1.25M</li>
+                                            <li class="mdl-menu__item" data-val="1">$1.5M</li>
+                                            <li class="mdl-menu__item" data-val="1">$1.75M</li>
+                                            <li class="mdl-menu__item" data-val="1">$2M</li>
+                                            <li class="mdl-menu__item" data-val="1">$2.25M</li>
+                                            <li class="mdl-menu__item" data-val="1">$2.5M</li>
+                                            <li class="mdl-menu__item" data-val="1">$2.75M</li>
+                                            <li class="mdl-menu__item" data-val="1">$3M</li>
+                                            <li class="mdl-menu__item" data-val="1">$3.25M</li>
+                                            <li class="mdl-menu__item" data-val="1">$3.5M</li>
+                                            <li class="mdl-menu__item" data-val="1">$3.75M</li>
+                                            <li class="mdl-menu__item" data-val="1">$4M</li>
+                                            <li class="mdl-menu__item" data-val="1">$4.25M</li>
+                                            <li class="mdl-menu__item" data-val="1">$4.5M</li>
+                                            <li class="mdl-menu__item" data-val="1">$4.75M</li>
+                                            <li class="mdl-menu__item" data-val="1">$5M</li>
+                                            <li class="mdl-menu__item" data-val="1">$6M</li>
+                                            <li class="mdl-menu__item" data-val="1">$7M</li>
+                                            <li class="mdl-menu__item" data-val="1">$8M</li>
+                                            <li class="mdl-menu__item" data-val="1">$9M</li>
+                                            <li class="mdl-menu__item" data-val="1">$10M</li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Max Price -->
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height" style="margin: 0px 0px 0px 10px">
+                                        <input class="mdl-textfield__input" id="max-price" name="max-price" value="No Max" type="text" readonly tabIndex="-1" data-val="BLR" />
+                                        <label class="mdl-textfield__label" for="max-price">Max Price</label>
+                                        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="max-price">
+                                            <li class="mdl-menu__item" data-val="1">$50k</li>
+                                            <li class="mdl-menu__item" data-val="1">$75k</li>
+                                            <li class="mdl-menu__item" data-val="1">$100k</li>
+                                            <li class="mdl-menu__item" data-val="1">$125k</li>
+                                            <li class="mdl-menu__item" data-val="1">$150k</li>
+                                            <li class="mdl-menu__item" data-val="1">$175k</li>
+                                            <li class="mdl-menu__item" data-val="1">$200k</li>
+                                            <li class="mdl-menu__item" data-val="1">$225k</li>
+                                            <li class="mdl-menu__item" data-val="1">$250k</li>
+                                            <li class="mdl-menu__item" data-val="1">$275k</li>
+                                            <li class="mdl-menu__item" data-val="1">$300k</li>
+                                            <li class="mdl-menu__item" data-val="1">$325k</li>
+                                            <li class="mdl-menu__item" data-val="1">$350k</li>
+                                            <li class="mdl-menu__item" data-val="1">$375k</li>
+                                            <li class="mdl-menu__item" data-val="1">$400k</li>
+                                            <li class="mdl-menu__item" data-val="1">$425k</li>
+                                            <li class="mdl-menu__item" data-val="1">$450k</li>
+                                            <li class="mdl-menu__item" data-val="1">$475k</li>
+                                            <li class="mdl-menu__item" data-val="1">$500k</li>
+                                            <li class="mdl-menu__item" data-val="1">$550k</li>
+                                            <li class="mdl-menu__item" data-val="1">$600k</li>
+                                            <li class="mdl-menu__item" data-val="1">$650k</li>
+                                            <li class="mdl-menu__item" data-val="1">$700k</li>
+                                            <li class="mdl-menu__item" data-val="1">$750k</li>
+                                            <li class="mdl-menu__item" data-val="1">$800k</li>
+                                            <li class="mdl-menu__item" data-val="1">$850k</li>
+                                            <li class="mdl-menu__item" data-val="1">$900k</li>
+                                            <li class="mdl-menu__item" data-val="1">$950k</li>
+                                            <li class="mdl-menu__item" data-val="1">$1M</li>
+                                            <li class="mdl-menu__item" data-val="1">$1.25M</li>
+                                            <li class="mdl-menu__item" data-val="1">$1.5M</li>
+                                            <li class="mdl-menu__item" data-val="1">$1.75M</li>
+                                            <li class="mdl-menu__item" data-val="1">$2M</li>
+                                            <li class="mdl-menu__item" data-val="1">$2.25M</li>
+                                            <li class="mdl-menu__item" data-val="1">$2.5M</li>
+                                            <li class="mdl-menu__item" data-val="1">$2.75M</li>
+                                            <li class="mdl-menu__item" data-val="1">$3M</li>
+                                            <li class="mdl-menu__item" data-val="1">$3.25M</li>
+                                            <li class="mdl-menu__item" data-val="1">$3.5M</li>
+                                            <li class="mdl-menu__item" data-val="1">$3.75M</li>
+                                            <li class="mdl-menu__item" data-val="1">$4M</li>
+                                            <li class="mdl-menu__item" data-val="1">$4.25M</li>
+                                            <li class="mdl-menu__item" data-val="1">$4.5M</li>
+                                            <li class="mdl-menu__item" data-val="1">$4.75M</li>
+                                            <li class="mdl-menu__item" data-val="1">$5M</li>
+                                            <li class="mdl-menu__item" data-val="1">$6M</li>
+                                            <li class="mdl-menu__item" data-val="1">$7M</li>
+                                            <li class="mdl-menu__item" data-val="1">$8M</li>
+                                            <li class="mdl-menu__item" data-val="1">$9M</li>
+                                            <li class="mdl-menu__item" data-val="1">$10M</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Input Bedroom -->
+                                <div class="mdl-grid bedroom-filter">
+                                <!-- Min Bedrooms -->
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height" style="margin: 0px 0px 0px 10px">
+                                        <input class="mdl-textfield__input" id="min-bedroom" name="min-bedroom" value="No Min" type="text" readonly tabIndex="-1" data-val="BLR" />
+                                        <label class="mdl-textfield__label" for="bedroom">Min Bedrooms</label>
+                                        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="min-bedroom">
+                                            <li class="mdl-menu__item" data-val="0">Studio</li>
+                                            <li class="mdl-menu__item" data-val="1">1+ Bedrooms</li>
+                                            <li class="mdl-menu__item" data-val="2">2+ Bedrooms</li>
+                                            <li class="mdl-menu__item" data-val="3">3+ Bedrooms</li>
+                                            <li class="mdl-menu__item" data-val="4">4+ Bedrooms</li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Max Bedroom -->
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height" style="margin: 0px 0px 0px 10px">
+                                        <input class="mdl-textfield__input" id="max-bedroom" name="max-bedroom" value="No Max" type="text" readonly tabIndex="-1" data-val="BLR" />
+                                        <label class="mdl-textfield__label" for="bedroom">Max Bedrooms</label>
+                                        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="max-bedroom">
+                                            <li class="mdl-menu__item" data-val="0">Studio</li>
+                                            <li class="mdl-menu__item" data-val="1">1+ Bedrooms</li>
+                                            <li class="mdl-menu__item" data-val="2">2+ Bedrooms</li>
+                                            <li class="mdl-menu__item" data-val="3">3+ Bedrooms</li>
+                                            <li class="mdl-menu__item" data-val="4">4+ Bedrooms</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Input Bathroom -->
+                                <div class="mdl-grid bath-filter">
+                                <!-- Min Bath -->
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height" style="margin: 0px 0px 0px 10px">
+                                        <input class="mdl-textfield__input" id="min-bathroom" name="min-bathroom" value="No Min" type="text" readonly tabIndex="-1" data-val="BLR" />
+                                        <label class="mdl-textfield__label" for="min-bathroom">Min Bathrooms</label>
+                                        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="min-bathroom">
+                                            <li class="mdl-menu__item" data-val="1">1+ Bathrooms</li>
+                                            <li class="mdl-menu__item" data-val="2">2+ Bathrooms</li>
+                                            <li class="mdl-menu__item" data-val="3">3+ Bathrooms</li>
+                                            <li class="mdl-menu__item" data-val="4">4+ Bathrooms</li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Max Bath -->
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height" style="margin: 0px 0px 0px 10px">
+                                        <input class="mdl-textfield__input" id="max-bathroom" name="max-bathroom" value="No Max" type="text" readonly tabIndex="-1" data-val="BLR" />
+                                        <label class="mdl-textfield__label" for="bathroom">Max Bathrooms</label>
+                                        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="max-bathroom">
+                                            <li class="mdl-menu__item" data-val="1">1+ Bathrooms</li>
+                                            <li class="mdl-menu__item" data-val="2">2+ Bathrooms</li>
+                                            <li class="mdl-menu__item" data-val="3">3+ Bathrooms</li>
+                                            <li class="mdl-menu__item" data-val="4">4+ Bathrooms</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Input Sqft -->
+                                <div class="mdl-grid size-filter">
+                                <!-- Min Size -->
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height" style="margin: 0px 0px 0px 10px">
+                                        <input class="mdl-textfield__input" id="min-size" name="min-size" value="No Min" type="text" readonly tabIndex="-1" data-val="BLR" />
+                                        <label class="mdl-textfield__label" for="min-size">Min Sqft</label>
+                                        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="min-size">
+                                            <li class="mdl-menu__item" data-val="1">500</li>
+                                            <li class="mdl-menu__item" data-val="1">750</li>
+                                            <li class="mdl-menu__item" data-val="1">1000</li>
+                                            <li class="mdl-menu__item" data-val="1">1250</li>
+                                            <li class="mdl-menu__item" data-val="1">1500</li>
+                                            <li class="mdl-menu__item" data-val="1">1750</li>
+                                            <li class="mdl-menu__item" data-val="1">2000</li>
+                                            <li class="mdl-menu__item" data-val="1">2250</li>
+                                            <li class="mdl-menu__item" data-val="1">2500</li>
+                                            <li class="mdl-menu__item" data-val="1">2750</li>
+                                            <li class="mdl-menu__item" data-val="1">3000</li>
+                                            <li class="mdl-menu__item" data-val="1">3500</li>
+                                            <li class="mdl-menu__item" data-val="1">4000</li>
+                                            <li class="mdl-menu__item" data-val="1">4500</li>
+                                            <li class="mdl-menu__item" data-val="1">5000</li>
+                                            <li class="mdl-menu__item" data-val="1">7500</li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Max Size -->
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height" style="margin: 0px 0px 0px 10px">
+                                        <input class="mdl-textfield__input" id="max-size" name="max-size" value="No Max" type="text" readonly tabIndex="-1" data-val="BLR" />
+                                        <label class="mdl-textfield__label" for="max-size">Max Sqft</label>
+                                        <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="max-size">
+                                            <li class="mdl-menu__item" data-val="1">500</li>
+                                            <li class="mdl-menu__item" data-val="1">750</li>
+                                            <li class="mdl-menu__item" data-val="1">1000</li>
+                                            <li class="mdl-menu__item" data-val="1">1250</li>
+                                            <li class="mdl-menu__item" data-val="1">1500</li>
+                                            <li class="mdl-menu__item" data-val="1">1750</li>
+                                            <li class="mdl-menu__item" data-val="1">2000</li>
+                                            <li class="mdl-menu__item" data-val="1">2250</li>
+                                            <li class="mdl-menu__item" data-val="1">2500</li>
+                                            <li class="mdl-menu__item" data-val="1">2750</li>
+                                            <li class="mdl-menu__item" data-val="1">3000</li>
+                                            <li class="mdl-menu__item" data-val="1">3500</li>
+                                            <li class="mdl-menu__item" data-val="1">4000</li>
+                                            <li class="mdl-menu__item" data-val="1">4500</li>
+                                            <li class="mdl-menu__item" data-val="1">5000</li>
+                                            <li class="mdl-menu__item" data-val="1">7500</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <a href="/vegas-lifestyle" class="mdl-button mdl-js-button mdl-button-raised mdl-js-ripple-effect mdl-button--accent">Start Searching</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdl-cell--8-col">
+                    <div id="map" style="height: 450px"></div>
+                    <script>
+
+                      function initMap() {
+                        var map = new google.maps.Map(document.getElementById('map'), {
+                          center: {lat: 36.085087, lng: -115.150482},
+                          zoom: 12
+                        });
+                        var drawingManager = new google.maps.drawing.DrawingManager({
+                          drawingControl: true,
+                          drawingControlOptions: {
+                            position: google.maps.ControlPosition.TOP_CENTER,
+                            drawingModes: ['circle']
+                          },
+                        });
+                        drawingManager.setMap(map);
+                        map.event.addListener(drawingManager, 'overlaycomplete', function(polygon){
+                            var coordinatesArray = polygon.overlay.getPath().getArray();
+                        })
+                        google.maps.event.addListener(drawingManager, 'overlaycomplete', function(polygon) { 
+                            var coordinatesArray = polygon.overlay.getPath().getArray();
+                        });   
+                      }
+                      document.getElementById("drawingStats").innerHTML = coordinatesArray;
+                    </script>
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTLthxG3Gaj12OcGK_EYU6bXXUSqDvcyg&libraries=drawing&callback=initMap" async defer>     
+                    </script>
+                </div>
+            </div>
+        </div>
+        <!-- Bottom row, not visible on scroll -->
+    </div>
+    <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">Vegas Living</span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="">Home</a>
+            <a class="mdl-navigation__link" href="">About</a>
+            <a class="mdl-navigation__link" href="">Terms</a>
+            <a class="mdl-navigation__link" href="">Contact</a>
+        </nav>
+    </div>
+    <main class="mdl-layout__content">
+        <div class="page-content">
+            <div class="mdl-grid" "search-result-content">
+                <div class="mdl-cell mdl-cell--8-col">
+                    {% for blogpage in blogpages %} {% with post=post.specific %}
+                    <div class="mdl-grid">
+                        <div class="card">
+                            {% with blogpage.main_image as main_image %} {% if main_image %}
+                            <div class="thumbnail">
+                                {% image main_image width-1000 class="full-width" %}
+                            </div>
+                            {% endif %} {% endwith %}
+                            <h5 class="date" style="top: 300px">07</h5>
+                            <h6 class="month">January</h6>
+                            <ul class="vegas-social left" style="margin-top: -120px;margin-bottom: 100px; margin-left: 300px; ">
+                                <li><i class="fa fa-eye fa-2x"></i></li>
+                                <li><i class="fa fa-heart-o fa-2x"></i></li>
+                                <li><i class="fa fa-share-alt fa-2x"></i></li>
+                            </ul>
+                            <div class="right">
+                                <h1 class="title">
+                              <a style="text-decoration: inherit; color: inherit
+                              "     href="{% pageurl post %}">
+                                {{ blogpage.title }}
+                              </a>
+                            </h1>
+                                <span class="mdl-chip mdl-chip--contact">
+                                <img class="mdl-chip__contact" src="https://randomuser.me/api/portraits/men/95.jpg" ></img>
+                                <span class="mdl-chip__text">Agent DO</span>
+                                </span>
+                                <div class="separator"></div>
+                                <div class="intro">{{ blogpage.intro }}</div>
+                            </div>
+                            <div class="fab"><i class="fa fa-arrow-down fa-3x"></i></div>
+                        </div>
+                    </div>
+                    {% endwith %}
+                    {% endfor %}
+                </div>
+                <div class="mdl-cell mdl-cell--4-col">
+                {% for article in articles %}
+                    <div class="mdl-card mdl-shadow--2dp" style="margin-bottom: 25px">
+                        <div class="mdl-card__image">
+                            <img src="{{baseURL}}thumbnails/full/{{article.thumbnail}}" width=100% height=210px>
+                        </div>
+                        <div class="mdl-grid">
+                            <div class="mdl-cell--7-col ">
+                                <div class="house-address">{{article.title}}</div>
+                            </div>
+                            <div class="mdl-cell--5-col">
+                                <div class="house-price">{{article.description}}</div>
+                            </div>
+                        </div>
+                        <div class="mdl-grid">
+                            <div class="mdl-button mdl-button--colored">
+                                <i class="fa fa-bed" aria-hidden="true"></i>
+                                <span>3</span> Beds
+                            </div>
+                            <div class="mdl-button mdl-button--colored">
+                                <i class="fa fa-bath" aria-hidden="true"></i> 3 Baths
+                            </div>
+                            <div class="mdl-button mdl-button--colored">
+                                3000 sqft
+                            </div>
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="article.url">View Updates</a>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+        <footer class="mdl-mega-footer">
+            <div class="mdl-mega-footer--middle-section">
+                <div class="mdl-mega-footer--drop-down-section">
+                    <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                    <h1 class="mdl-mega-footer--heading">Features</h1>
+                    <ul class="mdl-mega-footer--link-list">
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Partners</a></li>
+                        <li><a href="#">Updates</a></li>
+                    </ul>
+                </div>
+                <div class="mdl-mega-footer--drop-down-section">
+                    <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                    <h1 class="mdl-mega-footer--heading">Details</h1>
+                    <ul class="mdl-mega-footer--link-list">
+                        <li><a href="#">Spec</a></li>
+                        <li><a href="#">Tools</a></li>
+                        <li><a href="#">Resources</a></li>
+                    </ul>
+                </div>
+                <div class="mdl-mega-footer--drop-down-section">
+                    <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                    <h1 class="mdl-mega-footer--heading">Technology</h1>
+                    <ul class="mdl-mega-footer--link-list">
+                        <li><a href="#">How it works</a></li>
+                        <li><a href="#">Patterns</a></li>
+                        <li><a href="#">Usage</a></li>
+                        <li><a href="#">Products</a></li>
+                        <li><a href="#">Contracts</a></li>
+                    </ul>
+                </div>
+                <div class="mdl-mega-footer--drop-down-section">
+                    <input class="mdl-mega-footer--heading-checkbox" type="checkbox" checked>
+                    <h1 class="mdl-mega-footer--heading">FAQ</h1>
+                    <ul class="mdl-mega-footer--link-list">
+                        <li><a href="#">Questions</a></li>
+                        <li><a href="#">Answers</a></li>
+                        <li><a href="#">Contact us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mdl-mega-footer--bottom-section">
+                <div class="mdl-logo">
+                    More Information
+                </div>
+                <ul class="mdl-mega-footer--link-list">
+                    <li><a href="#">Help</a></li>
+                    <li><a href="#">Privacy and Terms</a></li>
+                </ul>
+            </div>
+        </footer>
+    </main>
+</div>
+{% endblock %}
