@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'home',
     'search',
     'blog',
+    'properties',
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',
     'wagtail.wagtailembeds',
@@ -51,7 +52,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'open_news'
+    'kombu.transport.django',
+    'djcelery',
+    'dynamic_scraper',
+    
 ]
 
 MIDDLEWARE = [
