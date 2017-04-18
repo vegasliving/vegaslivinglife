@@ -305,13 +305,16 @@
     <main class="mdl-layout__content">
         <div class="page-content">
             <div class="mdl-grid" "search-result-content">
-                <div class="mdl-cell mdl-cell--8-col">
-                    {% for blogpage in blogpages %} {% with post=post.specific %}
+                <div class="mdl-cell mdl-cell--8-col"> 
                     <div class="mdl-grid">
+                    {% for post in blogpages %}
+                    {% with post=post.specific %}
                         <div class="card">
-                            {% with blogpage.main_image as main_image %} {% if main_image %}
+                            {% with post.main_image as main_image %}
+                            {% if main_image %}
                             <div class="thumbnail">
                                 {% image main_image width-1000 class="full-width" %}
+                                <img src="{{blogpage.main_image}}">                          
                             </div>
                             {% endif %} {% endwith %}
                             <h5 class="date" style="top: 300px">07</h5>
@@ -323,9 +326,8 @@
                             </ul>
                             <div class="right">
                                 <h1 class="title">
-                              <a style="text-decoration: inherit; color: inherit
-                              "     href="{% pageurl post %}">
-                                {{ blogpage.title }}
+                              <a style="text-decoration: inherit; color: inherit" href="">
+                                {{ post.title }}
                               </a>
                             </h1>
                                 <span class="mdl-chip mdl-chip--contact">
@@ -333,13 +335,13 @@
                                 <span class="mdl-chip__text">Agent DO</span>
                                 </span>
                                 <div class="separator"></div>
-                                <div class="intro">{{ blogpage.intro }}</div>
+                                <div class="intro">{{ post.intro}}</div>
                             </div>
                             <div class="fab"><i class="fa fa-arrow-down fa-3x"></i></div>
                         </div>
-                    </div>
-                    {% endwith %}
-                    {% endfor %}
+                        {% endwith %}
+                        {% endfor %}
+                    </div>   
                 </div>
                 <div class="mdl-cell mdl-cell--4-col">
                 {% for article in articles %}

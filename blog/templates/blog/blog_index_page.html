@@ -310,7 +310,8 @@
                     {% for post in blogpages %} {% with post=post.specific %}
                     <div class="mdl-grid">
                         <div class="card">
-                            {% with post.main_image as main_image %} {% if main_image %}
+                            {% with post.main_image as main_image %} 
+                            {% if main_image %}
                             <div class="thumbnail">
                                 {% image main_image width-1000 class="full-width" %}
                             </div>
