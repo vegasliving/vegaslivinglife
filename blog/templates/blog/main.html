@@ -12,7 +12,7 @@
             <div class="mdl-layout-spacer"></div>
         </div>
         <input id="toggle" type="checkbox" style="visibility: hidden; display: none">
-        <button class="mdl-button mdl-button--fab mdl-js-button mdl-button-raised mdl-button-raised" style="background-color: white; margin-right: 50px; margin-top: -55px; height: 50px; width: 50px">
+        <button class="mdl-button mdl-button--fab mdl-js-button mdl-button-raised mdl-button-raised" style="background-color: white; margin-right: 50px; margin-top: -55px; height: 50px; width: 50px;">
             <label for="toggle" id="toggle" style="background-color: white; border-bottom: 0px">
             <span class="material-icons" style="color:black; background-color: white">search</span
             </label>
@@ -296,9 +296,14 @@
     </div>
     <div class="mdl-layout__drawer">
         <span class="mdl-layout-title">
-        <img src="" height="80px" width="80px" src="https://avatars3.githubusercontent.com/u/1859661?v=3&s=460">
-        <br>
-        Hello {{ user.username }}
+        <div class="mdl-grid mdl-grid--no-spacing">
+            <div class="mdl-layout-spacer"></div>
+            <div class="mdl-cell mdl-cell--10-col mdl-">
+            <img src="" height="80px" width="80px" src="https://avatars3.githubusercontent.com/u/1859661?v=3&s=460" style="border-radius: 40px; margin: 10px">
+            </div>
+            Hello {{ user.username }}
+            <div class="mdl-layout-spacer"></div>
+        </div>
         </span>
         <nav class="mdl-navigation">
             <a class="mdl-navigation__link" href="">Home</a>

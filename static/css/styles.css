@@ -27,9 +27,9 @@ html, body {
   width: 900px;
   margin: 25px auto;
   background-color: #FFF;
-  -webkit-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.42);
+  -moz-box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.42);
+  box-shadow: 10px 10px 93px 0px rgba(0, 0, 0, 0.42);
 }
 
 /* Image on the left side */
@@ -40,9 +40,9 @@ html, body {
   top: -30px;
   height: 320px;
   width: 530px;
-  -webkit-box-shadow: 10px 10px 60px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 10px 10px 60px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 10px 10px 60px 0px rgba(0, 0, 0, 0.75);
+  -webkit-box-shadow: 10px 10px 60px 0px rgba(0, 0, 0, 0.42);
+  -moz-box-shadow: 10px 10px 60px 0px rgba(0, 0, 0, 0.42);
+  box-shadow: 10px 10px 60px 0px rgba(0, 0, 0, 0.42);
   overflow: hidden;
 }
 
