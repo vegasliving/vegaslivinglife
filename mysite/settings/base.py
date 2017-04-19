@@ -70,6 +70,7 @@ MIDDLEWARE = [
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
     'livereload.middleware.LiveReloadScript',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 
 # 'social_core.backends.open_id.OpenIdAuth',
 # 'social_core.backends.google.GoogleOpenId',
@@ -96,19 +97,19 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.contrib.messages.context_processors.messages',
-                # 'social.apps.django_app.context_processors.backends',
-                # 'social.apps.django_app.context_processors.login_redirect',
+                'social_django.context_processors.backends',  # <-- Social Django Backend
+                'social_django.context_processors.login_redirect', # <-- Social Django Login
             ],
         },
     },
 ]
 
-# AUTHENTICATION_BACKENDS = (
-#    'social.backends.facebook.FacebookOAuth2',
-#    'social.backends.google.GoogleOAuth2',
-#    'social.backends.twitter.TwitterOAuth',
-#    'django.contrib.auth.backends.ModelBackend',
-# )
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
 
@@ -167,6 +168,13 @@ STATIC_URL = 'https://storage.googleapis.com/vegasliving/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+LOGIN_URL = 'login'
+LOGOUT_URL = 'logout'
+LOGIN_REDIRECT_URL = 'properties_list'
+
+SOCIAL_AUTH_FACEBOOK_KEY = '797995420366020'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = '1969195bbda6c0e12d1a3220ea104030'  # App Secret
 
 
 # Wagtail settings

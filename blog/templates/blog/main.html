@@ -10,12 +10,13 @@
             <div class="mdl-layout-spacer"></div>
             <span class="mdl-layout-title">Vegas Living</span>
             <div class="mdl-layout-spacer"></div>
-            <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--icon mdl-button--colored " style="background-color: white; width: 42px; height: 42px" id="search-menu">
-                <span class="material-icons" style="color: black">search</span>
-            </button>
         </div>
-        <input id="toggle" type="checkbox" style="visibility: none"checked>
-        <label for="toggle" id="toggle">Start My Home Search</label>
+        <input id="toggle" type="checkbox" style="visibility: hidden; display: none">
+        <button class="mdl-button mdl-button--fab mdl-js-button mdl-button-raised mdl-button-raised" style="background-color: white; margin-right: 50px; margin-top: -55px; height: 50px; width: 50px">
+            <label for="toggle" id="toggle" style="background-color: white; border-bottom: 0px">
+            <span class="material-icons" style="color:black; background-color: white">search</span
+            </label>
+        </button>
         <div id="expand" class="mdl-layout__content">
             <div class="mdl-grid">
                 <div class="mdl-cell--4-col">
@@ -294,12 +295,17 @@
         <!-- Bottom row, not visible on scroll -->
     </div>
     <div class="mdl-layout__drawer">
-        <span class="mdl-layout-title">Vegas Living</span>
+        <span class="mdl-layout-title">
+        <img src="" height="80px" width="80px" src="https://avatars3.githubusercontent.com/u/1859661?v=3&s=460">
+        <br>
+        Hello {{ user.username }}
+        </span>
         <nav class="mdl-navigation">
             <a class="mdl-navigation__link" href="">Home</a>
-            <a class="mdl-navigation__link" href="">About</a>
+            <a class="mdl-navigation__link" href="">Settings</a>
+            <a class="mdl-navigation__link" href="">Change Passoword</a>
             <a class="mdl-navigation__link" href="">Terms</a>
-            <a class="mdl-navigation__link" href="">Contact</a>
+            <a class="mdl-navigation__link" href="{% url 'social:disconnect' 'facebook' %} ">Logout</a>
         </nav>
     </div>
     <main class="mdl-layout__content">
@@ -370,7 +376,15 @@
                             </div>
                         </div>
                         <div class="mdl-card__actions mdl-card--border">
-                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="article.url">View Updates</a>
+                            <button id="show-dialog" type="button" class="mdl-button">Contact Agent</button>
+<!--                             <dialog class="mdl-dialog" style="width: 50px">
+                                <div class="mdl-dialog__content">
+                                </div>
+                                <div class="mdl-dialog__actions">
+                                  <button type="button" class="mdl-button">Agree</button>
+                                  <button type="button" class="mdl-button close">Disagree</button>
+                                </div>
+                            </dialog> -->
                         </div>
                     </div>
                 {% endfor %}
@@ -431,4 +445,17 @@
         </footer>
     </main>
 </div>
+<script>
+    var dialog = document.querySelector('dialog');
+    var showDialogButton = document.querySelector('#show-dialog');
+    if (! dialog.showModal) {
+      dialogPolyfill.registerDialog(dialog);
+    }
+    showDialogButton.addEventListener('click', function() {
+      dialog.showModal();
+    });
+    dialog.querySelector('.close').addEventListener('click', function() {
+      dialog.close();
+    });
+</script>
 {% endblock %}

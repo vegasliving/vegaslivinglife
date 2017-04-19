@@ -3,13 +3,14 @@ from __future__ import absolute_import, unicode_literals
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
-
+from django.contrib.auth import views as auth_views
 from search import views as search_views
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from properties import views as properties_views
 from blog import views as blog_views
+from home import views as home_views
 
 urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
@@ -18,7 +19,9 @@ urlpatterns = [
     url(r'^search/$', search_views.search, name='search'),
     url(r'^properties/$', properties_views.article_list, name="properties"),
     url(r'^myhome/$', blog_views.properties_list, name="properties_list"),
-
+    url(r'^login/$', auth_views.login,name='login'),
+    url(r'^logout/$', auth_views.logout, name='logout'),
+    url(r'^oauth/', include('social_django.urls', namespace='social')),  # <--
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in
     # the list:
