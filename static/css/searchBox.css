@@ -15,6 +15,7 @@ label[id=toggle] {
   border-bottom: 0px solid #CCC;
   color: #fff;
   background-color: white;
+  content: attr(search);
 }
 
 #toggle label[id=toggle]:hover {
@@ -39,7 +40,8 @@ label[id=toggle] {
 }
 #toggle:checked ~ #expand {
   height: 500px;
+  content: attr(close);
 }
 #toggle:checked ~ label[id=toggle]::before {
-  content: "-";
+  content: attr(search);
 } 

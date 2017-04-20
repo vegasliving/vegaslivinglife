@@ -15,5 +15,6 @@ gunicorn
 django-livereload-server
 social-auth-app-django
 django-dynamic-scraper
+django-haystack
 
 
