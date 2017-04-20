@@ -1,4 +1,5 @@
-Django
+Django>=1.10,<1.11
+wagtail>=1.9,<1.10
 Scrapy
 scrapy-djangoitem
 scrapyd
@@ -8,10 +9,9 @@ Celery
 django-celery
 future
 pillow
-wagtail==1.10
 mysqlclient
-wheel
-gunicorn
+wheel==0.29.0
+gunicorn==19.6.0
 django-livereload-server
 social-auth-app-django
 django-dynamic-scraper
