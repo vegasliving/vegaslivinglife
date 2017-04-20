@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'search',
     'blog',
     'properties',
+    'VR',
 ]
 
 MIDDLEWARE = [

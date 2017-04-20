@@ -11,6 +11,7 @@ from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from properties import views as properties_views
 from blog import views as blog_views
 from home import views as home_views
+from VR import views as VR_views
 
 urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
@@ -21,7 +22,13 @@ urlpatterns = [
     url(r'^myhome/$', blog_views.properties_list, name="properties_list"),
     url(r'^login/$', auth_views.login,name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),
-    url(r'^oauth/', include('social_django.urls', namespace='social')),  # <--
+    url(r'^oauth/', include('social_django.urls', namespace='social')),
+    url(r'^GoogleWebVR/', VR_views.GoogleWebVR, name='GoogleWebVR'),
+    url(r'^AFrameVR/', VR_views.AFrameVR, name='AFrameVR'),
+    url(r'^Unity3DVR/', VR_views.Unity3DVR, name='googleVR'),
+    
+
+    # <--
     # For anything not caught by a more specific rule above, hand over to
     # Wagtail's page serving mechanism. This should be the last pattern in
     # the list:

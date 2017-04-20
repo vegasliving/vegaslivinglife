@@ -3,7 +3,7 @@ wagtail>=1.9,<1.10
 Scrapy
 scrapy-djangoitem
 scrapyd
-jsonpath-rw
+jsonpath-rwy]
 django-celery
 future
 pillow
