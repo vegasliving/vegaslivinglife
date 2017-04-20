@@ -5,7 +5,7 @@ scrapy-djangoitem
 scrapyd
 jsonpath-rw
 kombu
-Celery
+celery==3.1
 django-celery
 future
 pillow
