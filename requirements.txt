@@ -8,7 +8,7 @@ Celery
 django-celery
 future
 pillow
-wagtail
+wagtail==1.10
 mysqlclient
 wheel
 gunicorn
