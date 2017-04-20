@@ -40,7 +40,6 @@ label[id=toggle] {
 }
 #toggle:checked ~ #expand {
   height: 500px;
-  content: attr(close);
 }
 #toggle:checked ~ label[id=toggle]::before {
   content: attr(search);

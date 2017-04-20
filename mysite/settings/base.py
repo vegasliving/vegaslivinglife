@@ -49,10 +49,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.postgres',
-    'kombu.transport.django',
+    'kombu',
     'djcelery',
     'dynamic_scraper',
-    
     'home',
     'search',
     'blog',
