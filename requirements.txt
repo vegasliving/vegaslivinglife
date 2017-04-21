@@ -11,9 +11,9 @@ mysqlclient
 wheel==0.29.0
 gunicorn==19.6.0
 django-livereload-server
-social-auth-app-django
 django-dynamic-scraper
 django-haystack
 psycopg2
+django-allauth
 
 

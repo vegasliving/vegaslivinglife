@@ -41,7 +41,6 @@ INSTALLED_APPS = [
     'livereload',
     'modelcluster',
     'taggit',
-    'social_django',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,6 +48,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.postgres',
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.instagram',
+    'allauth.socialaccount.providers.linkedin',
+    'allauth.socialaccount.providers.linkedin_oauth2',
+    'allauth.socialaccount.providers.twitter',
     'kombu',
     'djcelery',
     'dynamic_scraper',
@@ -58,6 +66,7 @@ INSTALLED_APPS = [
     'properties',
     'VR',
 ]
+
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -71,15 +80,6 @@ MIDDLEWARE = [
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
     'livereload.middleware.LiveReloadScript',
-    'social_django.middleware.SocialAuthExceptionMiddleware',
-
-# 'social_core.backends.open_id.OpenIdAuth',
-# 'social_core.backends.google.GoogleOpenId',
-# 'social_core.backends.google.GoogleOAuth2',
-#     'social_core.backends.google.GoogleOAuth',
-#     'social_core.backends.twitter.TwitterOAuth',
-#     'social_core.backends.yahoo.YahooOpenId',
-#     'django.contrib.auth.backends.ModelBackend',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -98,18 +98,14 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.contrib.messages.context_processors.messages',
-                'social_django.context_processors.backends',  # <-- Social Django Backend
-                'social_django.context_processors.login_redirect', # <-- Social Django Login
             ],
         },
     },
 ]
 
 AUTHENTICATION_BACKENDS = (
-    'social_core.backends.github.GithubOAuth2',
-    'social_core.backends.twitter.TwitterOAuth',
-    'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
 )
 
 WSGI_APPLICATION = 'mysite.wsgi.application'
@@ -169,10 +165,6 @@ STATIC_URL = 'https://storage.googleapis.com/vegasliving/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-
-LOGIN_URL = 'login'
-LOGOUT_URL = 'logout'
-LOGIN_REDIRECT_URL = 'properties_list'
 
 SOCIAL_AUTH_FACEBOOK_KEY = '797995420366020'  # App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = '1969195bbda6c0e12d1a3220ea104030'  # App Secret
