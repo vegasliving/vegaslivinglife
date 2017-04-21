@@ -1,11 +1,70 @@
-<head>
-	<title>A-Frame VR</title>
-	<script src="https://aframe.io/releases/0.5.0/aframe.min.js"></script>
-</head>
+{% load static %} 
+{% block body_class %} {% endblock %} 
+{% block content %} 
 
-<body>
-	<a-scene>
-      <a-sky src="https://c1.staticflickr.com/1/369/32698679015_3fb71f4f86_o.jpg" rotation="0 -130 0"></a-sky>
+<!-- <a data-flickr-embed="true" data-vr="true"  href="https://www.flickr.com/photos/147523766@N08/32698679015/" title="Valerie&#x27;s Airbnb_Hall"><img src="https://c1.staticflickr.com/1/369/32698679015_df681f535f_k.jpg" width="2048" height="1024" alt="Valerie&#x27;s Airbnb_Hall"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+
+<a data-flickr-embed="true" data-vr="true"  href="https://www.flickr.com/photos/147523766@N08/32545937552/" title="Valerie&#x27;s Airbnb_Room"><img src="https://c1.staticflickr.com/1/426/32545937552_f508be8d37_k.jpg" width="2048" height="1024" alt="Valerie&#x27;s Airbnb_Room"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+
+<a data-flickr-embed="true" data-vr="true"  href="https://www.flickr.com/photos/147523766@N08/32319870280/in/photostream/" title="Sojourn Guest Room 360vr"><img src="https://c1.staticflickr.com/1/542/32319870280_92a6a4eba6_k.jpg" width="2048" height="1024" alt="Sojourn Guest Room 360vr"></a><script async src="//embedr.flickr.com/assets/client-code.js" charset="utf-8"></script>
+
+-->
+<head>
+    <meta charset="utf-8">
+    <title>360&deg; Image Gallery</title>
+    <meta name="description" content="360&deg; Image Gallery - A-Frame">
+    <script src="https://aframe.io/releases/0.4.0/aframe.min.js"></script>
+    <script src="https://npmcdn.com/aframe-animation-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-event-set-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-layout-component@3.0.1"></script>
+    <script src="https://npmcdn.com/aframe-template-component@3.1.1"></script>
+    <script src="{% static 'VR/AFrame/set-image.js' %}"></script>
+  </head>
+  <body>
+    <a-scene>
+      <a-assets>
+        <img id="city" crossorigin="anonymous" src="https://c1.staticflickr.com/1/369/32698679015_df681f535f_k.jpg">
+        <img id="city-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-city.jpg">
+        <img id="cubes-thumb" crossorigin="anonymous" src="https://media.licdn.com/mpr/mpr/shrinknp_200_200/AAEAAQAAAAAAAAkGAAAAJDliN2RiZjg0LTNjNTktNGQ2YS1hYTZjLWIyZTFmMDQxNjU2NA.jpg">
+        <img id="sechelt-thumb" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/thumb-sechelt.jpg">
+        <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
+        <img id="cubes" crossorigin="anonymous" src="https://c1.staticflickr.com/1/426/32545937552_f508be8d37_k.jpg">
+        <img id="sechelt" crossorigin="anonymous" src="https://c1.staticflickr.com/1/542/32319870280_92a6a4eba6_k.jpg">
+
+        <!-- Image link template to be reused. -->
+        <script id="link" type="text/html">
+          <a-entity class="link"
+            geometry="primitive: plane; height: 1; width: 1"
+            material="shader: flat; src: ${thumb}"
+            event-set__1="_event: mousedown; scale: 1 1 1"
+            event-set__2="_event: mouseup; scale: 1.2 1.2 1"
+            event-set__3="_event: mouseenter; scale: 1.2 1.2 1"
+            event-set__4="_event: mouseleave; scale: 1 1 1"
+            set-image="on: click; target: #image-360; src: ${src}"
+            sound="on: click; src: #click-sound"></a-entity>
+        </script>
+      </a-assets>
+
+      <!-- 360-degree image. -->
+      <a-sky id="image-360" radius="10" src="#city"></a-sky>
+
+      <!-- Image links. -->
+      <a-entity id="links" layout="type: line; margin: 1.5" position="0 -1 -4">
+        <a-entity template="src: #link" data-src="#cubes" data-thumb="#cubes-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#city" data-thumb="#city-thumb"></a-entity>
+        <a-entity template="src: #link" data-src="#sechelt" data-thumb="#sechelt-thumb"></a-entity>
+      </a-entity>
+
+      <!-- Camera + cursor. -->
+      <a-entity camera look-controls>
+        <a-cursor id="cursor"
+          animation__click="property: scale; startEvents: click; from: 0.1 0.1 0.1; to: 1 1 1; dur: 150"
+          animation__fusing="property: fusing; startEvents: fusing; from: 1 1 1; to: 0.1 0.1 0.1; dur: 1500"
+          event-set__1="_event: mouseenter; color: springgreen"
+          event-set__2="_event: mouseleave; color: black"
+          fuse="true"
+          raycaster="objects: .link"></a-cursor>
+      </a-entity>
     </a-scene>
 </body>
-
+{% endblock %}
