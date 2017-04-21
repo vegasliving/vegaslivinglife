@@ -1,0 +1,50 @@
+{
+  "Room1\n": {
+    "imageURL": "https://c1.staticflickr.com/4/3656/3279989683_b9bc85dce5_b.jpg",
+    "Note3": {
+      "X": "-123",
+      "TExt": "Hello there",
+      "Y": "-60"
+    },
+    "Note1": {
+      "X": "-123",
+      "TExt": "Hello there",
+      "Y": "-60"
+    },
+    "Note2": {
+      "X": "-123",
+      "TExt": "Hello there",
+      "Y": "-60"
+    },
+    "Transition": {
+      "Y": "-60",
+      "X": "-123",
+      "Text": "Hello there",
+      "Destination": "Room2"
+    }
+  },
+  "Room2\n": {
+    "imageURL": "https://c1.staticflickr.com/4/3656/3279989683_b9bc85dce5_b.jpg",
+    "Note3": {
+      "X": "-123",
+      "TExt": "Hello there",
+      "Y": "-60"
+    },
+    "Note1": {
+      "X": "-123",
+      "TExt": "Hello there",
+      "Y": "-60"
+    },
+    "Note2": {
+      "X": "-123",
+      "TExt": "Hello there",
+      "Y": "-60"
+    },
+    "Next Room": {
+      "X": "-123",
+      "Y": "-60",
+      "TExt": "Hello there",
+      "Room": "2"
+    }
+  }
+}

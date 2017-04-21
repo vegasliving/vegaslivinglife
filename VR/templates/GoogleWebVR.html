@@ -1,9 +1,66 @@
 <head>
-	<title>Google WebVR</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour</title>
+    <link rel="stylesheet" href="https://cdn.pannellum.org/2.3/pannellum.css"/>
+    <script type="text/javascript" src="https://cdn.pannellum.org/2.3/pannellum.js"></script>
+    <style>
+    #panorama {
+        width: 100%;
+        height: 100%;
+    }
+    </style>
 </head>
 <body>
-	<header></header>
-	<content></content>
+
+<div id="panorama"></div>
+<script>
+pannellum.viewer('panorama', {   
+    "default": {
+        "firstScene": "circle",
+        "author": "Matthew Petroff",
+        "sceneFadeDuration": 1000
+    },
+
+    "scenes": {
+        "circle": {
+            "title": "Mason Circle",
+            "hfov": 110,
+            "pitch": -3,
+            "yaw": 160,
+            "type": "equirectangular",
+            "panorama": "https://c1.staticflickr.com/4/3656/3279989683_b9bc85dce5_b.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -2.1,
+                    "yaw": 0,
+                    "type": "scene",
+                    "text": "Spring House or Dairy",
+                    "sceneId": "house"
+                }
+            ]
+        },
+
+        "house": {
+            "title": "Spring House or Dairy",
+            "hfov": 110,
+            "yaw": 50,
+            "type": "equirectangular",
+            "panorama": "https://c1.staticflickr.com/3/2841/33311530734_cdeaaf2a23_k.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -0.6,
+                    "yaw": 50,
+                    "type": "scene",
+                    "text": "Mason Circle",
+                    "sceneId": "circle",
+                    "targetYaw": -23,
+                    "targetPitch": 2
+                }
+            ]
+        }
+    }
+});
+</script>
+
 </body>
-
-

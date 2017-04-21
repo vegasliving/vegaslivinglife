@@ -1,0 +1,19 @@
+{% load static %}
+{% block body_class %} {% endblock %} 
+
+{% block content %}
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Unity WebGL Player | 3DVirtualTour</title>
+  <script src="{% static 'VR/Build/UnityLoader.js' %}"></script>
+  <script>
+    var gameInstance = UnityLoader.instantiate("gameContainer", "{% static 'VR/Build/3DVirtualTour.json' %}");
+  </script>
+</head>
+<body>
+  <h1>Home VR Tour</h1>
+  <div id="gameContainer" style="width: 100%; height: auto; margin: auto"></div>
+</body>
+
+{% endblock %}
