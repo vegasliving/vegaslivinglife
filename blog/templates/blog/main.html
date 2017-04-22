@@ -298,8 +298,9 @@
         <span class="mdl-layout-title">
         <div class="mdl-grid mdl-grid--no-spacing">
             <div class="mdl-layout-spacer"></div>
-            <div class="mdl-cell mdl-cell--10-col mdl-">
-            <img src="" height="80px" width="80px" src="https://avatars3.githubusercontent.com/u/1859661?v=3&s=460" style="border-radius: 40px; margin: 10px">
+            <div class="mdl-cell mdl-cell--10-col mdl-" >
+            <img  height="80px" width="80px" src="{{ user.socialaccount_set.all.0.get_avatar_url }}" style="border-radius: 40px; margin: 10px"/>
+            
             </div>
             Hello {{ user.username }}
             <div class="mdl-layout-spacer"></div>
@@ -310,7 +311,7 @@
             <a class="mdl-navigation__link" href="">Settings</a>
             <a class="mdl-navigation__link" href="">Change Password</a>
             <a class="mdl-navigation__link" href="">Terms</a>
-            <a class="mdl-navigation__link" href="{% url 'social:disconnect' 'facebook' %} ">Logout</a>
+            <a class="mdl-navigation__link" href=" ">Logout</a>
         </nav>
     </div>
     <main class="mdl-layout__content">

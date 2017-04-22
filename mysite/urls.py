@@ -23,7 +23,6 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
     url(r'^login/$', auth_views.login,name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),
-    url(r'^oauth/', include('social_django.urls', namespace='social')),
     url(r'^GoogleWebVR/', VR_views.GoogleWebVR, name='GoogleWebVR'),
     url(r'^AFrameVR/', VR_views.AFrameVR, name='AFrameVR'),
     url(r'^Unity3DVR/', VR_views.Unity3DVR, name='googleVR'),

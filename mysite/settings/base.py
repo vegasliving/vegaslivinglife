@@ -166,10 +166,6 @@ STATIC_URL = 'https://storage.googleapis.com/vegasliving/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-SOCIAL_AUTH_FACEBOOK_KEY = '797995420366020'  # App ID
-SOCIAL_AUTH_FACEBOOK_SECRET = '1969195bbda6c0e12d1a3220ea104030'  # App Secret
-
-
 # Wagtail settings
 
 WAGTAIL_SITE_NAME = "Vegas Living"
@@ -177,3 +173,19 @@ WAGTAIL_SITE_NAME = "Vegas Living"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
+
+# DjangoAllAuth Setting
+# Ensure EMAIL_BACKEND is set so allauth can proceed to send confirmation emails
+# Set to console for development/testing
+
+# Custom allauth settings
+LOGIN_REDIRECT_URL =  '/myhome/'
+
+
+# Use email as the primary identifier
+ACCOUNT_AUTHENTICATION_METHOD = 'email' 
+ACCOUNT_EMAIL_REQUIRED = True
+# Make email verification mandatory to avoid junk email accounts
+ACCOUNT_EMAIL_VERIFICATION = '' 
+# Eliminate need to provide username, as it's a very old practice
+ACCOUNT_USERNAME_REQUIRED = False
