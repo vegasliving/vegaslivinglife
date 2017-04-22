@@ -12,12 +12,12 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 from __future__ import absolute_import, unicode_literals
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
@@ -181,8 +181,15 @@ BASE_URL = 'http://example.com'
 # Custom allauth settings
 LOGIN_REDIRECT_URL =  '/myhome/'
 
+#Custom Email Sign Up From
+ACCOUNT_ADAPTER =  "mysite.adapters.MyAccountAdapter"
+
 
 # Use email as the primary identifier
+EMAIL_BACKEND = 'django_mailjet.backends.MailjetBackend'
+MAILJET_API_KEY = 'af1a92d30fdebf6f4deaa8513ef38ad6'
+MAILJET_API_SECRET = '973152cff1b782dd52e93dcc89da6406'
+
 ACCOUNT_AUTHENTICATION_METHOD = 'email' 
 ACCOUNT_EMAIL_REQUIRED = True
 # Make email verification mandatory to avoid junk email accounts

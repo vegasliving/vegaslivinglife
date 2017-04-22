@@ -80,14 +80,20 @@
         <div class="mdl-grid">
             <div class="mdl-layout-spacer"></div>
             <div id="sign-up-form" class="mdl-cell mdl-cell--12-col">
-                <form action="#">
+                <form action="login" method="POST" action="">
+                  {% csrf_token %}
+                  {{ form.non_field_errors }}
                   <div class="mdl-grid mdl-grid--no-spacing ">
                   <div class="mdl-layout-spacer"></div>
                   <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
                     <input class="mdl-textfield__input" type="text" id="sample3">
-                    <label class="mdl-textfield__label" for="sample3" style="color: #2D3739">Your Full Name</label>
+                    <label class="mdl-textfield__label" for="first_name" style="color: #2D3739">First Name</label>
                   </div>
                   <div class="mdl-layout-spacer"></div>
+                  <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label mdl-cell mdl-cell--6-col">
+                    <input class="mdl-textfield__input" type="text" id="sample3">
+                    <label class="mdl-textfield__label" for="last_name" style="color: #2D3739">Last Name</label>
+                  </div>
                   </div>
                   <br>
                   <div class="mdl-grid mdl-grid--no-spacing">
@@ -100,6 +106,12 @@
                     <input class="mdl-textfield__input" type="text" id="sample3">
                     <label class="mdl-textfield__label" for="sample3" style="color: #2D3739">Password</label>
                   </div>
+                  <div class="mdl-cell mdl-cell--7-col">
+             <a href="">
+            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-cell--2-offset-desktop" style="width: 56%;background-color: #2D3739" type = "submit">
+              Sign Up For Free
+            </button>
+          </a>
                   <div class="mdl-layout-spacer"></div>
                   </div>
                 </form>
@@ -108,12 +120,7 @@
         </div>
         <div class="mdl-grid mdl-grid--no-spacing">
         <div class='mdl-layout-spacer'></div>
-          <div class="mdl-cell mdl-cell--7-col">
-             <a href="">
-            <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored mdl-cell--2-offset-desktop" style="width: 56%;background-color: #2D3739">
-              Sign Up For Free
-            </button>
-          </a>
+          
           <div class="mdl-grid">
               <div class="mdl-cell mdl-cell--2-offset-desktop mdl-cell--3-col-desktop">
                   <hr>
