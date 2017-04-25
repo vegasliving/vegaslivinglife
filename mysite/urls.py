@@ -26,18 +26,8 @@ urlpatterns = [
     url(r'^GoogleWebVR/', VR_views.GoogleWebVR, name='GoogleWebVR'),
     url(r'^AFrameVR/', VR_views.AFrameVR, name='AFrameVR'),
     url(r'^Unity3DVR/', VR_views.Unity3DVR, name='googleVR'),
-
-    
-
-    # <--
-    # For anything not caught by a more specific rule above, hand over to
-    # Wagtail's page serving mechanism. This should be the last pattern in
-    # the list:
-    url(r'', include(wagtail_urls)),
-
-    # Alternatively, if you want Wagtail pages to be served from a subpath
-    # of your site, rather than the site root:
-    #    url(r'^pages/', include(wagtail_urls)),
+    url(r'/stories', include(wagtail_urls)),
+    url(r'^$', home_views.home, name="home"),
 ]
 
 

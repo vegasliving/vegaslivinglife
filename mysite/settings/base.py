@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'kombu',
     'djcelery',
     'dynamic_scraper',
+    'leaflet',
     'home',
     'search',
     'blog',
