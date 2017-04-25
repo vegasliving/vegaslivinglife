@@ -57,29 +57,30 @@
 <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
  <!-- Simple header with scrollable tabs. -->
 <div class="lightbox short-animate" id="image1">
-          <div id="login-box">
-              <div class="left">
-                  <h1>Sign up</h1>
-                  <input type="text" name="username" placeholder="Username" />
-                  <input type="text" name="email" placeholder="E-mail" />
-                  <input type="password" name="password" placeholder="Password" />
-                  <input type="password" name="password2" placeholder="Retype password" />
-                  <input type="submit" name="signup_submit" value="Sign me up" />
-              </div>
-              <div class="right">
-                  <span class="loginwith">Sign in with<br />social network</span>
-                  <a href="{% provider_login_url "facebook" method="oauth2" %}">
-                      <button class="social-signin facebook">Log in with facebook</button>
-                  </a>
-                  <a href="{% provider_login_url "twitter" method="oauth2" %}">
-                      <button class="social-signin twitter">Log in with Twitter</button>
-                  </a>
-                  <a href="{% provider_login_url "google" method="oauth2" %}">
-                      <button class="social-signin google">Log in with Google+</button>
-                  </a>
-              </div>
-              <div class="or">OR</div>
-          </div>
+  <div id="login-box">
+      <div class="left">
+          <h4>Sign up</h4>
+          <input type="text" name="username" placeholder="Username" />
+          <input type="text" name="email" placeholder="E-mail" />
+          <input type="password" name="password" placeholder="Password" />
+          <input type="password" name="password2" placeholder="Retype password" />
+          <input type="submit" name="signup_submit" value="Sign me up" />
+      </div>
+      <div class="right" style="margin-right: 0px;">
+          <h4 style="color: white">
+          Sign in with <br>social network</h4>
+          <a href="{% provider_login_url "facebook" method="oauth2" %}">
+              <button class="social-signin facebook">Log in with facebook</button>
+          </a>
+          <a href="{% provider_login_url "twitter" method="oauth2" %}">
+              <button class="social-signin twitter">Log in with Twitter</button>
+          </a>
+          <a href="{% provider_login_url "google" method="oauth2" %}">
+              <button class="social-signin google">Log in with Google+</button>
+          </a>
+      </div>
+      <div class="or">OR</div>
+  </div>
 </div>
 <div id="lightbox-controls" class="short-animate">
   <a id="close-lightbox" class="long-animate" href="#!">Close Lightbox</a>
@@ -100,7 +101,23 @@
     </div>
   </header>
   <div class="mdl-layout__drawer">
-    <span class="mdl-layout-title">Title</span>
+    <span class="mdl-layout-title">
+    <div class="mdl-grid mdl-grid--no-spacing">
+        <div class="mdl-layout-spacer"></div>
+        <div class="mdl-cell mdl-cell--10-col mdl-" >
+        <img src="{{ user.socialaccount_set.all.0.get_avatar_url }}" width="90" height="90" style="border-radius: 45px; margin-top: 90px"/>
+        </div>
+        <h4>{{user.first_name}} {{user.last_name}} </h4>
+        <div class="mdl-layout-spacer"></div>
+    </div>
+    </span>
+    <nav class="mdl-navigation">
+        <a class="mdl-navigation__link" href="">Home</a>
+        <a class="mdl-navigation__link" href="">Settings</a>
+        <a class="mdl-navigation__link" href="">Change Password</a>
+        <a class="mdl-navigation__link" href="">Terms</a>
+        <a class="mdl-navigation__link" href=" ">Logout</a>
+    </nav>
   </div>
   <main class="mdl-layout__content">
     <section class="mdl-layout__tab-panel is-active" style="padding-top: 0px"id="scroll-tab-1" >

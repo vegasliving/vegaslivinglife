@@ -54,9 +54,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.instagram',
-    'allauth.socialaccount.providers.linkedin',
     'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.linkedin_oauth2',
     'allauth.socialaccount.providers.twitter',
     'kombu',
     'djcelery',
@@ -186,7 +184,6 @@ LOGIN_REDIRECT_URL =  '/myhome/'
 #Custom Email Sign Up From
 ACCOUNT_ADAPTER =  "mysite.adapters.MyAccountAdapter"
 
-
 # Use email as the primary identifier
 EMAIL_BACKEND = 'django_mailjet.backends.MailjetBackend'
 MAILJET_API_KEY = 'af1a92d30fdebf6f4deaa8513ef38ad6'
@@ -195,6 +192,6 @@ MAILJET_API_SECRET = '973152cff1b782dd52e93dcc89da6406'
 ACCOUNT_AUTHENTICATION_METHOD = 'email' 
 ACCOUNT_EMAIL_REQUIRED = True
 # Make email verification mandatory to avoid junk email accounts
-ACCOUNT_EMAIL_VERIFICATION = '' 
+ACCOUNT_EMAIL_VERIFICATION = False 
 # Eliminate need to provide username, as it's a very old practice
 ACCOUNT_USERNAME_REQUIRED = False
