@@ -28,14 +28,14 @@ urlpatterns = [
     url(r'^Unity3DVR/', VR_views.Unity3DVR, name='googleVR'),
     url(r'/stories', include(wagtail_urls)),
     url(r'^$', home_views.home, name="home"),
+    url(r'^stories/', home_views.stories, name="stories"),
+    url(r'^homes/', home_views.homes, name="homes"),
+    url(r'^places/', home_views.places, name="places"),
 ]
-
 
 if settings.DEBUG:
     from django.conf.urls.static import static
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-
-    # Serve static and media files from development server
     urlpatterns += staticfiles_urlpatterns()
     urlpatterns += static(settings.MEDIA_URL,
                           document_root=settings.MEDIA_ROOT)

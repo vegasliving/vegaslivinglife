@@ -1,0 +1,134 @@
+{% extends 'home/base.html' %}
+
+{% block for-you %}
+	<section class="mdl-layout__tab-panel is-active" style="padding-top: 0px"id="scroll-tab-1" >
+      <div class="page-content" style="width: 100%">
+        <div class="mdl-grid" id="stories-row">
+            <div class="mdl-cell mdl-cell--7-col-desktop">
+                <h3>People of Las Vegas</h3>
+                <video width="100%" controls>
+                    <source src="https://storage.googleapis.com/vegasliving/049501094-las-vegas-blvd-night-1.mp4" type="">
+                </video>
+            </div>
+            <div class="mdl-cell mdl-cell--5-col-desktop">
+                <h3>Las Vegas Stories </h3>
+                <div class="mdl-card mdl-shadow--2dp mdl-cell--12-col-desktop" style="min-height: 50px; margin-bottom: 5px">
+                    <div class="mdl-grid" style="padding: 0px">
+                        <div class="mdl-cell mdl-cell--4-col-desktop" style="margin: 0px">
+                            <img src="https://storage.googleapis.com/vegasliving/static/thumbnails/full/00060a04e06a0a0436d1c1e9d4951dae8bd4a311.jpg" width="100%" style="padding:0px">
+                        </div>
+                        <div class="mdl-cell mdl-cell--8-col-desktop">
+                            <div class="mdl-card--title-text"> The hot story The hot story The hot story The hot story The hot story The hot story The hot storyThe hot story</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdl-card mdl-shadow--2dp mdl-cell--12-col-desktop" style="min-height: 50px; margin-bottom: 5px">
+                    <div class="mdl-grid" style="padding: 0px">
+                        <div class="mdl-cell mdl-cell--4-col-desktop" style="margin: 0px">
+                            <img src="https://storage.googleapis.com/vegasliving/static/thumbnails/full/00060a04e06a0a0436d1c1e9d4951dae8bd4a311.jpg" width="100%" style="padding:0px">
+                        </div>
+                        <div class="mdl-cell mdl-cell--8-col-desktop">
+                            <div class="mdl-card--title-text"> The hot story The hot story The hot story The hot story The hot story The hot story The hot storyThe hot story</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdl-card mdl-shadow--2dp mdl-cell--12-col-desktop" style="min-height: 50px; margin-bottom: 5px">
+                    <div class="mdl-grid" style="padding: 0px">
+                        <div class="mdl-cell mdl-cell--4-col-desktop" style="margin: 0px">
+                            <img src="https://storage.googleapis.com/vegasliving/static/thumbnails/full/00060a04e06a0a0436d1c1e9d4951dae8bd4a311.jpg" width="100%" style="padding:0px">
+                        </div>
+                        <div class="mdl-cell mdl-cell--8-col-desktop">
+                            <div class="mdl-card--title-text"> The hot story The hot story The hot story The hot story The hot story The hot story The hot storyThe hot story</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mdl-card mdl-shadow--2dp mdl-cell--12-col-desktop" style="min-height: 50px; margin-bottom: 5px">
+                    <div class="mdl-grid" style="padding: 0px">
+                        <div class="mdl-cell mdl-cell--4-col-desktop" style="margin: 0px">
+                            <img src="https://storage.googleapis.com/vegasliving/static/thumbnails/full/00060a04e06a0a0436d1c1e9d4951dae8bd4a311.jpg" width="100%" style="padding:0px">
+                        </div>
+                        <div class="mdl-cell mdl-cell--8-col-desktop">
+                            <div class="mdl-card--title-text"> The hot story The hot story The hot story The hot story The hot story The hot story The hot storyThe hot story</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <h3 style="margin-left: 12px">Las Vegas Homes and Real Estate</h3>
+        <div class="mdl-grid" id="homes-row">
+            {% for article in articles %}
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col-desktop" style="margin-right:5px">
+                <div class="mdl-card__image">
+                    <img src="{{baseURL}}thumbnails/full/{{article.thumbnail}}" width="100%" height="45%">
+                </div>
+                <div class="mdl-grid">
+                    <div class="mdl-cell--7-col ">
+                        <div class="house-address">{{article.title}}</div>
+                    </div>
+                    <div class="mdl-cell--5-col">
+                        <div class="house-price">{{article.description}}</div>
+                    </div>
+                </div>
+                <div class="mdl-grid">
+                    <div class="mdl-button mdl-button--colored">
+                        <i class="fa fa-bed" aria-hidden="true"></i>
+                        <span>3</span> Beds
+                    </div>
+                    <div class="mdl-button mdl-button--colored">
+                        <i class="fa fa-bath" aria-hidden="true"></i> 3 Baths
+                    </div>
+                    <div class="mdl-button mdl-button--colored">
+                        3000 sqft
+                    </div>
+                </div>
+                <div class="mdl-card__actions mdl-card--border">
+                <a href="#image1">
+                    <button id="show-dialog" type="button" class="mdl-button">Contact Agent</button>
+                </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <h3 style="margin-left: 12px">Cool Places in Las Vegas</h3>
+        <div class="mdl-grid" id="places-row">
+            <dir class="mdl-card mdl-shadow--3dp mdl-cell mdl-cell--3-col-desktop" >
+                <div class="place_image">
+                    <img src="https://a0.muscache.com/im/pictures/facb17cc-ab67-423c-ae60-87c6ffa96a3f.jpg" width="100%"height="auto">
+                </div>
+                <div class="place_content">
+                   <h5 style="margin: 15px">Taco and Beer</h5>
+                   <p style="padding-right: 20px; padding-left: 20px">Creative street-style tacos, craft brews & cocktails in a cool space with quirky decor.</p> 
+                </div>
+            </dir>
+            <dir class="mdl-card mdl-shadow--3dp mdl-cell mdl-cell--3-col-desktop" >
+                <div class="place_image">
+                    <img src="https://a0.muscache.com/im/pictures/facb17cc-ab67-423c-ae60-87c6ffa96a3f.jpg" width="100%"height="auto">
+                </div>
+                <div class="place_content">
+                   <h5 style="margin: 15px">Taco and Beer</h5>
+                   <p style="padding-right: 20px; padding-left: 20px">Creative street-style tacos, craft brews & cocktails in a cool space with quirky decor.</p> 
+                </div>
+            </dir>
+            <dir class="mdl-card mdl-shadow--3dp mdl-cell mdl-cell--3-col-desktop" >
+                <div class="place_image">
+                    <img src="https://a0.muscache.com/im/pictures/facb17cc-ab67-423c-ae60-87c6ffa96a3f.jpg" width="100%"height="auto">
+                </div>
+                <div class="place_content">
+                   <h5 style="margin: 15px">Taco and Beer</h5>
+                   <p style="padding-right: 20px; padding-left: 20px">Creative street-style tacos, craft brews & cocktails in a cool space with quirky decor.</p> 
+                </div>
+            </dir>
+            <dir class="mdl-card mdl-shadow--3dp mdl-cell mdl-cell--3-col-desktop" >
+                <div class="place_image">
+                    <img src="https://a0.muscache.com/im/pictures/facb17cc-ab67-423c-ae60-87c6ffa96a3f.jpg" width="100%"height="auto">
+                </div>
+                <div class="place_content">
+                   <h5 style="margin: 15px">Taco and Beer</h5>
+                   <p style="padding-right: 20px; padding-left: 20px">Creative street-style tacos, craft brews & cocktails in a cool space with quirky decor.</p> 
+                </div>
+            </dir>
+        </div>
+      </div>
+    </section>
+{% endblock %}
