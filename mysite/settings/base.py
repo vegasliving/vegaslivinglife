@@ -113,7 +113,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # [START dbconfig]
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.contrib.gis.db.backends.mysql',
         'NAME': 'vegasliving',
         'USER': 'vegas',
         'PASSWORD': 'rocking247',

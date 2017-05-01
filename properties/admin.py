@@ -13,7 +13,7 @@ class NewsWebsiteAdmin(admin.ModelAdmin):
     url_.allow_tags = True
     
 class ArticleAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'news_website', 'url_',)
+    list_display = ('id', 'title', 'news_website', 'url_','longtitude','latitude')
     list_display_links = ('title',)
     raw_id_fields = ('checker_runtime',)
     

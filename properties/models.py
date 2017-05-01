@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 from django.utils.encoding import python_2_unicode_compatible
 from django.db import models
+from django.contrib.gis.db import models as gismodels
 from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 from scrapy_djangoitem import DjangoItem
@@ -25,6 +26,10 @@ class Article(models.Model):
     news_website = models.ForeignKey(NewsWebsite) 
     description = models.TextField(blank=True)
     url = models.URLField(blank=True)
+    longtitude = models.FloatField(blank=True)
+    latitude = models.FloatField(blank=True)
+    # geom = gismodels.PointField(bk=)
+    # objects = gismodels.GeoManager()
     thumbnail = models.CharField(max_length=200, blank=True)
     checker_runtime = models.ForeignKey(SchedulerRuntime, blank=True, null=True, on_delete=models.SET_NULL)
     

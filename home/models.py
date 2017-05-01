@@ -14,7 +14,4 @@ class HomePage(Page):
     	FieldPanel('body', classname="full"),
     ]
 
-# class VegasHomes(gismodels.Model):
-
-# 	homeID = models.IntergerField(primary_key=True)
 	
