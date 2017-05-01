@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.contrib.gis.db import models as gismodels
 
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailcore.fields import RichTextField
@@ -12,3 +13,8 @@ class HomePage(Page):
     content_panels = Page.content_panels + [
     	FieldPanel('body', classname="full"),
     ]
+
+# class VegasHomes(gismodels.Model):
+
+# 	homeID = models.IntergerField(primary_key=True)
+	

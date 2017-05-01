@@ -1,5 +1,12 @@
 {% extends 'home/base.html' %}
-
+{% block nav-bar %}
+<div class="mdl-layout__tab-bar mdl-js-ripple-effect" style="background-color: white">
+      <a href="/" class="mdl-layout__tab is-active">For You</a>
+      <a href="/stories/" class="mdl-layout__tab">Stories</a>
+      <a href="/homes/" class="mdl-layout__tab">Homes</a>
+      <a href="/places/" class="mdl-layout__tab">Places</a>
+</div>
+{% endblock %}
 {% block for-you %}
 	<section class="mdl-layout__tab-panel is-active" style="padding-top: 0px"id="scroll-tab-1" >
       <div class="page-content" style="width: 100%">

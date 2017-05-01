@@ -23,7 +23,7 @@ def stories(request):
 	return render(request, 'home/stories.html',{"blogpages": blogpages, "articles": articles})
 	
 def homes(request):
-	articles = Article.objects.raw('SELECT * FROM properties_article WHERE title LIKE "%%Henderson%%"')[:4]
+	articles = Article.objects.raw('SELECT * FROM properties_article WHERE title LIKE "%%Henderson%%"')[:10]
 	blogpages = BlogPage.objects.all()
 	for post in blogpages:
 		print(post.title, post.intro, post.main_image())

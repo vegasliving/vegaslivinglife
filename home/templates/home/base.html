@@ -1,8 +1,8 @@
 {% load wagtailcore_tags wagtailuserbar static socialaccount %} 
 {% static "" as baseURL %}
-{% load leaflet_tags %}
 {% block body_class %}{% endblock %} 
 {% block content %} 
+{% load leaflet_tags %}
 {# beginning for page content #} 
 {% wagtailuserbar 'bottom-left'%} 
 {# {{ page.body|richtext }} #}
@@ -38,8 +38,7 @@
     <link rel="stylesheet" href="{% static 'css/signup.css' %}">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.light_blue-deep_purple.min.css" />
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
-    {% leaflet_js %}
-    {% leaflet_css %}
+    {% block extra_head %}{% endblock %}
 
     <style>
     #view-source {
@@ -94,12 +93,8 @@
       <div class="mdl-layout-spacer"></div>
     </div>
     <!-- Tabs -->
-    <div class="mdl-layout__tab-bar mdl-js-ripple-effect" style="background-color: white">
-      <a href="/" class="mdl-layout__tab is-active">For You</a>
-      <a href="/stories/" class="mdl-layout__tab">Stories</a>
-      <a href="/homes/" class="mdl-layout__tab">Homes</a>
-      <a href="/places/" class="mdl-layout__tab">Places</a>
-    </div>
+    {% block nav-bar %}
+    {% endblock %}
   </header>
   <div class="mdl-layout__drawer">
     <span class="mdl-layout-title">
@@ -120,8 +115,6 @@
         <a class="mdl-navigation__link" href=" ">Logout</a>
     </nav>
   </div>
-  <main class="mdl-layout__content">
-  	
   		{% block for-you %}
   		{% endblock %}
   	
@@ -136,8 +129,6 @@
   	
   		{% block places %}
   		{% endblock %}
-  	
-  </main>
   </div>
 <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </body>
