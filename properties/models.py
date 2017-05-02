@@ -19,18 +19,15 @@ class NewsWebsite(models.Model):
     def __str__(self):
         return self.name
 
-
 @python_2_unicode_compatible
 class Article(models.Model):
     title = models.CharField(max_length=200)
     news_website = models.ForeignKey(NewsWebsite) 
     description = models.TextField(blank=True)
     url = models.URLField(blank=True)
-    longtitude = models.FloatField(blank=True)
-    latitude = models.FloatField(blank=True)
-    # geom = gismodels.PointField(bk=)
-    # objects = gismodels.GeoManager()
     thumbnail = models.CharField(max_length=200, blank=True)
+    latitude = models.CharField(max_length=40)
+    longtitude = models.CharField(max_length=40)
     checker_runtime = models.ForeignKey(SchedulerRuntime, blank=True, null=True, on_delete=models.SET_NULL)
     
     def __str__(self):
