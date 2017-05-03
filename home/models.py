@@ -14,4 +14,3 @@ class HomePage(Page):
     	FieldPanel('body', classname="full"),
     ]
 
-	

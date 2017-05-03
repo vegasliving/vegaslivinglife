@@ -32,6 +32,7 @@ urlpatterns = [
     url(r'^stories/', home_views.stories, name="stories"),
     url(r'^homes/', home_views.homes, name="homes"),
     url(r'^places/', home_views.places, name="places"),
+    url(r'^home-(?P<article_id>[0-9]+)/', home_views.home_detail, name="home_detail")
 ]
 
 if settings.DEBUG:

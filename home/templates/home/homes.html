@@ -33,8 +33,15 @@
         <div class="mdl-grid">
           <div class="mdl-cell mdl-cell--7-col-desktop" style="overflow: scroll; height: 120%;">
                 <h3>Las Vegas Real Estate</h3>
+                <!-- Inputting Address -->
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 250px">
+                    <input class="mdl-textfield__input" type="text" pattern="[0-9]*" id="home-search">
+                    <label class="mdl-textfield__label" for="home-search" style="color:#ccc">City, Address, School, Zipcode, Agent</label>
+                    <!-- <span class="mdl-textfield__error">Please check Your input</span> -->
+                </div>
+
                 <!-- Filter by Price -->
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height" style="margin: 0px 0px 10px 0px">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height" style="width: 150px">
                   <input class="mdl-textfield__input" id="min-price" name="min-price" value="No Min" type="text" readonly tabIndex="-1" data-val="BLR" />
                   <label class="mdl-textfield__label" for="min-price">Min Price</label>
                   <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="min-price">
@@ -91,7 +98,7 @@
                   </ul></div>
 
                 <!-- Filter by Number of Beds -->
-                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height" style="margin: 0px 0px 0px 0px">
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height" style="width: 150px">
                   <input class="mdl-textfield__input" id="min-bedroom" name="min-bedroom" value="No Min" type="text" readonly tabIndex="-1" data-val="BLR" />
                   <label class="mdl-textfield__label" for="bedroom">Min Bedrooms</label>
                   <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="min-bedroom">
@@ -104,7 +111,7 @@
                 </div>
 
                 <!-- Filter bt Number of Baths -->
-               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height" style="margin: 0px 0px 0px 10px">
+               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height" style="width: 150px">
                   <input class="mdl-textfield__input" id="min-bathroom" name="min-bathroom" value="No Min" type="text" readonly tabIndex="-1" data-val="BLR" />
                   <label class="mdl-textfield__label" for="min-bathroom">Min Bathrooms</label>
                   <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="min-bathroom">
