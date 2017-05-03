@@ -2,19 +2,19 @@
 {% load leaflet_tags static %}
 {% load staticfiles %}
 {% block extra_head %}
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
   integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ=="
   crossorigin=""/>
   
   <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"
   integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg=="
   crossorigin=""></script>
-    <script src='https://api.mapbox.com/mapbox.js/v3.1.0/mapbox.js'></script>
-    <link href='https://api.mapbox.com/mapbox.js/v3.1.0/mapbox.css' rel='stylesheet' />
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
-    <style type="text/css">
-      #map { position:fixed; top:0; bottom:0; width:100%; }
-    </style>
+  <script src='https://api.mapbox.com/mapbox.js/v3.1.0/mapbox.js'></script>
+  <link href='https://api.mapbox.com/mapbox.js/v3.1.0/mapbox.css' rel='stylesheet' />
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js"></script>
+  <style type="text/css">
+    #map { position:fixed; top:0; bottom:0; width:100%; }
+  </style>
 {% endblock %}
 {% block nav-bar %}
 <div class="mdl-layout__tab-bar mdl-js-ripple-effect" style="background-color: white">
@@ -33,6 +33,9 @@
                 <h3>Las Vegas Real Estate</h3>
                 <div class="mdl-grid">
                 {% for article in articles %}
+                <script type="text/javascript">
+                  L.marker([36.0108419 ,115.055792]).addTo(map);
+                </script>
                 <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--6-col-desktop" style="margin-right: 5px;">
                   <div class="mdl-card__image">
                       <img src="{{baseURL}}thumbnails/full/{{article.thumbnail}}" width="100%" height="25%">
@@ -68,16 +71,34 @@
                 </div>
           </div>
           <div class="mdl-cell mdl-cell--5-col-desktop right-panel" style="overflow: hidden;">
-              <img src="{% static 'randomActivities.jpg' %}">
-              {% leaflet_map "map" %}
-              <script>
-              L.mapbox.accessToken = 'pk.eyJ1IjoiaG9hbmdkb3YiLCJhIjoiY2oyMTR0YzgzMDAxYzMzbmVwcXd5YWQ3eSJ9.pXm0x-xFSQMPLz0HZ2Zv2A';
-              var map = L.mapbox.map('map', 'mapbox.streets')
-                  .setView([36.26, -114.88], 11);
-              var geojsonLayer = new L.GeoJSON.AJAX("{% static 'data.geojson' %}");  
-              L.marker([50.5, 30.5]).addTo(map);   
-              geojsonLayer.addTo(map);
-              </script>
+            {% leaflet_map "map" %}
+            <script>
+            L.mapbox.accessToken = 'pk.eyJ1IjoiaG9hbmdkb3YiLCJhIjoiY2oyMTR0YzgzMDAxYzMzbmVwcXd5YWQ3eSJ9.pXm0x-xFSQMPLz0HZ2Zv2A';
+            var geojson = [
+              {% for article in articles %}
+                {
+                  type: 'Feature',
+                  geometry: {
+                    type: 'Point',
+                    coordinates: [{{article.longtitude}}, {{article.latitude}}]
+                  },
+                  properties: {
+                    'marker-color': '#ff0000',
+                    'marker-size': 'medium',
+                    'marker-symbol': 'building',
+                    'title': '{{article.title}}',
+                    'image': '{{baseURL}}thumbnails/full/{{article.thumbnail}}'
+                  }
+                },
+              {% endfor %}
+            ];
+
+            var map = L.mapbox.map('map', 'mapbox.light')
+              .setView([36.26, -114.88], 11);
+
+            var myLayer = L.mapbox.featureLayer().setGeoJSON(geojson).addTo(map);
+            map.scrollWheelZoom.disable();
+            </script>
           </div>
         </div>
       </div>

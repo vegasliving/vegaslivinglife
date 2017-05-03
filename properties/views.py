@@ -9,8 +9,7 @@ def article_list(request):
 	articles = Article.objects.all()
 	for article in articles:
 		location = gmaps.geocode(article.title)
-		print (location)
-		if location is not None:
+		if location[0] is not None:
 			latitude = location[0]['geometry']['location']['lat']
 			longtitude = location[0]['geometry']['location']['lng']		
 			print(latitude, longtitude)
