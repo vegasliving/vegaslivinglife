@@ -1,9 +1,20 @@
 from django.shortcuts import render
 from .models import Article
+import googlemaps
+from django.conf import settings
+
+gmaps = googlemaps.Client(key='AIzaSyCTLthxG3Gaj12OcGK_EYU6bXXUSqDvcyg')
 
 def article_list(request):
 	articles = Article.objects.all()
 	for article in articles:
-		print(article.thumbnail)
+		location = gmaps.geocode(article.title)
+		print (location)
+		if location is not None:
+			latitude = location[0]['geometry']['location']['lat']
+			longtitude = location[0]['geometry']['location']['lng']		
+			print(latitude, longtitude)
+			print(article.thumbnail)
+		
 	return render(request, 'properties.html', {"articles": articles})
 

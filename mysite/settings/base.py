@@ -65,6 +65,7 @@ INSTALLED_APPS = [
     'blog',
     'properties',
     'VR',
+    'geopy',
 ]
 
 
@@ -170,6 +171,7 @@ MEDIA_URL = '/media/'
 
 WAGTAIL_SITE_NAME = "Vegas Living"
 
+MAPBOX_ACCESS_TOKEN="pk.eyJ1IjoiaG9hbmdkb3YiLCJhIjoiY2oyMTR0YzgzMDAxYzMzbmVwcXd5YWQ3eSJ9.pXm0x-xFSQMPLz0HZ2Zv2A"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
