@@ -12,7 +12,6 @@ from properties import views as properties_views
 from blog import views as blog_views
 from home import views as home_views
 from VR import views as VR_views
-from djgeojson.views import GeoJSONLayerView
 from properties.models import Article
 
 urlpatterns = [
@@ -33,7 +32,6 @@ urlpatterns = [
     url(r'^stories/', home_views.stories, name="stories"),
     url(r'^homes/', home_views.homes, name="homes"),
     url(r'^places/', home_views.places, name="places"),
-    url(r'^data.geojson$', GeoJSONLayerView.as_view(model=Article), name='data'),
 ]
 
 if settings.DEBUG:
