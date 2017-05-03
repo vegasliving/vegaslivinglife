@@ -28,6 +28,9 @@ class Article(models.Model):
     thumbnail = models.CharField(max_length=200, blank=True)
     latitude = models.CharField(max_length=40)
     longtitude = models.CharField(max_length=40)
+    size = models.CharField(max_length=200, blank=True, null=True,)
+    numberOfBeds = models.CharField(max_length=200, blank=True, null=True,)
+    numberOfBaths = models.CharField(max_length=200, blank=True, null=True,)
     checker_runtime = models.ForeignKey(SchedulerRuntime, blank=True, null=True, on_delete=models.SET_NULL)
     
     def __str__(self):
