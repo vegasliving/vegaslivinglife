@@ -105,7 +105,17 @@
         	{% endfor %}
         </div>
         <h3>Similar Homes and Real Estate</h3>
-        <div class="mdl-grid"></div>
+        <div class="mdl-grid">
+        	{% for similar_article in similar_articles %}
+        		<div class="mdl-card mdl-shadow--2dp mdl-cell--4-col-desktop" style="margin: 5px">
+        			<h5>{{similar_article.title}}</h5>
+        			<p>{{similar_article.description}}</p>
+        			<img src="{{baseURL}}thumbnails/full/{{similar_article.thumbnail}}" width="100%" height="auto">
+        			<p>
+        		</div>
+        		
+        	{% endfor %}
+        </div>
         {% endfor %}
     </div>
     </div>

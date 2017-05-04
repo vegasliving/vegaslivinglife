@@ -53,26 +53,22 @@ def home_detail(request, article_id):
 	}
 	articles = Article.objects.raw('SELECT * FROM properties_article WHERE id=%s' % (article_id))
 	for article in articles:
+		digit = article.numberOfBeds
+		print(digit)
+		similar_articles = Article.objects.raw("""SELECT * FROM properties_article WHERE numberOfBeds=%(bedNumber)s""",params={'bedNumber':digit})[:6]
+		for similar_article in similar_articles:
+			print(similar_article)
 		location = gmaps.geocode(article.title)
 		if location[0] is not None:
 			article.latitude = location[0]['geometry']['location']['lat']
 			article.longtitude = location[0]['geometry']['location']['lng']
-			print(article.size)
-			print(article.longtitude)
-			print(article.latitude)
 			responses = client.search_by_coordinates(article.latitude, article.longtitude, **params)
 			places = responses.businesses
 			for place in places:
 				place.image = re.sub(r'ms.jpg', 'ls.jpg', place.image_url)
 				place.snippet_image = re.sub(r'ms.jpg', 'ls.jpg', place.snippet_image_url)
 				place.address = ' '.join(place.location.display_address)
-				print(place.name)
-				print(place.rating)
-				print(place.location.display_address)
-				print(place.image_url)
-				print(place.image)
-				print(place.snippet_image_url)
-	return render(request, 'home/your-home.html', {"articles":articles, "places":places})
+	return render(request, 'home/your-home.html', {"articles":articles, "places":places, "similar_articles":similar_articles})
 
 
 
