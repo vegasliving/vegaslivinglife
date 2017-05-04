@@ -87,11 +87,20 @@
         <div class="mdl-grid">
         	{% for place in places %}
         		<div class="mdl-card mdl-shadow--2dp mdl-cell--4-col-desktop" style="margin:5px">
-        		{{place.name}}
-        		{{place.rating}}
+        		<h5>{{place.name}}</h5>
         		<img src="{{place.rating_img_url_small}}" width=20% height=auto>
+        		<h6>{{place.address}}</h6>
+
         		<img src="{{place.image}}" width=50% height=auto>
-        		<img src="{{place.snippet_image}}"width=50% height="auto">
+        		<div class="mdl-grid">
+        			<div clas="mdl-cell mdl-cell--4-col-desktop">
+        				<img src="{{place.snippet_image}}"width=100px height="auto" style="border-radius:50px"">
+        			</div>
+        			<div class="mdl-cell mdl-cell--8-col-desktop">
+        				<p>{{place.snippet_text}}</p>
+        			</div>
+        		</div>	
+        		
         		</div>
         	{% endfor %}
         </div>

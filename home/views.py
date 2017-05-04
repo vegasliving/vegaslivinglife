@@ -65,8 +65,10 @@ def home_detail(request, article_id):
 			for place in places:
 				place.image = re.sub(r'ms.jpg', 'ls.jpg', place.image_url)
 				place.snippet_image = re.sub(r'ms.jpg', 'ls.jpg', place.snippet_image_url)
+				place.address = ' '.join(place.location.display_address)
 				print(place.name)
 				print(place.rating)
+				print(place.location.display_address)
 				print(place.image_url)
 				print(place.image)
 				print(place.snippet_image_url)
