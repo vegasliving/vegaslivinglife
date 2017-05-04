@@ -20,4 +20,5 @@ django-leaflet
 geopy
 googlemaps
 django-geojson
+yelp
 

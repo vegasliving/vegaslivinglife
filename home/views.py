@@ -5,7 +5,18 @@ from django.views.generic import DetailView
 from properties.models import Article
 from blog.models import BlogPage
 import googlemaps
+from yelp.client import Client
+from yelp.oauth1_authenticator import Oauth1Authenticator
+import re
 
+auth = Oauth1Authenticator(
+    consumer_key="xj49H3XgGKqHkKfdBrpYOA",
+    consumer_secret="2TMHAvDUGv-mMOzCcZ_X_rFLoJY",
+    token="b1jtqbsJIi2K4EAJVzvNWUMs4SPjfTo8",
+    token_secret="y5hM7tC3e9GiltBaO4o432Z4m8Q"
+)
+
+client = Client(auth)
 gmaps = googlemaps.Client(key='AIzaSyCTLthxG3Gaj12OcGK_EYU6bXXUSqDvcyg')
 
 def home(request):
@@ -37,10 +48,29 @@ def places(request):
 	return render(request, 'home/places.html',{"blogpages": blogpages, "articles": articles})
 	
 def home_detail(request, article_id):
+	params = {
+    'term': 'food',
+	}
 	articles = Article.objects.raw('SELECT * FROM properties_article WHERE id=%s' % (article_id))
 	for article in articles:
-		print(article.size)
-	return render(request, 'home/your-home.html', {"articles":articles})
+		location = gmaps.geocode(article.title)
+		if location[0] is not None:
+			article.latitude = location[0]['geometry']['location']['lat']
+			article.longtitude = location[0]['geometry']['location']['lng']
+			print(article.size)
+			print(article.longtitude)
+			print(article.latitude)
+			responses = client.search_by_coordinates(article.latitude, article.longtitude, **params)
+			places = responses.businesses
+			for place in places:
+				place.image = re.sub(r'ms.jpg', 'ls.jpg', place.image_url)
+				place.snippet_image = re.sub(r'ms.jpg', 'ls.jpg', place.snippet_image_url)
+				print(place.name)
+				print(place.rating)
+				print(place.image_url)
+				print(place.image)
+				print(place.snippet_image_url)
+	return render(request, 'home/your-home.html', {"articles":articles, "places":places})
 
 
 
