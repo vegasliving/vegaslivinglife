@@ -21,7 +21,7 @@ class NewsWebsite(models.Model):
 
 @python_2_unicode_compatible
 class Article(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=200, blank=True, null=True,)
     news_website = models.ForeignKey(NewsWebsite) 
     description = models.TextField(blank=True)
     price = models.DecimalField(blank=True, null=True, max_digits=10, decimal_places=2)
