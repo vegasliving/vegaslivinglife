@@ -7,7 +7,7 @@ from django.db.models.signals import pre_delete
 from django.dispatch import receiver
 from scrapy_djangoitem import DjangoItem
 from dynamic_scraper.models import Scraper, SchedulerRuntime
-
+from django.forms import ModelForm
 
 @python_2_unicode_compatible
 class NewsWebsite(models.Model):

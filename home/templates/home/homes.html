@@ -31,7 +31,7 @@
   <section class="mdl-layout__tab-panel is-active" style="padding-top: 0px; overflow: hidden;">
       <div class="page-content">
         <div class="mdl-grid">
-          <div class="mdl-cell mdl-cell--7-col-desktop" style="overflow: scroll; height: 120%;">
+          <div class="mdl-cell mdl-cell--7-col-desktop" style="overflow: scroll; height: 100%;">
                 <h3>Las Vegas Real Estate</h3>
                 <!-- Inputting Address -->
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" style="width: 250px">
@@ -43,7 +43,7 @@
                 <!-- Filter by Price -->
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height" style="width: 150px">
                   <input class="mdl-textfield__input" id="min-price" name="min-price" value="No Min" type="text" readonly tabIndex="-1" data-val="BLR" />
-                  <label class="mdl-textfield__label" for="min-price">Min Price</label>
+                  <label class="mdl-textfield__label" for="min-price">Max Price</label>
                   <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="min-price">
                       <li class="mdl-menu__item" data-val="1">$50k</li>
                       <li class="mdl-menu__item" data-val="1">$75k</li>
@@ -100,25 +100,39 @@
                 <!-- Filter by Number of Beds -->
                 <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height" style="width: 150px">
                   <input class="mdl-textfield__input" id="min-bedroom" name="min-bedroom" value="No Min" type="text" readonly tabIndex="-1" data-val="BLR" />
-                  <label class="mdl-textfield__label" for="bedroom">Min Bedrooms</label>
+                  <label class="mdl-textfield__label" for="bedroom">Bedrooms</label>
                   <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="min-bedroom">
-                      <li class="mdl-menu__item" data-val="0">Studio</li>
-                      <li class="mdl-menu__item" data-val="1">1+ Bedrooms</li>
-                      <li class="mdl-menu__item" data-val="2">2+ Bedrooms</li>
-                      <li class="mdl-menu__item" data-val="3">3+ Bedrooms</li>
-                      <li class="mdl-menu__item" data-val="4">4+ Bedrooms</li>
+                      <li class="mdl-menu__item" data-val="1">1 Bedroom</li>
+                      <li class="mdl-menu__item" data-val="2">2 Bedrooms</li>
+                      <li class="mdl-menu__item" data-val="3">3 Bedrooms</li>
+                      <li class="mdl-menu__item" data-val="4">4 Bedrooms</li>
+                      <li class="mdl-menu__item" data-val="4">5 Bedrooms</li>
+                      <li class="mdl-menu__item" data-val="4">6 Bedrooms</li>
+                      <li class="mdl-menu__item" data-val="4">7 Bedrooms</li>
+                      <li class="mdl-menu__item" data-val="4">8 Bedrooms</li>
                   </ul>
                 </div>
 
                 <!-- Filter bt Number of Baths -->
                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label getmdl-select getmdl-select__fix-height" style="width: 150px">
                   <input class="mdl-textfield__input" id="min-bathroom" name="min-bathroom" value="No Min" type="text" readonly tabIndex="-1" data-val="BLR" />
-                  <label class="mdl-textfield__label" for="min-bathroom">Min Bathrooms</label>
+                  <label class="mdl-textfield__label" for="min-bathroom">Bathrooms</label>
                   <ul class="mdl-menu mdl-menu--bottom-left mdl-js-menu" for="min-bathroom">
-                      <li class="mdl-menu__item" data-val="1">1+ Bathrooms</li>
-                      <li class="mdl-menu__item" data-val="2">2+ Bathrooms</li>
-                      <li class="mdl-menu__item" data-val="3">3+ Bathrooms</li>
-                      <li class="mdl-menu__item" data-val="4">4+ Bathrooms</li>
+                      <li class="mdl-menu__item" data-val="1">1 Bathrooms</li>
+                      <li class="mdl-menu__item" data-val="2">2 Bathrooms</li>
+                      <li class="mdl-menu__item" data-val="3">3 Bathrooms</li>
+                      <li class="mdl-menu__item" data-val="4">4 Bathrooms</li>
+                      <li class="mdl-menu__item" data-val="4">5 Bathrooms</li>
+                      <li class="mdl-menu__item" data-val="4">6 Bathrooms</li>
+                      <li class="mdl-menu__item" data-val="4">7 Bathrooms</li>
+                      <li class="mdl-menu__item" data-val="4">8 Bathrooms</li>
+                      <li class="mdl-menu__item" data-val="4">9 Bathrooms</li>
+                      <li class="mdl-menu__item" data-val="4">10 Bathrooms</li>
+                      <li class="mdl-menu__item" data-val="4">11 Bathrooms</li>
+                      <li class="mdl-menu__item" data-val="4">12 Bathrooms</li>
+                      <li class="mdl-menu__item" data-val="4">13 Bathrooms</li>
+                      <li class="mdl-menu__item" data-val="4">14 Bathrooms</li>
+                      <li class="mdl-menu__item" data-val="4">15 Bathrooms</li>
                   </ul>
                 </div>
 
@@ -137,7 +151,7 @@
                           <div class="house-address">{{article.title}}</div>
                       </div>
                       <div class="mdl-cell--5-col">
-                          <div class="house-price">{{article.description}}</div>
+                          <div class="house-price">{{article.price}}</div>
                       </div>
                   </div>
                   <div class="mdl-grid">
@@ -156,6 +170,9 @@
                   <div class="mdl-card__actions mdl-card--border">
                   <a href="#image1">
                       <button id="show-dialog" type="button" class="mdl-button">Contact Agent</button>
+                  </a>
+                  <a href="/home-{{article.id}}">
+                    <button id="show-house" type="button" class="mdl-button">View Detail</button>
                   </a>
                   </div>
                 </div>
