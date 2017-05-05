@@ -49,15 +49,22 @@ def places(request):
 	
 def home_detail(request, article_id):
 	params = {
-    'term': 'food',
+    'term': 'drink',
 	}
 	articles = Article.objects.raw('SELECT * FROM properties_article WHERE id=%s' % (article_id))
 	for article in articles:
-		digit = article.numberOfBeds
-		print(digit)
-		similar_articles = Article.objects.raw("""SELECT * FROM properties_article WHERE numberOfBeds=%(bedNumber)s""",params={'bedNumber':digit})[:6]
+		bedNumber = article.numberOfBeds
+		bathNumber = article.numberOfBaths
+		suggested_articles = []
+		homePrice =  int(re.sub("[^\d\.]", "", article.description))
+		similar_articles = Article.objects.raw("""SELECT * FROM properties_article WHERE numberOfBeds=%(bedNumber)s AND numberOfBaths=%(bathNumber)s""",params={'bedNumber':bedNumber,'bathNumber': bathNumber})
 		for similar_article in similar_articles:
-			print(similar_article)
+			price = int(re.sub("[^\d\.]", "", similar_article.description))
+			if price < homePrice:
+				suggested_articles.append(similar_article)
+				print(article.description)
+				print(similar_article.description)
+				print(similar_article.title)
 		location = gmaps.geocode(article.title)
 		if location[0] is not None:
 			article.latitude = location[0]['geometry']['location']['lat']
@@ -68,13 +75,11 @@ def home_detail(request, article_id):
 				place.image = re.sub(r'ms.jpg', 'ls.jpg', place.image_url)
 				place.snippet_image = re.sub(r'ms.jpg', 'ls.jpg', place.snippet_image_url)
 				place.address = ' '.join(place.location.display_address)
-	return render(request, 'home/your-home.html', {"articles":articles, "places":places, "similar_articles":similar_articles})
+	return render(request, 'home/your-home.html', {"articles":articles, "places":places, "suggested_articles":suggested_articles})
 
 
 
 
-	
-	
 
 
 	
