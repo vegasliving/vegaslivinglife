@@ -60,7 +60,7 @@ def home_detail(request, article_id):
 		similar_articles = Article.objects.raw("""SELECT * FROM properties_article WHERE numberOfBeds=%(bedNumber)s AND numberOfBaths=%(bathNumber)s""",params={'bedNumber':bedNumber,'bathNumber': bathNumber})
 		for similar_article in similar_articles:
 			price = int(re.sub("[^\d\.]", "", similar_article.description))
-			if price < homePrice:
+			if price < homePrice*1.1 and similar_article.id != article.id:
 				suggested_articles.append(similar_article)
 				print(article.description)
 				print(similar_article.description)
