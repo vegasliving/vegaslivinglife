@@ -9,6 +9,7 @@ from yelp.client import Client
 from yelp.oauth1_authenticator import Oauth1Authenticator
 import re
 from django.forms import ModelForm
+from . jobs import findjob
 
 auth = Oauth1Authenticator(
     consumer_key="xj49H3XgGKqHkKfdBrpYOA",
@@ -61,8 +62,9 @@ def home_detail(request, article_id):
 	'term': 'drink',
 	}
 	stores = {
-	'term': 'shopping',
+	'term': 'fun',
 	}
+
 	articles = Article.objects.raw('SELECT * FROM properties_article WHERE id=%s' % (article_id))
 	for article in articles:
 		bedNumber = article.numberOfBeds
@@ -79,8 +81,17 @@ def home_detail(request, article_id):
 				print(similar_article.title)
 		location = gmaps.geocode(article.title)
 		if location[0] is not None:
+
+			# Jobs around the house
+			article.zipcode = location[0]['address_components'][8]['long_name']
+			print(">>>>>>>>>>>>>>>>>>>>>",article.zipcode)
+			results = findjob(article.zipcode,'')
+			for result in results:
+				print(result['jobtitle'],'----------',result['formattedLocation'],'----------',result['company'],'----------',result['url'])
 			article.latitude = location[0]['geometry']['location']['lat']
 			article.longtitude = location[0]['geometry']['location']['lng']
+			print(gmaps.reverse_geocode([article.latitude, article.longtitude]))
+			
 			restaurants = client.search_by_coordinates(article.latitude, article.longtitude, **restaurants)
 			bars = client.search_by_coordinates(article.latitude, article.longtitude, **bars)
 			stores = client.search_by_coordinates(article.latitude, article.longtitude, **stores)
