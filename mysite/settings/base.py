@@ -66,6 +66,7 @@ INSTALLED_APPS = [
     'properties',
     'VR',
     'geopy',
+    'sorl.thumbnail'
 ]
 
 

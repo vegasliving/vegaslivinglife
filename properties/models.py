@@ -8,6 +8,7 @@ from django.dispatch import receiver
 from scrapy_djangoitem import DjangoItem
 from dynamic_scraper.models import Scraper, SchedulerRuntime
 from django.forms import ModelForm
+from sorl.thumbnail import ImageField
 
 @python_2_unicode_compatible
 class NewsWebsite(models.Model):
@@ -27,6 +28,7 @@ class Article(models.Model):
     price = models.DecimalField(blank=True, null=True, max_digits=10, decimal_places=2)
     url = models.URLField(blank=True)
     thumbnail = models.CharField(max_length=200, blank=True)
+    # image = models.ImageField(upload_to='thing')
     latitude = models.CharField(max_length=40)
     longtitude = models.CharField(max_length=40)
     detail_description = models.CharField(max_length=2000, blank=True, null=True)
