@@ -9,17 +9,12 @@ from yelp.client import Client
 from yelp.oauth1_authenticator import Oauth1Authenticator
 import re
 from django.forms import ModelForm
-from . jobs import findjob
+import keys
 
-auth = Oauth1Authenticator(
-    consumer_key="xj49H3XgGKqHkKfdBrpYOA",
-    consumer_secret="2TMHAvDUGv-mMOzCcZ_X_rFLoJY",
-    token="b1jtqbsJIi2K4EAJVzvNWUMs4SPjfTo8",
-    token_secret="y5hM7tC3e9GiltBaO4o432Z4m8Q"
-)
 
+auth = keys.myAuth
 client = Client(auth)
-gmaps = googlemaps.Client(key='AIzaSyCTLthxG3Gaj12OcGK_EYU6bXXUSqDvcyg')
+gmaps = googlemaps.Client(key=keys.myGeoCodingKey)
 
 def home(request):
 	address_input = ""
