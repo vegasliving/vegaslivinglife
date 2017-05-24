@@ -3,3 +3,4 @@ vegasliving.json
 mysite/settings/base.py
 proxy.md
 keys.py
+/static/*

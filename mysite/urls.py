@@ -27,7 +27,7 @@ urlpatterns = [
     url(r'^GoogleWebVR/', VR_views.GoogleWebVR, name='GoogleWebVR'),
     url(r'^AFrameVR/', VR_views.AFrameVR, name='AFrameVR'),
     url(r'^Unity3DVR/', VR_views.Unity3DVR, name='googleVR'),
-    url(r'/stories', include(wagtail_urls)),
+    # url(r'/stories', include(wagtail_urls)),
     url(r'^$', home_views.home, name="home"),
     url(r'^stories/', home_views.stories, name="stories"),
     url(r'^homes/', home_views.homes, name="homes"),
