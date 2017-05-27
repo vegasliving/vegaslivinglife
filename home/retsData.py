@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import csv
 
 csvfile = 'static/listingData/listings.csv'
@@ -12,7 +11,6 @@ with open(csvfile) as f:
 	# for listing in listings:
 	# 	# for key, value in listing.items():
 	# 	# 	print(key, value)
-=======
 
 #### Using rets-python
 from rets.client import RetsClient
