@@ -57,7 +57,7 @@ def home_detail(request, article_id):
 	'term': 'drink',
 	}
 	stores = {
-	'term': 'fun',
+	'term': 'shopping',
 	}
 
 	articles = Article.objects.raw('SELECT * FROM properties_article WHERE id=%s' % (article_id))
@@ -76,13 +76,11 @@ def home_detail(request, article_id):
 				print(similar_article.title)
 		location = gmaps.geocode(article.title)
 		if location[0] is not None:
-
-			# Jobs around the house
 			article.zipcode = location[0]['address_components'][8]['long_name']
 			print(">>>>>>>>>>>>>>>>>>>>>",article.zipcode)
-			results = findjob(article.zipcode,'')
-			for result in results:
-				print(result['jobtitle'],'----------',result['formattedLocation'],'----------',result['company'],'----------',result['url'])
+			# results = findjob(article.zipcode,'')
+			# for result in results:
+			# 	print(result['jobtitle'],'----------',result['formattedLocation'],'----------',result['company'],'----------',result['url'])
 			article.latitude = location[0]['geometry']['location']['lat']
 			article.longtitude = location[0]['geometry']['location']['lng']
 			print(gmaps.reverse_geocode([article.latitude, article.longtitude]))

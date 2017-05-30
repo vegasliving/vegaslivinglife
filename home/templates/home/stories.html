@@ -7,8 +7,9 @@
       <a href="/places/" class="mdl-layout__tab ">Places</a>
 </div>
 {% endblock %}
+
 {% block stories %}
-<main class="mdl-layout__content">
+
     <section class="mdl-layout__tab-panel is-active" id="scroll-tab-2">
       <div class="page-content" >
         <div class="mdl-grid">
@@ -113,4 +114,60 @@
           
       </div>
     </section> 
+
+{% endblock %}
+
+{% block footer %}
+<footer class="mdl-mega-footer">
+<div class="mdl-grid">
+    <div class="mdl-layout-spacer"></div>
+    <div class="mdl-cell--7-col" style="text-align: center">
+        <div class="mdl-grid">
+            <div class="mdl-layout-spacer"></div>
+            <div class="mdl-cell mdl-cell--1-col-desktop">
+                <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" style="background-color: white">
+                    <i class="fa fa-facebook" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="mdl-cell mdl-cell--1-col-desktop">
+            <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" style="background-color: white">
+                <i class="fa fa-twitter" aria-hidden="true"></i>
+            </button>
+            </div>
+            <div class="mdl-cell mdl-cell--1-col-desktop">
+            <button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab" style="background-color: white">
+                <i class="fa fa-google" aria-hidden="true"></i>
+            </button>
+            </div>
+            <div class="mdl-layout-spacer"></div>
+        </div>
+        <div style="color: white">
+            <h5>Vegas Living</h5>
+            <div><img src="https://storage.googleapis.com/vegasliving/White%20Realty%20360.png" width="75px" style="margin-top: -10px; margin-bottom: 10px"></div>
+           <!--  <div class="mdl-grid">
+                <div class="mdl-layout-spacer"></div>
+                <div class="mdl-cell mdl-cell--2-col">
+                    <a href="/" style="text-decoration: none;">For You</a>
+                </div>
+                <div class="mdl-cell mdl-cell--2-col">
+                    <a href="/stories" style="text-decoration: none;">Stories</a>
+                </div>
+                <div class="mdl-cell mdl-cell--2-col">
+                    <a href="/homes" style="text-decoration: none;">Homes</a>
+                </div>
+                <div class="mdl-cell mdl-cell--2-col">
+                    <a href="" style="text-decoration: none;">Places</a>
+                </div>
+                <div class="mdl-layout-spacer"></div>
+            </div>  -->
+            <div>An equal opportunity company.</div>
+            <div>MLS Internet Data Exchange (IDX) information is provided exclusively for consumers’ personal, non-commercial use and may not be used for any purpose other than to identify prospective properties consumers may be interested in purchasing, and that the data is deemed reliable but is not guaranteed accurate by the MLS. Digital Millennium Copyright Act.</div>
+            <div style="margin-top: 20px"><strong>© 2017-2020</strong></div>
+            <div style="margin-top: 20px">
+            <img src="https://storage.googleapis.com/vegasliving/OrgsLogo.png">
+            </div>
+        </div>
+    </div>
+    <div class="mdl-layout-spacer"></div>
+</footer>
 {% endblock %}
