@@ -10,7 +10,7 @@ from yelp.oauth1_authenticator import Oauth1Authenticator
 import re
 from django.forms import ModelForm
 import keys
-
+from pprint import pprint
 
 auth = keys.myAuth
 client = Client(auth)
@@ -75,8 +75,9 @@ def home_detail(request, article_id):
 				print(similar_article.description)
 				print(similar_article.title)
 		location = gmaps.geocode(article.title)
+		pprint(location)
 		if location[0] is not None:
-			article.zipcode = location[0]['address_components'][8]['long_name']
+			article.zipcode = location[0]['address_components'][7]['long_name']
 			print(">>>>>>>>>>>>>>>>>>>>>",article.zipcode)
 			# results = findjob(article.zipcode,'')
 			# for result in results:
