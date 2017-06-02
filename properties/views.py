@@ -27,6 +27,7 @@ def article_list(request):
 	# 	listing['Selling Agent Direct Work Phone'],float("".join(('0',listing['Sq Ft Total']))), listing['Street Name'], listing['Street Number'], listing['Subdivision Name'])
 	vegasListings = Listing.objects.all()
 	#12159
+	
 	print(len(vegasListings))
 	articles = Article.objects.all()[:9]
 	for article in articles:
