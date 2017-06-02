@@ -14,12 +14,16 @@ def article_list(request):
 	pprint(listings[0])
 	for listing in listings:
 		pprint(listing)
-			listing = Listing.objects.create_listing(
-			listing['Area'], listing['Association Features Available'], listing['Association Fee 1'], listing['Association Fee 1 MQYN'],
-			listing['Assoctiation Fee Includes'], listing['Association Name'], listing[''], listing[''], listing[''],
-			listing[''],listing[''],listing[''],listing[''],listing[''],
-			listing[''],listing[''],listing[''],listing[''],listing[''],
-			listing[''],listing[''],listing[''],listing[''],listing['']
+		listing = Listing.objects.create_listing(
+		listing['Area'], listing['Association Features Available'], listing['Association Fee 1'], listing['Association Fee 1 MQYN'],
+		listing['Association Fee Includes'], listing['Association Name'], listing['Association Phone'], listing['Baths Full'], listing['Baths Half'],
+		listing['Baths Total'],listing['Bedrooms Total Possible Num'],listing['Beds Total'],listing['Building Description'],listing['Close Price'],
+		listing['Construction Description'],listing['Community Name'],listing['Directions'],listing['Dryer Included'],listing['Financing Considered'],
+		listing['Flooring Description'],listing['Garage Description'],listing['House Faces'],listing['Last List Price'],listing['List Agent MUI'],
+		listing['List Agent Full Name'], listing['List Office Name'], listing['List Office Phone'], listing['List Price'], listing['Matrix Unique ID'],
+		listing['Matrix Modified DT'], listing['MLS Number'], listing['MLS'], listing['Photo Count'], listing['Postal Code'],listing['Property Condition'], 
+		listing['Property Sub Type'], listing['Public Address'], listing['Public Remarks'], listing['Selling Agent MUI'], listing['Selling Agent Full Name'],
+		listing['Selling Agent Direct Work Phone'],listing['Sq Ft Total'], listing['Street Name'], listing['Street Number'], listing['Subdivision Name'])
 	
 # area, associationFeaturesAvailable, associationFee, associationFeeMQYN, associationFeeIncludes, associationName, associationPhoneNumber,
 #     	bathsFull, bathsHalf, bathsTotal, bedroomsTotalPossibleNumber, bedsTotal, buildingDescription, closePrice, contructionDescription,

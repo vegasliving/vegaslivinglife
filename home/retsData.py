@@ -1,6 +1,10 @@
 import csv
+from rets.client import RetsClient
+from pprint import pprint
+import urllib3
+import xmltodict
 
-csvfile = 'static/listingData/listings.csv'
+csvfile = 'listings.csv'
 
 with open(csvfile) as f:
 	reader = csv.reader(f, skipinitialspace=True)
@@ -13,10 +17,6 @@ with open(csvfile) as f:
 	# 	# 	print(key, value)
 
 #### Using rets-python
-from rets.client import RetsClient
-from pprint import pprint
-import urllib3
-import xmltodict
 
 
 
@@ -34,7 +34,7 @@ def getdata():
 		'password':'lv360',
 		})
 	mydata = r.data
-	print(mydata)
+	print(mydata[0])
 	return mydata
 
 getdata()
@@ -175,10 +175,6 @@ getdata()
 # # soup = BeautifulSoup(response, 'lxml')
 # # data = json.loads(soup.p.get_text())
 # # print(data)
->>>>>>> 9cf5b1cc09fa3d0840a9d16e45fc327eec9d17c5
-
-
-
 
 
 # # fieldnames = ("Area","Association Features Available", "Association Fee 1", "Association Fee 1 MQYN",
