@@ -10,30 +10,24 @@ from django.conf import settings
 gmaps = googlemaps.Client(key='AIzaSyDhMoj3bF9Cw2PJ08_vbKZruTWLXM4X28o')
 
 def article_list(request):
-	listings = convert(csvfile)
-	pprint(listings[0])
-	for listing in listings:
-		pprint(listing)
-		listing = Listing.objects.create_listing(
-		listing['Area'], listing['Association Features Available'], listing['Association Fee 1'], listing['Association Fee 1 MQYN'],
-		listing['Association Fee Includes'], listing['Association Name'], listing['Association Phone'], listing['Baths Full'], listing['Baths Half'],
-		listing['Baths Total'],listing['Bedrooms Total Possible Num'],listing['Beds Total'],listing['Building Description'],listing['Close Price'],
-		listing['Construction Description'],listing['Community Name'],listing['Directions'],listing['Dryer Included'],listing['Financing Considered'],
-		listing['Flooring Description'],listing['Garage Description'],listing['House Faces'],listing['Last List Price'],listing['List Agent MUI'],
-		listing['List Agent Full Name'], listing['List Office Name'], listing['List Office Phone'], listing['List Price'], listing['Matrix Unique ID'],
-		listing['Matrix Modified DT'], listing['MLS Number'], listing['MLS'], listing['Photo Count'], listing['Postal Code'],listing['Property Condition'], 
-		listing['Property Sub Type'], listing['Public Address'], listing['Public Remarks'], listing['Selling Agent MUI'], listing['Selling Agent Full Name'],
-		listing['Selling Agent Direct Work Phone'],listing['Sq Ft Total'], listing['Street Name'], listing['Street Number'], listing['Subdivision Name'])
-	
-# area, associationFeaturesAvailable, associationFee, associationFeeMQYN, associationFeeIncludes, associationName, associationPhoneNumber,
-#     	bathsFull, bathsHalf, bathsTotal, bedroomsTotalPossibleNumber, bedsTotal, buildingDescription, closePrice, contructionDescription,
-#     	communityName, directions, dryerIncluded, financingConsidered, flooringDescription, garageDescription, houseFaces, lastListPrice, 
-#     	listAgentMUI, listAgentFullName, listAgentOfficeName, listOfficePhone, listPrice, matrixUniqueID, matrixModifiedDT, mlsNumber, mls,
-#     	photoCount, postalCode, propertyCondition, propertySubType, publicAddress, publicRemarks, sellingAgentMUI, sellingAgentFullName, 
-#     	sellingAgentDirectWorkPhone, streetName, streetNumber, subdivisionName, sqftTotal
-
-
-
+	# listings = convert(csvfile)
+	# print(len(listings))
+	# for i in range(5001,10000):
+	# 	listing = listings[i]
+	# 	print(listing)
+	# 	vegasListing = Listing.objects.create_listing(
+	# 	listing['Area'], listing['Association Features Available'], listing['Association Fee 1'], listing['Association Fee 1 MQYN'],
+	# 	listing['Association Fee Includes'], listing['Association Name'], listing['Association Phone'], float("".join(('0',listing['Baths Full']))), float(listing['Baths Half']),
+	# 	float("".join(('0',listing['Baths Total']))),float("".join(('0',listing['Bedrooms Total Possible Num']))),float("".join(('0',listing['Beds Total']))),listing['Building Description'],float("".join(('0',listing['Close Price']))),
+	# 	listing['Construction Description'],listing['Community Name'],listing['Directions'],float("".join(('0',listing['Dryer Included']))),listing['Financing Considered'],
+	# 	listing['Flooring Description'],listing['Garage Description'],listing['House Faces'],float("".join(('0',listing['Last List Price']))),listing['List Agent MUI'],
+	# 	listing['List Agent Full Name'], listing['List Office Name'], listing['List Office Phone'], float("".join(('0',listing['List Price']))), listing['Matrix Unique ID'],
+	# 	listing['Matrix Modified DT'], listing['MLS Number'], listing['MLS'], float("".join(('0',listing['Photo Count']))), listing['Postal Code'],listing['Property Condition'], 
+	# 	listing['Property Sub Type'], listing['Public Address'], listing['Public Remarks'], listing['Selling Agent MUI'], listing['Selling Agent Full Name'],
+	# 	listing['Selling Agent Direct Work Phone'],float("".join(('0',listing['Sq Ft Total']))), listing['Street Name'], listing['Street Number'], listing['Subdivision Name'])
+	vegasListings = Listing.objects.all()
+	#12159
+	print(len(vegasListings))
 	articles = Article.objects.all()[:9]
 	for article in articles:
 		location = gmaps.geocode(article.title)
@@ -43,7 +37,7 @@ def article_list(request):
 			# print(latitude, longtitude)
 			# print(article.thumbnail)
 		
-	return render(request, 'properties.html', {"articles": articles})
+	return render(request, 'properties.html', {"articles": articles,"listings":vegasListings})
 
 def convert(csvfile):
 	with open(csvfile) as f:
