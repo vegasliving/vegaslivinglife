@@ -6,13 +6,13 @@ import csv
 from pprint import pprint
 from django.conf import settings
 
-
+csvfile = 'listings.csv'
 gmaps = googlemaps.Client(key='AIzaSyDhMoj3bF9Cw2PJ08_vbKZruTWLXM4X28o')
 
 def article_list(request):
 	listings = convert(csvfile)
 	print(len(listings))
-	for i in range(10001,150000):
+	for i in range(119643,150000):
 		listing = listings[i]
 		if len(listing.keys()) > 1:
 			print(listing)
@@ -28,8 +28,8 @@ def article_list(request):
 			listing['Selling Agent Direct Work Phone'],float("".join(('0',listing['Sq Ft Total']))), listing['Street Name'], listing['Street Number'], listing['Subdivision Name'])
 		else:
 			print("69696969696969")
-	vegasListings = Listing.objects.all() #12159 #13174	
-	print(len(vegasListings))
+	vegasListings = Listing.objects.all() #12159 #13174	 #116469
+	print("-------%s--------" %(len(vegasListings)))
 	articles = Article.objects.all()[:9]
 	for article in articles:
 		location = gmaps.geocode(article.title)
@@ -47,7 +47,5 @@ def convert(csvfile):
 	    header = next(reader)
 	    listings = [dict(zip(header, map(str, row))) for row in reader]
 	return listings
-
-csvfile = 'listings.csv'
 
 
