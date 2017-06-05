@@ -36,10 +36,13 @@
 		</div>
 		<div class="mdl-grid">
 			<div class="mdl-layout-spacer"></div>
-			{% for listing in listings %}
-			<p>
-				{{listing.publicAddress}} - {{listing.listPrice}} 
-			</p>
+			{% for listing in listings|slice:":2" %}
+			<div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col">
+				<strong>{{listing.publicAddress}}</strong>
+				<strong>{{listing.listPrice}} </strong>
+				<strong>{{listing.matrixUniqueID}}</strong>
+				<img src="{{baseURL}}{{listing.image}}-0.jpg">
+			</div>
 			{% endfor %}
 		</div>
 		<div class="mdl-grid">
@@ -48,7 +51,7 @@
 			<div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--4-col">
 			  <div class="mdl-card__title">
 			    <h2 class="mdl-card__title-text">
-			    {{ article.title }}</h2>
+			    {{ article.title}}</h2>
 			  </div> 
 			  <div class="mdl-card__image">
 			  	 <img src="{{baseURL}}thumbnails/full/{{article.thumbnail}}">
