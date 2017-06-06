@@ -6,7 +6,7 @@ settings.configure()
 from pprint import pprint
 from models import Listing, ListingManager
 
-csvfile = 'listings.csv'
+csvfile = 'listing.csv'
 
 with open(csvfile) as f:
     reader = csv.reader(f, skipinitialspace=True)
