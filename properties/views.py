@@ -29,9 +29,12 @@ def article_list(request):
 	# 		listing['Selling Agent Direct Work Phone'],float("".join(('0',listing['Sq Ft Total']))), listing['Street Name'], listing['Street Number'], listing['Subdivision Name'])
 	# 	else:
 	# 		print("69696969696969")
-	vegasListings = Listing.objects.all()[0:99] #12159 #13174	#116469 #146820
-	# for vegasListing in vegasListings:
-	# 	print(vegasListing.matrixUniqueID, vegasListing.photoCount)
+	print(Listing.objects.count())
+	vegasListings = Listing.objects.filter(matrixUniqueID__startswith="11")|Listing.objects.filter(matrixUniqueID__startswith="10")  #12159 #13174	#116469 #146820
+	for vegasListing in vegasListings:
+		print(vegasListing.matrixUniqueID, vegasListing.photoCount)
+		vegasListing.image = ("Las%20Vegas%20Active%20Listing"+"/LargePhoto%s-0" %(vegasListing.matrixUniqueID))
+		print(vegasListing.image)
 	# 	downloadImage(vegasListing.matrixUniqueID, vegasListing.photoCount)
 	# 	vegasListing.image = downloadImage(vegasListing.matrixUniqueID, vegasListing.photoCount)
 	# 	vegasListing.image = []
