@@ -6,6 +6,7 @@ import csv
 from pprint import pprint
 from django.conf import settings
 from .download import downloadImage
+# from django.template.defaultfilters import Listing, baseUrl
 
 csvfile = 'vegasActiveListing.csv'
 gmaps = googlemaps.Client(key='AIzaSyDhMoj3bF9Cw2PJ08_vbKZruTWLXM4X28o')
@@ -33,6 +34,7 @@ def article_list(request):
 	vegasListings = Listing.objects.filter(matrixUniqueID__startswith="11")|Listing.objects.filter(matrixUniqueID__startswith="10")  #12159 #13174	#116469 #146820
 	for vegasListing in vegasListings:
 		print(vegasListing.matrixUniqueID, vegasListing.photoCount)
+		print({{baseUrl}})
 		vegasListing.image = ("Las%20Vegas%20Active%20Listing"+"/LargePhoto%s-0" %(vegasListing.matrixUniqueID))
 		print(vegasListing.image)
 	# 	downloadImage(vegasListing.matrixUniqueID, vegasListing.photoCount)

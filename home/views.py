@@ -3,6 +3,7 @@ from django.contrib import postgres
 from django.shortcuts import render
 from django.views.generic import DetailView
 from properties.models import Article
+from . models import Listing
 from blog.models import BlogPage
 import googlemaps
 from yelp.client import Client
@@ -21,9 +22,15 @@ def home(request):
 	price_input = ""
 	bedroomInput = "3 Bed(s) |"
 	bathroomInput = "3 Bath(s)"
-	articles = Article.objects.filter(title__icontains=address_input).filter(numberOfBeds=bedroomInput).filter(numberOfBaths=bathroomInput)[:9]
-	blogpages = BlogPage.objects.all()
-	return render(request, 'home/for-you.html',{"blogpages": blogpages, "articles": articles})
+	postalCode = "89118"
+	# articles = Article.objects.filter(title__icontains=address_input).filter(numberOfBeds=bedroomInput).filter(numberOfBaths=bathroomInput)[:9]
+	articles = Listing.objects.filter(matrixUniqueID__startswith="11").filter(bedsTotal__icontains="3")[:9]
+	for article in articles:
+		article.image = ("Las%20Vegas%20Active%20Listing"+"/LargePhoto%s-0" %(article.matrixUniqueID))
+	blogs = BlogPage.objects.all()
+	for blog in blogs:
+		print(blog.body)
+	return render(request, 'home/for-you.html',{"blogs": blogs, "articles": articles})
 
 def stories(request):
 	articles = Article.objects.raw('SELECT * FROM properties_article WHERE title LIKE "%%Rainbow%%"')[:3]

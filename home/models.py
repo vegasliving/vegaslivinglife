@@ -73,4 +73,11 @@ class Listing(models.Model):
 	subdivisionName = models.CharField(max_length=200)
 	objects = ListingManager()
 
+class Stories(models.Model):
+	text = models.TextField()
+	author = models.CharField(max_length=210)
+	url = models.CharField(max_length=210)
+	image = models.CharField(max_length=210)
+	summary = models.CharField(max_length=1000)
+	keywords = models.TextField()
 # book = Book.create("Pride and Prejudice")
