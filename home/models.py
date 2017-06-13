@@ -87,5 +87,17 @@ class Story(models.Model):
 	objects = StoryManager()
 	class Meta:
 		unique_together = ["url"]
-	
+
+class LeadManager(models.Manager):
+	def create_lead(self, firstName, lastName, phone, email, interestedListing):
+		lead = self.create(firstName=firstName, lastName=lastName, phone=phone, email=email, interestedListing=interestedListing)
+		return lead
+
+class Lead(models.Model):
+	firstName = models.CharField(max_length=255)
+	lastName = models.CharField(max_length=255)
+	phone = models.CharField(max_length=255)
+	email = models.CharField(max_length=255)
+	interestedListing = models.CharField(max_length=255)
+	objects = LeadManager()
 # book = Book.create("Pride and Prejudice")

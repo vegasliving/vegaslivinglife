@@ -1,0 +1,12 @@
+{% load staticfiles %}
+
+<body>
+	<div>
+		<strong>Lead</strong>
+		{% for lead in leads %}
+			<div>
+				<!-- {{lead.firstName}} {{lead.lastName}} {{lead.email}} {{lead.phone}} -->
+			</div>
+		{% endfor %}
+	</div>
+</body>

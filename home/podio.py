@@ -1,12 +1,13 @@
 from pypodio2 import api
 from pprint import pprint
+import keys
 
-client_id = "vegas-living-33m2bp"
-client_secret = "INOPZocrCMZzAv9VbkqS2rVlBrIuHTqkKc2ysV1I8H0KGsVMnhVEfOB56b9YTMOm"
-app_id = "18725351"
-app_token = "d7b6a16beb71476abefeefb8b468abe5"
-username = "hoangdov@gmail.com"
-password = "milkyway42"
+client_id = keys.production_client_id
+client_secret = keys.production_client_secret
+app_id = keys.app_id
+app_token = keys.app_token
+username = keys.username
+password = keys.password
 
 ### Oauth for Org
 c = api.OAuthClient(
@@ -21,11 +22,17 @@ for space in spaces:
 	print(space['name'],space['space_id'], space['url'])
 	# print(space['name'], space['space'], space['url'])
 
-myApp = c.Application.activate('18725351')
-appID = 18725351
+appID = app_id
 
-def createLead(name, phone, email):
-	lead = c.Item.create(appID,{'fields': {"title": name,"phone": [{ "type": "mobile", "value": phone}],"email": [{ "type": "work", "value": email}]}})
+myApp = c.Application.activate(app_id)
+def createLead(firstName, lastName, phone, email, listing):
+	lead = c.Item.create(appID,{'fields': {
+		"first-name-2": firstName,
+		"last-name-2": lastName, 
+		"phone": [{ "type": "mobile", "value": phone}],
+		"email": [{ "type": "work", "value": email}], 
+		"listing": listing
+	}})
 	return lead
 
-createLead('T','7027420978','partyhard@troy.do')
+# createLead('Troy','Do','7027420978','partyhard@troy.do')

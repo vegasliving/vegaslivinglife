@@ -2,9 +2,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import postgres
 from django.shortcuts import render
 from django.views.generic import DetailView
+from django.http import HttpResponseRedirect
 from properties.models import Article
-from . models import Listing
-from . models import Story
+from . models import Listing, Story, Lead
 from blog.models import BlogPage
 import googlemaps
 from yelp.client import Client
@@ -14,6 +14,8 @@ from django.forms import ModelForm
 import keys
 from pprint import pprint
 from . stories import getStory
+from . forms import PodioForm
+from . podio import createLead
 
 auth = keys.myAuth
 client = Client(auth)
@@ -91,6 +93,15 @@ def home_detail(request, article_id):
   #   	listAgentMUI, listAgentFullName, listOfficeName, listOfficePhone, listPrice, matrixUniqueID, matrixModifiedDT, mlsNumber, mls,
   #   	photoCount, postalCode, propertyCondition, propertySubType, publicAddress, publicRemarks, sellingAgentMUI, sellingAgentFullName, 
   #   	sellingAgentDirectWorkPhone, sqftTotal, streetName, streetNumber, subdivisionName
+		form = PodioForm()
+		if request.method == 'POST':
+			form = PodioForm(request.POST)
+			if form.is_valid():
+				data = form.cleaned_data
+				print(data)
+				createLead(data['firstName'], data['lastName'],str(data['phone']), data['email'], article.matrixUniqueID)
+				lead = Lead.objects.create_lead(data['firstName'], data['lastName'],data['phone'], data['email'], article.matrixUniqueID)
+				return HttpResponseRedirect('/home-%s'%(article.matrixUniqueID))
 		pprint(vars(article))
 		article.image = ("Las%20Vegas%20Active%20Listing"+"/LargePhoto%s-0" %(article.matrixUniqueID))
 		bedNumber = article.bedsTotal
@@ -165,13 +176,13 @@ def home_detail(request, article_id):
 				
 	return render(
 		request, 'home/your-home.html', 
-		{"articles":articles, "suggestedRestaurants":suggestedRestaurants, "suggestedBars":suggestedBars, 
+		{"articles":articles, "form":form, "suggestedRestaurants":suggestedRestaurants, "suggestedBars":suggestedBars, 
 		"suggestedStores":suggestedStores, "suggestedPlays":suggestedPlays, "suggested_articles":suggested_articles}
 	)
 
-
-
-
+def newLead(request): 
+	leads = Lead.objects.all()
+	return render(request, 'home/leads.html', {"leads":leads})
 	
 	
 
