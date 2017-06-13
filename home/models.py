@@ -73,11 +73,19 @@ class Listing(models.Model):
 	subdivisionName = models.CharField(max_length=200)
 	objects = ListingManager()
 
-class Stories(models.Model):
+class StoryManager(models.Manager):
+	def create_story(self, url, text, image, summary, keywords):
+		story = self.create(url=url, text=text, image=image, summary=summary, keywords=keywords)
+		return story
+
+class Story(models.Model):
+	url = models.CharField(max_length=255)
 	text = models.TextField()
-	author = models.CharField(max_length=210)
-	url = models.CharField(max_length=210)
 	image = models.CharField(max_length=210)
-	summary = models.CharField(max_length=1000)
+	summary = models.TextField()
 	keywords = models.TextField()
+	objects = StoryManager()
+	class Meta:
+		unique_together = ["url"]
+	
 # book = Book.create("Pride and Prejudice")

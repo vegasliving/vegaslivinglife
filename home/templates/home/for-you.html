@@ -22,48 +22,18 @@
             </div>
             <div class="mdl-cell mdl-cell--5-col-desktop">
                 <h3>Las Vegas Stories </h3>
-                {% for blog in blogs %}
+                {% for story in stories %}
                 <div class="mdl-card mdl-shadow--2dp mdl-cell--12-col-desktop" style="min-height: 50px; margin-bottom: 5px">
                     <div class="mdl-grid" style="padding: 0px">
-                        <div class="mdl-cell mdl-cell--4-col-desktop" style="margin: 0px">
-                            <img src="{{blog.image}}" width="100px" style="padding:0px">   
-                        </div>
+                        <div class="mdl-cell mdl-cell--4-col-desktop" style="background-image: url({{story.image}}); background-size: 100%; margin: 1px"></div>
                         <div class="mdl-cell mdl-cell--8-col-desktop">
-                            <div class="mdl-card--title-text"> {{ blog.intro|truncatechars:210}}</div>
+                            <div class="mdl-card--title-text"> 
+                            {{ story.summary|truncatechars:210}}
+                            </div>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
-                <!-- <div class="mdl-card mdl-shadow--2dp mdl-cell--12-col-desktop" style="min-height: 50px; margin-bottom: 5px">
-                    <div class="mdl-grid" style="padding: 0px">
-                        <div class="mdl-cell mdl-cell--4-col-desktop" style="margin: 0px">
-                            <img src="https://storage.googleapis.com/vegasliving/static/thumbnails/full/00060a04e06a0a0436d1c1e9d4951dae8bd4a311.jpg" width="100%" style="padding:0px">
-                        </div>
-                        <div class="mdl-cell mdl-cell--8-col-desktop">
-                            <div class="mdl-card--title-text"> The hot story The hot story The hot story The hot story The hot story The hot story The hot storyThe hot story</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mdl-card mdl-shadow--2dp mdl-cell--12-col-desktop" style="min-height: 50px; margin-bottom: 5px">
-                    <div class="mdl-grid" style="padding: 0px">
-                        <div class="mdl-cell mdl-cell--4-col-desktop" style="margin: 0px">
-                            <img src="https://storage.googleapis.com/vegasliving/static/thumbnails/full/00060a04e06a0a0436d1c1e9d4951dae8bd4a311.jpg" width="100%" style="padding:0px">
-                        </div>
-                        <div class="mdl-cell mdl-cell--8-col-desktop">
-                            <div class="mdl-card--title-text"> The hot story The hot story The hot story The hot story The hot story The hot story The hot storyThe hot story</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mdl-card mdl-shadow--2dp mdl-cell--12-col-desktop" style="min-height: 50px; margin-bottom: 5px">
-                    <div class="mdl-grid" style="padding: 0px">
-                        <div class="mdl-cell mdl-cell--4-col-desktop" style="margin: 0px">
-                            <img src="https://storage.googleapis.com/vegasliving/static/thumbnails/full/00060a04e06a0a0436d1c1e9d4951dae8bd4a311.jpg" width="100%" style="padding:0px">
-                        </div>
-                        <div class="mdl-cell mdl-cell--8-col-desktop">
-                            <div class="mdl-card--title-text"> The hot story The hot story The hot story The hot story The hot story The hot story The hot storyThe hot story</div>
-                        </div>
-                    </div>
-                </div> -->
             </div>
 
         </div>
@@ -99,7 +69,7 @@
                 <a href="#image1">
                     <button id="show-dialog" type="button" class="mdl-button">Contact Agent</button>
                 </a>
-                <a href="/home-{{article.id}}">
+                <a href="/home-{{article.matrixUniqueID}}">
                     <button id="show-house" type="button" class="mdl-button">View Detail</button>
                 </a>
                 </div>
