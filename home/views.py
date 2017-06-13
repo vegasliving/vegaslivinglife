@@ -100,7 +100,7 @@ def home_detail(request, article_id):
 				data = form.cleaned_data
 				print(data)
 				createLead(data['firstName'], data['lastName'],str(data['phone']), data['email'], article.matrixUniqueID)
-				lead = Lead.objects.create_lead(data['firstName'], data['lastName'],data['phone'], data['email'], article.matrixUniqueID)
+				Lead.objects.create_lead(data['firstName'], data['lastName'],data['phone'], data['email'], article.matrixUniqueID)
 				return HttpResponseRedirect('/home-%s'%(article.matrixUniqueID))
 		pprint(vars(article))
 		article.image = ("Las%20Vegas%20Active%20Listing"+"/LargePhoto%s-0" %(article.matrixUniqueID))
@@ -108,11 +108,12 @@ def home_detail(request, article_id):
 		bathNumber = article.bathsTotal
 		suggested_articles = []
 		homePrice =  article.listPrice
-		similar_articles = Listing.objects.filter(bedsTotal=bedNumber).filter(bathsTotal=bathNumber)
+		similar_articles = Listing.objects.filter(bedsTotal=bedNumber).filter(bathsTotal=bathNumber).filter(matrixUniqueID__startswith="11")
 		# similar_articles = Article.objects.raw("""SELECT * FROM properties_article WHERE numberOfBeds=%(bedNumber)s AND numberOfBaths=%(bathNumber)s""",params={'bedNumber':bedNumber,'bathNumber': bathNumber})[:30]
 		for similar_article in similar_articles:
 			price = similar_article.listPrice
-			if price < homePrice*1.1 and similar_article.id != article.id:
+			if price < homePrice*1.1 and similar_article.matrixUniqueID != article.matrixUniqueID:
+				similar_article.image = ("Las%20Vegas%20Active%20Listing"+"/LargePhoto%s-0" %(similar_article.matrixUniqueID))
 				suggested_articles.append(similar_article)
 				# print(article.listPrice)
 				# print(similar_article.listPrice)
@@ -182,6 +183,8 @@ def home_detail(request, article_id):
 
 def newLead(request): 
 	leads = Lead.objects.all()
+	for lead in leads:
+		pprint(vars(lead))
 	return render(request, 'home/leads.html', {"leads":leads})
 	
 	
