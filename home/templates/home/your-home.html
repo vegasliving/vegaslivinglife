@@ -32,25 +32,26 @@
 {% block your-home %}
 <section class="mdl-layout__tab-panel is-active">
     <div class="page-content">
-    {% for article in articles %}
+        {% for article in articles %}
         <div id="mdl_card__image" style="
             display:inline-block;
             width:100%;
             height:500px;
             overflow:hidden;
             vertical-align:top">
-            <img src="{{baseURL}}thumbnails/full/{{article.thumbnail}}" width="100%" height="auto" style="margin-top: -210px">
+            <img src="{{baseURL}}{{article.image}}.jpeg" width="100%" height="auto" style="margin-top: -210px">
         </div>
         <div class="mdl-grid">
             <div class="mdl-cell mdl-cell--5-col-desktop">
-                <h3>{{article.streetName}}</h3>
-                <h6>{{article.publicRemark}}</h6>
+                <h3>{{article.streetNumber}}, {{article.streetName}}, <br>
+                Las Vegas, NV, {{article.postalCode}}</h3>
+                <h6>{{article.publicRemarks}}</h6>
             </div>
             <div class="mdl-cell mdl-cell--3-col-desktop">
                 <h2>{{article.listPrice}}</h2>
                 <h5>{{article.bedsTotal}}</h5>
-                <h5>{{article.bathsTotal}</h5>
-                <h5>{{article.size}}</h5>
+                <h5>{{article.bathsTotal}}</h5>
+                <h5>{{article.sqftTotal}}</h5>
             </div>
             <div class="mdl-card mdl-shadow--2dp mdl-cell--4-col-desktop" style="margin-top: -80px">
                 <div style="background-color: #FFD41F; color: black; font-size: 33px; font-weight:600;text-align: center; width: 100%; height: 70px; padding: 25px"> Talk to An Agent
@@ -85,13 +86,11 @@
                 </form>
             </div>
         </div>
+        {% endfor %}
         <!-- Things to Do Around This Listing -->
         <h3>Cool Places Around You</h3>
-        <div class="mdl-grid">
-
-<!-- Cool Restaurants -->        
+        <div class="mdl-grid"><!-- Cool Restaurants -->
 <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col-desktop" id="suggestedRestaurants" style="margin: 8px 8px 8px 8px">
-    
     {% for suggestedRestaurant in suggestedRestaurants|slice:":1" %}
     <div style="background: linear-gradient(0deg,rgba(243,135,71,0.5),rgba(242,134,71,0.5)), url({{suggestedRestaurant.image}}); background-color: rgba(243, 135, 71, .3); background-size: auto 100%; height: 50%;margin: 1px">
         <div style="color: black; background-color: white; margin: 7px; padding: 5px 7px; text-align: center; box-shadow: 20px">
@@ -112,13 +111,12 @@
     </div>
     {% endfor %}
 </div>
-
 <!-- Cool Bars -->
 <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col-desktop" id="suggestedRestaurants" style="margin: 8px 8px 8px 8px">
     <!-- Cool Restaurants -->
     {% for suggestedBar in suggestedBars|slice:":1" %}
     <div style="background: linear-gradient(0deg,rgba(243,135,71,0.3),rgba(242,134,71,0.3)), url({{suggestedBar.image}}); background-color: rgba(243, 135, 71, .3); background-size: auto 100%; height: 50%;margin: 1px">
-        <div style="color: white; background-color: #2D3739; margin: 7px; padding: 5px 7px; text-align: center; box-shadow: 20px">
+        <div style="color: white; background-color: #2D3739; margin: 7px; padding: 5px 50px; text-align: center; box-shadow: 20px">
             <strong>{{suggestedBar.name}}</strong>
             <div>{{suggestedBar.address}}</div>
         </div>
@@ -134,35 +132,34 @@
             {{suggestedBar.snippet_text}}
         </div>
     </div>
-    {% endfor %}
 </div>
-
-<!-- Cool Restaurants -->
-<div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col-desktop" id="suggestedRestaurants" style="margin: 8px 8px 8px 8px" ">
-             <!-- Cool Restaurants -->
-                {% for suggestedRestaurant in suggestedRestaurants|slice:":1 " %}
-                <div style="background-image: url({{suggestedRestaurant.image}}); background-size: auto 100%; height: 50%;margin: 1px ">
+            <!-- Cool Plays -->
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col-desktop" id="suggestedRestaurants" style="margin: 8px 8px 8px 8px" ">
+                {% for suggestedPlay in suggestedPlays|slice:":1 " %}
+                <div style="background-image: url({{suggestedPlay.image}}); background-size: auto 100%; height: 50%;margin: 1px ">
                     <div style="color: black; background-color: white; margin: 7px; padding: 5px 7px; text-align: center; box-shadow: 20px ">
-                        <strong>{{suggestedRestaurant.name}}</strong>
-                        <div>{{suggestedRestaurant.address}}</div>
+                        <strong>{{suggestedPlay.name}}</strong>
+                        <div>{{suggestedPlay.address}}</div>
                     </div>
                 </div>
                 <div>
                     <div style="display: table;margin: -20% auto 10px auto; ">
-                        <img src="{{suggestedRestaurant.snippet_image}} " style="border-radius:75px; border: 5px solid #fff; width: 150px; height: auto; ">
+                        <img src="{{suggestedPlay.snippet_image}} " style="border-radius:75px; border: 5px solid #fff; width: 150px; height: auto; ">
                     </div>
                     <div style="display: table;margin: auto; ">
-                        <img src="{{suggestedRestaurant.rating_img_url_small}} " width=200% height=auto>
+                        <img src="{{suggestedPlay.rating_img_url_small}} " width=200% height=auto>
                     </div>
                     <div style="margin: 21px; text-align: center; ">
-                        {{suggestedRestaurant.snippet_text}}
+                        {{suggestedPlay.snippet_text}}
                     </div>
                 </div>
                 {% endfor %}
             </div>
 
+
+
             <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col-desktop " id="suggestedRestaurants " style="margin: 8px 8px 8px 8px ">
-                <!-- Cool Restaurants -->
+                <!-- Cool Store -->
                 {% for suggestedStore in suggestedStores|slice:":1 " %}
                 <div style="background-image: url({{suggestedStore.image}}); background-size: auto 100%; height: 50%;margin: 1px ">
                     <div style="color: white; background-color: #2D3739; margin: 7px; padding: 5px 7px; text-align: center; box-shadow: 20px ">
@@ -183,16 +180,7 @@
                 </div>
                 {% endfor %}
             </div>
-
-
-
-            
-
-            
-
-            
-
-        </div>
+</div>
 
         <!-- Similar Listing Around This Listing -->
         <h3>Similar Homes and Real Estate</h3>

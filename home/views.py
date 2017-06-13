@@ -75,11 +75,24 @@ def home_detail(request, article_id):
 	'term': 'drink',
 	}
 	stores = {
+	'term': 'shopping',
+	}
+
+	plays = {
 	'term': 'active',
 	}
-	articles = Listing.objects.filter(matrixUniqueID = article_id)
+
+	articles = Listing.objects.filter(matrixUniqueID="%s"%(article_id))
 	# articles = Listing.objects.raw('SELECT * FROM properties_article WHERE id=%s' % (article_id))
 	for article in articles:
+	# 	area, associationFeaturesAvailable, associationFee, associationFeeMQYN, associationFeeIncludes, associationName, associationPhone,
+  #   	bathsFull, bathsHalf, bathsTotal, bedroomsTotalPossibleNum, bedsTotal, buildingDescription, closePrice, contructionDescription,
+  #   	communityName, directions, dryerIncluded, financingConsidered, flooringDescription, garageDescription, houseFaces, lastListPrice, 
+  #   	listAgentMUI, listAgentFullName, listOfficeName, listOfficePhone, listPrice, matrixUniqueID, matrixModifiedDT, mlsNumber, mls,
+  #   	photoCount, postalCode, propertyCondition, propertySubType, publicAddress, publicRemarks, sellingAgentMUI, sellingAgentFullName, 
+  #   	sellingAgentDirectWorkPhone, sqftTotal, streetName, streetNumber, subdivisionName
+		pprint(vars(article))
+		article.image = ("Las%20Vegas%20Active%20Listing"+"/LargePhoto%s-0" %(article.matrixUniqueID))
 		bedNumber = article.bedsTotal
 		bathNumber = article.bathsTotal
 		suggested_articles = []
@@ -95,7 +108,7 @@ def home_detail(request, article_id):
 				# print(similar_article.publicAddress)
 		address = "%s, %s, Las Vegas, NV, %s" %(article.streetNumber, article.streetName, article.postalCode)
 		location = gmaps.geocode(address)
-		pprint(location)
+		# pprint(location)
 		if location[0] is not None:
 			# article.zipcode = location[0]['address_components'][7]['long_name']
 			# print(">>>>>>>>>>>>>>>>>>>>>",article.zipcode)
@@ -109,32 +122,52 @@ def home_detail(request, article_id):
 			restaurants = client.search_by_coordinates(article.latitude, article.longtitude, **restaurants)
 			bars = client.search_by_coordinates(article.latitude, article.longtitude, **bars)
 			stores = client.search_by_coordinates(article.latitude, article.longtitude, **stores)
+			plays = client.search_by_coordinates(article.latitude,article.longtitude, **plays)
 
 			suggestedRestaurants = restaurants.businesses
 			suggestedBars = bars.businesses
 			suggestedStores = stores.businesses
-			# Write function to pass in different cool place
+			suggestedPlays = plays.businesses
+
+			# REMEMBER TO REFACTOR AND REWRITE FUNCTION to pass in different cool places
 
 			for suggestedRestaurant in suggestedRestaurants:
 				suggestedRestaurant.image = re.sub(r'ms.jpg', 'ls.jpg', suggestedRestaurant.image_url)
 				suggestedRestaurant.snippet_image = re.sub(r'ms.jpg', 'ls.jpg', suggestedRestaurant.snippet_image_url)
 				suggestedRestaurant.address = ' '.join(suggestedRestaurant.location.display_address)
+			
 			for suggestedBar in suggestedBars:
 				suggestedBar.image = re.sub(r'ms.jpg', 'ls.jpg', suggestedBar.image_url)
 				suggestedBar.snippet_image = re.sub(r'ms.jpg', 'ls.jpg', suggestedBar.snippet_image_url)
 				suggestedBar.address = ' '.join(suggestedBar.location.display_address)
+			
 			for suggestedStore in suggestedStores:
 				if suggestedStore.image_url is not None:
 					suggestedStore.image = re.sub(r'ms.jpg', 'ls.jpg', suggestedStore.image_url)
 					suggestedStore.snippet_image = re.sub(r'ms.jpg', 'ls.jpg', suggestedStore.snippet_image_url)
 					suggestedStore.address = ' '.join(suggestedStore.location.display_address)
-					print(suggestedStore.name)
-					print(suggestedStore.address)
-					print(suggestedStore.image)
-					print(suggestedStore.snippet_image)
-					print(suggestedStore.snippet_text)
+					# print(suggestedStore.name)
+					# print(suggestedStore.address)
+					# print(suggestedStore.image)
+					# print(suggestedStore.snippet_image)
+					# print(suggestedStore.snippet_text)
+
+			for suggestedPlay in suggestedPlays:
+				if suggestedPlay.image_url is not None:
+					suggestedPlay.image = re.sub(r'ms.jpg', 'ls.jpg', suggestedPlay.image_url)
+					suggestedPlay.snippet_image = re.sub(r'ms.jpg', 'ls.jpg', suggestedPlay.snippet_image_url)
+					suggestedPlay.address = ' '.join(suggestedPlay.location.display_address)
+					# print(suggestedPlay.name)
+					# print(suggestedPlay.address)
+					# print(suggestedPlay.image)
+					# print(suggestedPlay.snippet_image)
+					# print(suggestedPlay.snippet_text)
 				
-	return render(request, 'home/your-home.html', {"articles":articles, "suggestedRestaurants":suggestedRestaurants, "suggestedBars":suggestedBars, "suggestedStores":suggestedStores, "suggested_articles":suggested_articles})
+	return render(
+		request, 'home/your-home.html', 
+		{"articles":articles, "suggestedRestaurants":suggestedRestaurants, "suggestedBars":suggestedBars, 
+		"suggestedStores":suggestedStores, "suggestedPlays":suggestedPlays, "suggested_articles":suggested_articles}
+	)
 
 
 
