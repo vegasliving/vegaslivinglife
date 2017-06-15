@@ -16,6 +16,7 @@ from pprint import pprint
 from . stories import getStory
 from . forms import PodioForm
 from . podio import createLead
+from pypodio2 import api
 
 auth = keys.myAuth
 client = Client(auth)
