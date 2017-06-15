@@ -83,9 +83,24 @@ def homes(request):
 	return render(request, 'home/homes.html',{"articles": articles})
 		
 def places(request):
-	articles = Article.objects.raw('SELECT * FROM properties_article WHERE title LIKE "%%Paradise%%"')[:5]
+	articles = Listing.objects.filter(matrixUniqueID__startswith="11")
+	for article in articles:
+		article.image = ("Las%20Vegas%20Active%20Listing"+"/LargePhoto%s-0" %(article.matrixUniqueID))
 	blogpages = BlogPage.objects.all()
-	return render(request, 'home/places.html',{"blogpages": blogpages, "articles": articles})
+	coolSpots = findCoolSpot(articles[1])
+	pprint(coolSpots)
+	suggestedRestaurants = coolSpots[0]
+	suggestedBars = coolSpots[1]
+	suggestedStores = coolSpots[2]
+	suggestedPlays = coolSpots[3]
+	return render(request, 'home/places.html',{
+		"blogpages": blogpages,
+		"articles": articles,
+		"suggestedRestaurants":suggestedRestaurants,
+		"suggestedBars":suggestedBars,
+		"suggestedStores":suggestedStores,
+		"suggestedPlays":suggestedPlays
+	})
 	
 def home_detail(request, article_id):
 	restaurants = {
