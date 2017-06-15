@@ -77,20 +77,98 @@
             {% endfor %}
         </div>
         <h3 style="margin-left: 12px">Cool Places in Las Vegas</h3>
-
         <div class="mdl-grid" id="places-row">
-            <dir class="mdl-card mdl-shadow--3dp mdl-cell mdl-cell--3-col-desktop" >
-                <div class="place_image">
-                    <img src="https://a0.muscache.com/im/pictures/facb17cc-ab67-423c-ae60-87c6ffa96a3f.jpg" width="100%"height="auto">
+            <!-- Cool Restaurants -->
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col-desktop" id="suggestedRestaurants" style="margin: 8px 8px 8px 8px">
+                {% for suggestedRestaurant in suggestedRestaurants|slice:":3" %}
+                <div style="background: linear-gradient(0deg,rgba(243,135,71,0.5),rgba(242,134,71,0.5)), url({{suggestedRestaurant.image}}); background-color: rgba(243, 135, 71, .3); background-size: auto 100%; height: 50%;margin: 1px">
+                    <div style="color: black; background-color: white; margin: 7px; padding: 5px 7px; text-align: center; box-shadow: 20px">
+                        <strong>{{suggestedRestaurant.name}}</strong>
+                        <div>{{suggestedRestaurant.address}}</div>
+                    </div>
                 </div>
-                <div class="place_content">
-                   <h5 style="margin: 15px">Taco and Beer</h5>
-                   <p style="padding-right: 20px; padding-left: 20px">Creative street-style tacos, craft brews & cocktails in a cool space with quirky decor.</p> 
+                <div>
+                    <div style="display: table;margin: -20% auto 10px auto;">
+                        <img src="{{suggestedRestaurant.snippet_image}}" style="border-radius:75px; border: 5px solid #fff; width: 150px; height: auto;">
+                    </div>
+                    <div style="display: table;margin: auto;">
+                        <img src="{{suggestedRestaurant.rating_img_url_small}}" width=200% height=auto>
+                    </div>
+                    <div style="margin: 21px 21px; text-align: center;">
+                        {{suggestedRestaurant.snippet_text}}
+                    </div>
                 </div>
-            </dir>
+                {% endfor %}
+            </div>
 
+            <!-- Cool Bars -->
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col-desktop" id="suggestedRestaurants" style="margin: 8px 8px 8px 8px">
+                {% for suggestedBar in suggestedBars|slice:":3" %}
+                <div style="background: linear-gradient(0deg,rgba(243,135,71,0.3),rgba(242,134,71,0.3)), url({{suggestedBar.image}}); background-color: rgba(243, 135, 71, .3); background-size: auto 100%; height: 50%;margin: 1px">
+                    <div style="color: white; background-color: #2D3739; margin: 7px; padding: 5px 50px; text-align: center; box-shadow: 20px">
+                        <strong>{{suggestedBar.name}}</strong>
+                        <div>{{suggestedBar.address}}</div>
+                    </div>
+                </div>
+                <div>
+                    <div style="display: table;margin: -20% auto 10px auto;">
+                        <img src="{{suggestedBar.snippet_image}}" style="border-radius:75px; border: 5px solid #fff; width: 150px; height: auto;">
+                    </div>
+                    <div style="display: table;margin: auto;">
+                        <img src="{{suggestedBar.rating_img_url_small}}" width=200% height=auto>
+                    </div>
+                    <div style="margin: 21px; text-align: center;">
+                        {{suggestedBar.snippet_text}}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Cool Plays -->
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col-desktop" id="suggestedRestaurants" style="margin: 8px 8px 8px 8px" ">
+                {% for suggestedPlay in suggestedPlays|slice:":3" %}
+                <div style="background-image: url({{suggestedPlay.image}}); background-size: auto 100%; height: 50%;margin: 1px ">
+                    <div style="color: black; background-color: white; margin: 7px; padding: 5px 7px; text-align: center; box-shadow: 20px ">
+                        <strong>{{suggestedPlay.name}}</strong>
+                        <div>{{suggestedPlay.address}}</div>
+                    </div>
+                </div>
+                <div>
+                    <div style="display: table;margin: -20% auto 10px auto; ">
+                        <img src="{{suggestedPlay.snippet_image}} " style="border-radius:75px; border: 5px solid #fff; width: 150px; height: auto; ">
+                    </div>
+                    <div style="display: table;margin: auto; ">
+                        <img src="{{suggestedPlay.rating_img_url_small}} " width=200% height=auto>
+                    </div>
+                    <div style="margin: 21px; text-align: center; ">
+                        {{suggestedPlay.snippet_text}}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <!-- Cool Store -->
+            <div class="mdl-card mdl-shadow--2dp mdl-cell mdl-cell--3-col-desktop " id="suggestedRestaurants " style="margin: 8px 8px 8px 8px ">           
+                {% for suggestedStore in suggestedStores|slice:":3" %}
+                <div style="background-image: url({{suggestedStore.image}}); background-size: auto 100%; height: 50%;margin: 1px ">
+                    <div style="color: white; background-color: #2D3739; margin: 7px; padding: 5px 7px; text-align: center; box-shadow: 20px ">
+                        <strong>{{suggestedStore.name}}</strong>
+                        <div>{{suggestedStore.address}}</div>
+                    </div>
+                </div>
+                <div>
+                    <div style="display: table;margin: -20% auto 10px auto; ">
+                        <img src="{{suggestedStore.snippet_image}} " style="border-radius:75px; border: 5px solid #fff; width: 150px; height: auto; ">
+                    </div>
+                    <div style="display: table;margin: auto; ">
+                        <img src="{{suggestedStore.rating_img_url_small}} " width=200% height=auto>
+                    </div>
+                    <div style="margin: 21px; text-align: center; ">
+                        {{suggestedStore.snippet_text}}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
         </div>
-
       </div>
     </section>
 {% endblock %}
