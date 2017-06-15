@@ -62,7 +62,12 @@
                         <div class="mdl-cell mdl-cell--10-col">
                         {% csrf_token %}
                         {{form}}
-                        <input type="submit" value="Submit" />
+                        <div class="mdl-grid">
+                            <div class="mdl-layout-spacer"></div>
+                            <input type="submit" value="Contact" class="mdl-js-button mdl-button--raised" style="font-size: 15px; background-color: #273032; color: #FFD41F; width: 100%; height: 42px"/>
+                            <div class="mdl-layout-spacer"></div>
+                        </div>
+                        
                             <!-- <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                 <input class="mdl-textfield__input" type="text" id="firstName">
                                 <label class="mdl-textfield__label" for="sample2">First Name</label>
@@ -218,7 +223,7 @@
                 <a href="#image1">
                     <button id="show-dialog" type="button" class="mdl-button">Contact Agent</button>
                 </a>
-                <a href="/home-{{article.matrixUniqueID}}">
+                <a href="/home-{{suggested_article.matrixUniqueID}}">
                     <button id="show-house" type="button" class="mdl-button">View Detail</button>
                 </a>
                 </div>
