@@ -54,7 +54,7 @@ oauthlib==2.0.2
 olefile==0.44
 packaging==16.8
 parsel==1.1.0
-Pillow==4.1.1
+Pillow==9.0.1
 ply==3.10
 pprint==0.1
 psycopg2==2.6.2
