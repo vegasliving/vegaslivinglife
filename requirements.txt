@@ -84,7 +84,7 @@ six==1.10.0
 sorl-thumbnail==12.3
 tldextract==2.1.0
 tornado==4.5.1
-Twisted==17.1.0
+Twisted==22.10.0
 udatetime==0.0.12
 Unidecode==0.4.20
 urllib3==1.21.1
