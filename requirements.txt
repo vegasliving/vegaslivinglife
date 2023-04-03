@@ -89,7 +89,7 @@ udatetime==0.0.12
 Unidecode==0.4.20
 urllib3==1.21.1
 w3lib==1.17.0
-wagtail==1.9.1
+wagtail==4.1.4
 webencodings==0.5.1
 whitenoise==2.0.6
 Willow==0.4
